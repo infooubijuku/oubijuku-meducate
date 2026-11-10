@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- TODO: GA4測定IDは仮置き（公開前に meducatetennoji@gmail.com で新規プロパティを作成して差し替える） -->
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no,address=no,email=no">
+    <link rel="icon" type="image/jpeg" href="/img/logo-medicate.jpg">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <meta name="theme-color" content="#1D5FA8">
+    <meta name="description" content="MEDUCATE天王寺校は、関西の私立医学部受験専門塾。大阪公立大学の医学生30名が計画・管理・実践をマネジメント。365日使える自習室と毎朝のZoom朝勉強会。JR天王寺駅北口徒歩5分。">
+    <meta name="keywords" content="MEDUCATE,メデュケイト,天王寺,医学部受験,私立医学部,大阪医科薬科大学,関西医科大学,近畿大学,兵庫医科大学,個別指導">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="MEDUCATE 天王寺校">
+    <link rel="canonical" href="https://meducate.oubijuku.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="MEDUCATE 天王寺校｜関西の私立医学部受験専門塾（天王寺）">
+    <meta property="og:description" content="大阪公立大学の医学生30名が伴走する、関西の私立医学部受験専門塾。365日使える自習室と毎朝のZoom朝勉強会で、勉強のリズムを支えます。JR天王寺駅北口徒歩5分。">
+    <meta property="og:url" content="https://meducate.oubijuku.com/">
+    <meta property="og:site_name" content="MEDUCATE 天王寺校">
+    <meta property="og:locale" content="ja_JP">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="MEDUCATE 天王寺校｜関西の私立医学部受験専門塾（天王寺）">
+    <meta name="twitter:description" content="大阪公立大学の医学生30名が伴走する、関西の私立医学部受験専門塾。JR天王寺駅北口徒歩5分。">
+    <title>MEDUCATE 天王寺校｜関西の私立医学部受験専門塾（天王寺）</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main: #1D5FA8;
+            --main-dark: #14497F;
+            --main-light: #EAF2FB;
+            --ink: #333333;
+            --line-green: #06C755;
+            --soft: #CFE0F0;
+        }
+        body { font-family: 'Noto Sans JP', sans-serif; color: var(--ink); line-height: 1.9; letter-spacing: 0.02em; background: #FDFEFF; }
+        h1, h2, h3 { font-family: 'Noto Serif JP', serif; letter-spacing: 0.03em; }
+        .text-main { color: var(--main); }
+        .text-main-dark { color: var(--main-dark); }
+        .bg-main { background-color: var(--main); }
+        .bg-main-light { background-color: var(--main-light); }
+        .bg-line { background-color: var(--line-green); }
+        .border-main { border-color: var(--main); }
+        .border-soft { border-color: var(--soft); }
+        .section-title { position: relative; padding-left: 1rem; }
+        .section-title::before { content: ''; position: absolute; left: 0; top: 0.25em; bottom: 0.25em; width: 4px; background: var(--main); }
+        h2.section-title { font-size: 1.55rem; }
+        @media (min-width: 768px) { h2.section-title { font-size: 2.05rem; } }
+        .card { background: #fff; border: 1px solid var(--soft); border-radius: 0.5rem; box-shadow: 0 1px 2px rgba(10,40,80,0.04), 0 14px 30px -18px rgba(20,73,127,0.25); }
+        table.info-table th, table.info-table td { border: 1px solid #BFD4EA; padding: 0.65rem 0.9rem; }
+        table.info-table th { background: var(--main-light); font-weight: 700; font-family: 'Noto Serif JP', serif; letter-spacing: 0.04em; }
+        @media (max-width: 767px) {
+            table.info-table { font-size: 13px; }
+            table.info-table th, table.info-table td { padding: 0.5rem 0.55rem; }
+        }
+        header { box-shadow: 0 1px 16px rgba(20, 73, 127, 0.07); }
+        ::selection { background: #CFE3F5; }
+        a.bg-main { box-shadow: 0 8px 20px -8px rgba(29,95,168,0.6); }
+        #mobile-nav { transition: transform 0.35s ease; transform: translateX(100%); }
+        #mobile-nav.open { transform: translateX(0); }
+        .paper-band { background: var(--main-light); background-image: radial-gradient(rgba(20,73,127,0.055) 1px, transparent 1px); background-size: 14px 14px; }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "MEDUCATE 天王寺校",
+      "description": "関西の私立医学部受験専門塾。大阪公立大学の医学生30名が計画・管理・実践をマネジメント。JR天王寺駅北口から徒歩5分。",
+      "url": "https://meducate.oubijuku.com",
+      "sameAs": ["https://meducate.jp/"],
+      "telephone": "06-6779-9507",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "南河堀町9-43 ターミナル天王寺北口ビル201",
+        "addressLocality": "天王寺区",
+        "addressRegion": "大阪府",
+        "postalCode": "543-0054",
+        "addressCountry": "JP"
+      }
+    }
+    </script>
+</head>
+
+<body>
+
+    <!-- ヘッダー -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-soft">
+        <div class="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
+            <a href="/" class="flex items-center gap-2">
+                <img src="/img/logo-medicate.jpg" alt="MEDUCATE" class="w-10 h-10 rounded-full object-cover">
+                <span class="leading-tight">
+                    <span class="block text-xl font-black text-main-dark tracking-wide" style="font-family:'Noto Serif JP',serif;">MEDUCATE <span class="text-base">天王寺校</span></span>
+                    <span class="block text-[10px] font-bold text-gray-500 tracking-wider">医学部受験専門｜個別指導</span>
+                </span>
+            </a>
+            <nav class="hidden lg:flex items-center gap-6 text-sm font-bold">
+                <a href="/course" class="hover:text-main-dark">コース・指導の形</a>
+                <a href="/universities" class="hover:text-main-dark">大学別情報</a>
+                <a href="/results" class="hover:text-main-dark">実績</a>
+                <a href="/contact" class="hover:text-main-dark">アクセス・お問い合わせ</a>
+                <a href="https://ameblo.jp/meducate-tennoji/" target="_blank" rel="noopener" class="hover:text-main-dark">ブログ</a>
+                <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white px-4 py-2 rounded hover:opacity-90">公式LINEで相談</a>
+            </nav>
+            <div class="flex items-center gap-3 lg:hidden">
+                <button id="menu-btn" class="p-2" aria-label="メニューを開く">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- モバイルメニュー -->
+    <div id="mobile-nav" class="fixed inset-y-0 right-0 w-72 max-w-[85vw] bg-white z-[60] shadow-2xl lg:hidden">
+        <div class="flex items-center justify-between p-4 border-b border-soft">
+            <span class="font-black text-main-dark">メニュー</span>
+            <button id="menu-close" class="p-2" aria-label="メニューを閉じる">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col p-4 gap-1 font-bold">
+            <a href="/" class="py-3 border-b border-gray-100">トップ</a>
+            <a href="/course" class="py-3 border-b border-gray-100">コース・指導の形</a>
+            <a href="/universities" class="py-3 border-b border-gray-100">大学別情報</a>
+            <a href="/results" class="py-3 border-b border-gray-100">実績</a>
+            <a href="/contact" class="py-3 border-b border-gray-100">アクセス・お問い合わせ</a>
+            <a href="https://ameblo.jp/meducate-tennoji/" target="_blank" rel="noopener" class="py-3">ブログ</a>
+        </nav>
+        <div class="p-4 flex flex-col gap-3">
+            <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white text-center font-bold py-3 rounded">公式LINEで相談する</a>
+            <a href="tel:0667799507" class="bg-main text-white text-center font-bold py-3 rounded">電話 06-6779-9507</a>
+        </div>
+    </div>
+
+    <!-- ヒーロー -->
+    <section class="paper-band border-b border-soft">
+        <div class="max-w-6xl mx-auto px-4 py-12 md:py-20">
+            <p class="inline-block text-[11px] md:text-sm font-bold bg-white border border-main text-main-dark px-3 py-1.5 rounded-full shadow-sm mb-5">関西の私立医学部受験専門｜天王寺</p>
+            <h1 class="text-3xl md:text-5xl font-black leading-snug mb-5 text-main-dark">関西の私立医学部へ、<br>大阪公立大学の医学生と。</h1>
+            <p class="text-[15px] md:text-lg leading-relaxed max-w-2xl">MEDUCATE天王寺校は、関西の私立医学部受験専門塾です。教えるのは、大阪公立大学の医学生30名。計画を立て、進み具合を管理し、解き直しまで一緒に回す「マネジメント」で、合格までの道のりを支えます。</p>
+            <div class="flex flex-wrap gap-1.5 mt-6 mb-6">
+                <span class="text-xs font-bold bg-white border border-soft text-main-dark px-2.5 py-1 rounded-full shadow-sm">大阪公立大学の医学生講師 30名</span>
+                <span class="text-xs font-bold bg-white border border-soft text-main-dark px-2.5 py-1 rounded-full shadow-sm">自習室 365日 8:00〜23:00</span>
+                <span class="text-xs font-bold bg-white border border-soft text-main-dark px-2.5 py-1 rounded-full shadow-sm">毎朝のZoom朝勉強会 6:30〜7:00</span>
+                <span class="text-xs font-bold bg-white border border-soft text-main-dark px-2.5 py-1 rounded-full shadow-sm">JR天王寺駅 北口 徒歩5分</span>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white font-bold text-center px-8 py-4 rounded shadow-lg hover:opacity-90 tracking-wider">公式LINEで無料相談</a>
+                <a href="/universities" class="bg-white border-2 border-main text-main-dark font-bold text-center px-8 py-4 rounded hover:bg-main-light transition tracking-wider">大学別の入試情報を見る</a>
+            </div>
+            <p class="mt-4 text-sm text-gray-600">無料相談では、志望校までの距離と、最初の一か月の進め方をお伝えします。</p>
+            <img src="/img/classroom.jpg" alt="MEDUCATE天王寺校の教室（桜灯塾と同フロア）で自習する生徒たち" class="w-full rounded-lg shadow mt-8 object-cover" style="max-height:340px;">
+        </div>
+    </section>
+
+    <!-- お知らせ -->
+    <section class="max-w-6xl mx-auto px-4 pt-10">
+        <div class="card p-5 md:p-6">
+            <h2 class="font-black text-main-dark mb-3" style="font-family:'Noto Serif JP',serif;">お知らせ</h2>
+            <ul class="text-sm space-y-2">
+                <li><span class="text-gray-500 mr-3">2026.11.11</span>天王寺校の公式サイトを開設しました</li>
+                <li><span class="text-gray-500 mr-3">2026.11.17</span><a href="https://ameblo.jp/meducate-tennoji/" target="_blank" rel="noopener" class="underline text-main-dark">ブログで「関西の私立医学部4校｜日程と配点の見取り図（2027年度）」を公開予定です</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 天王寺校の指導 -->
+    <section class="max-w-6xl mx-auto px-4 py-12 md:py-16">
+        <h2 class="section-title font-black text-main-dark mb-6">勉強を「教える」だけではなく、合格までマネジメントする</h2>
+        <p class="max-w-3xl mb-8">医学部入試は科目が多く、必要な学力も高い水準です。一人で計画を立て、管理し、実践し続けるのは大変です。天王寺校では、校舎長が計画の設計を担い、大阪公立大学の医学生講師陣が日々の進み具合を一緒に管理します。</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="card p-6">
+                <p class="font-black text-main text-lg mb-2">1．計画</p>
+                <p class="text-sm">志望校の入試日から逆算して、月単位・週単位の計画に落とします。週の計画があるから、1日の勉強に迷いがなくなります。</p>
+            </div>
+            <div class="card p-6">
+                <p class="font-black text-main text-lg mb-2">2．管理</p>
+                <p class="text-sm">進み具合を記録して、遅れを小さいうちに見つけます。予定どおりにいかない週は、翌週の計画で調整します。</p>
+            </div>
+            <div class="card p-6">
+                <p class="font-black text-main text-lg mb-2">3．実践</p>
+                <p class="text-sm">間違えた問題を、解けるようになるまで解き直します。「分かったつもり」をなくす作業が、本番の点数に直結します。</p>
+            </div>
+        </div>
+        <p class="mt-6 text-sm text-gray-700">指導の形は、生徒一人ひとりにチームを組む個別指導が中心です。詳しくは<a href="/course" class="underline text-main-dark">コース・指導の形</a>をご覧ください。</p>
+    </section>
+
+    <!-- 講師と校舎長 -->
+    <section class="bg-main-light border-y border-soft">
+        <div class="max-w-6xl mx-auto px-4 py-12 md:py-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <h2 class="section-title font-black text-main-dark mb-4">教えるのは、大阪公立大学の医学生30名</h2>
+                <p class="text-sm md:text-base">天王寺校の講師は、大阪公立大学の医学生30名です。学校推薦型・総合型で合格した講師もいるので、一般選抜以外の方式の進め方も、実体験から具体的に伝えられます。講師の顔は出しませんが、指導はすべて、教室で顔を合わせて行います。</p>
+            </div>
+            <div>
+                <h2 class="section-title font-black text-main-dark mb-4">校舎長 内田憲一</h2>
+                <p class="text-sm md:text-base">計画の設計と進み具合の管理は、校舎長が担います。天王寺で中学受験・大学受験の塾も運営し、受験生一人ひとりの計画づくりに長く関わってきました。無料相談は、校舎長が直接お話をうかがいます。</p>
+                <img src="/img/director.jpg" alt="MEDUCATE天王寺校 校舎長 内田憲一" class="w-40 h-40 object-cover rounded-lg shadow mt-4">
+            </div>
+        </div>
+    </section>
+
+    <!-- 大学別情報 -->
+    <section class="max-w-6xl mx-auto px-4 py-12 md:py-16">
+        <h2 class="section-title font-black text-main-dark mb-6">関西の私立医学部、大学別の入試情報</h2>
+        <p class="max-w-3xl mb-8">私立医学部は、大学ごとに日程も配点も大きく違います。まず全体の見取り図をつかみ、大学ごとの違いを知ることが、併願の組み立ての第一歩です。各大学の公式入試概要で照合した数字だけでまとめています。</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <a href="/universities/ompu" class="card p-6 block hover:shadow-md transition">
+                <p class="font-black text-main-dark text-lg mb-1">大阪医科薬科大学</p>
+                <p class="text-sm">前期の1次は2月10日、400点満点。小論文は1次で実施し、2次の判定に使います。</p>
+            </a>
+            <a href="/universities/kmu" class="card p-6 block hover:shadow-md transition">
+                <p class="font-black text-main-dark text-lg mb-1">関西医科大学</p>
+                <p class="text-sm">2027年度から1次試験が2月実施に変わります。500点満点で、英語と数学の配点が高い形です。</p>
+            </a>
+            <a href="/universities/kindai" class="card p-6 block hover:shadow-md transition">
+                <p class="font-black text-main-dark text-lg mb-1">近畿大学</p>
+                <p class="text-sm">数学に数学IIIは含まれません。1次は1月31日、400点満点です。</p>
+            </a>
+            <a href="/universities/hyo-med" class="card p-6 block hover:shadow-md transition">
+                <p class="font-black text-main-dark text-lg mb-1">兵庫医科大学</p>
+                <p class="text-sm">一般選抜Aは学科500点・小論文50点・面接80点の630点満点。小論文は1次の日に実施します。</p>
+            </a>
+        </div>
+        <p class="mt-6 text-sm">4校の日程と配点を並べた見取り図は、<a href="https://ameblo.jp/meducate-tennoji/" target="_blank" rel="noopener" class="underline text-main-dark">ブログ</a>でも公開します。</p>
+    </section>
+
+    <!-- 環境 -->
+    <section class="bg-main-light border-y border-soft">
+        <div class="max-w-6xl mx-auto px-4 py-12 md:py-16">
+            <h2 class="section-title font-black text-main-dark mb-6">勉強のリズムを支える環境</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="card p-6">
+                    <p class="font-black text-main-dark text-lg mb-2">自習室は365日、8時〜23時</p>
+                    <p class="text-sm">教室の自習室は、年間を通して毎日使えます。授業のない日も、同じ場所で勉強を続けられます。</p>
+                </div>
+                <div class="card p-6">
+                    <p class="font-black text-main-dark text-lg mb-2">毎朝のZoom朝勉強会（6時30分〜7時）</p>
+                    <p class="text-sm">日曜・祝日を除く毎朝、オンラインで集まって勉強を始めます。朝の30分が、1日のリズムを作ります。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 実績 -->
+    <section class="max-w-6xl mx-auto px-4 py-12 md:py-16">
+        <h2 class="section-title font-black text-main-dark mb-6">天王寺校の実績</h2>
+        <div class="card p-6 md:p-8">
+            <p class="font-black text-main-dark text-lg mb-3">中学受験で通い、医学部受験で戻ってきて、今は講師です</p>
+            <p class="text-sm md:text-base max-w-3xl">小学生のころに中学受験で通っていた卒業生が、医学部を目指してもう一度天王寺に戻ってきました。2025年に京都府立医科大学に合格し、今は天王寺校の講師として後輩を教えています。天王寺校は開校したばかりで、実績はまだこの物語から積み上げているところです。</p>
+            <p class="mt-4"><a href="/results" class="underline text-main-dark font-bold">実績のページへ</a></p>
+        </div>
+        <p class="mt-4 text-sm text-gray-600">MEDUCATE全体の合格実績（全国の校舎の合計）は、<a href="/results" class="underline text-main-dark">実績のページ</a>で出典つきで紹介しています。天王寺校の実績とは分けて掲載します。</p>
+    </section>
+
+    <!-- 相談の流れとCTA -->
+    <section class="max-w-6xl mx-auto px-4 pb-14 md:pb-20">
+        <div class="card p-6 md:p-10 text-center">
+            <h2 class="font-black text-main-dark text-2xl mb-4" style="font-family:'Noto Serif JP',serif;">まずは無料相談から</h2>
+            <p class="text-sm md:text-base max-w-2xl mx-auto mb-3">流れは「お問い合わせ → ご面談（問題点の整理と目標の確認）→ チーム編成 → 授業の開始」です。ご相談は、天王寺校の公式LINEとお問い合わせフォームで受け付けています。</p>
+            <p class="text-sm text-gray-600 max-w-2xl mx-auto mb-6">料金は、このサイトには掲載していません（掲載できない決まりがあります）。コースが決まった時点で、無料相談の際に書面でご提示します。</p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white font-bold text-center px-8 py-4 rounded shadow-lg hover:opacity-90 tracking-wider">公式LINEで無料相談</a>
+                <a href="tel:0667799507" class="bg-main text-white font-bold text-center px-8 py-4 rounded shadow-lg hover:opacity-90 tracking-wider">電話 06-6779-9507</a>
+            </div>
+            <!-- 公式LINEは @968yocfj（2026-11-10開設確認）。Googleフォームは作成後に問い合わせページへ設置する -->
+            <!-- TODO: 本部YouTube（MEDUCATE TV）の紹介動画をここに1本埋め込む -->
+        </div>
+    </section>
+
+
+    <!-- 相談の入口（全ページ共通） -->
+    <section class="max-w-6xl mx-auto px-4 pb-4">
+        <div class="border-2 border-line rounded-lg p-5 md:p-6 bg-[#F2FBF3]">
+            <p class="font-black text-main-dark text-lg mb-2">無料相談を受け付けています</p>
+            <p class="text-sm md:text-base mb-4">相談では、志望校までの距離と、最初の一か月の進め方をお伝えします。料金は、コースが決まった時点で書面でご提示します（サイトに掲載できない決まりがあります）。相談したからといって、入塾を前提にはしません。</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white font-bold text-center px-6 py-3.5 rounded shadow hover:opacity-90 tracking-wider">公式LINEで無料相談</a>
+                <a href="tel:0667799507" class="bg-white border-2 border-main text-main-dark font-bold text-center px-6 py-3.5 rounded hover:bg-main-light transition tracking-wider">電話 06-6779-9507</a>
+                <a href="/contact" class="bg-white border-2 border-gray-300 text-main-dark font-bold text-center px-6 py-3.5 rounded hover:bg-gray-50 transition tracking-wider">お問い合わせページへ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-[#22303E] text-gray-200">
+        <div class="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div>
+                <p class="text-[10px] font-bold tracking-[0.35em] text-gray-400 mb-1">MEDUCATE TENNOJI</p>
+                <p class="text-xl font-black text-white mb-3" style="font-family:'Noto Serif JP',serif;letter-spacing:0.06em;">MEDUCATE 天王寺校</p>
+                <p class="text-sm leading-relaxed">〒543-0054 大阪市天王寺区南河堀町9-43<br>ターミナル天王寺北口ビル201<br>JR天王寺駅 北口から徒歩5分<br>電話：<a href="tel:0667799507" class="underline">06-6779-9507</a><br>校舎長：内田憲一</p>
+                <p class="text-sm mt-4">中学受験・大学受験の桜灯（おうび）塾と同じビルです。</p>
+            </div>
+            <nav class="text-sm">
+                <p class="font-black text-white mb-3">サイトマップ</p>
+                <ul class="space-y-2">
+                    <li><a href="/" class="hover:underline">トップ</a></li>
+                    <li><a href="/course" class="hover:underline">コース・指導の形</a></li>
+                    <li><a href="/universities" class="hover:underline">大学別情報</a></li>
+                    <li><a href="/results" class="hover:underline">実績</a></li>
+                    <li><a href="/contact" class="hover:underline">アクセス・お問い合わせ</a></li>
+                    <li><a href="https://ameblo.jp/meducate-tennoji/" target="_blank" rel="noopener" class="hover:underline">ブログ</a></li>
+                </ul>
+            </nav>
+            <div class="text-sm">
+                <p class="font-black text-white mb-3">関連サイト</p>
+                <ul class="space-y-2">
+                    <li><a href="https://meducate.jp/" target="_blank" rel="noopener" class="hover:underline">MEDUCATE 本部サイト</a></li>
+                    <li><a href="https://oubijuku-omu.com/" target="_blank" rel="noopener" class="hover:underline">大阪公立大学専門 桜灯塾（大学受験）</a></li>
+                    <li><a href="https://oubijuku.com/" target="_blank" rel="noopener" class="hover:underline">中学受験専門 桜灯塾（天王寺）</a></li>
+                    <li><a href="https://ringo.oubijuku.com/" target="_blank" rel="noopener" class="hover:underline">りんご塾 天王寺校</a></li>
+                </ul>
+                <div class="flex flex-col gap-3 mt-6">
+                    <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white text-center font-bold py-3 rounded">公式LINE</a>
+                    <a href="tel:0667799507" class="bg-main text-white text-center font-bold py-3 rounded">電話 06-6779-9507</a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-600 py-4 text-center text-xs text-gray-400">© MEDUCATE 天王寺校</div>
+    </footer>
+
+    <!-- モバイル固定CTA -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 grid grid-cols-2 lg:hidden shadow-[0_-4px_12px_rgba(0,0,0,0.12)]">
+        <a href="tel:0667799507" class="bg-main text-white text-center font-bold py-3 text-sm">電話する<br><span class="text-xs">06-6779-9507</span></a>
+        <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white text-center font-bold py-3 text-sm">LINEで相談<br><span class="text-xs">公式LINE</span></a>
+    </div>
+    <div class="h-14 lg:hidden"></div>
+
+    <script>
+        // モバイルメニュー
+        var nav = document.getElementById('mobile-nav');
+        document.getElementById('menu-btn').addEventListener('click', function(){ nav.classList.add('open'); });
+        document.getElementById('menu-close').addEventListener('click', function(){ nav.classList.remove('open'); });
+    </script>
+
+    <!-- GA4 イベントトラッキング -->
+    <script>
+      (function() {
+        if (typeof gtag !== 'function') return;
+        document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
+          el.addEventListener('click', function() {
+            gtag('event', 'phone_call_click', { event_category: 'engagement', event_label: el.getAttribute('href').replace('tel:', ''), page_path: window.location.pathname });
+          });
+        });
+        /* 天王寺校の公式LINE（開設後にリンクを差し替え）のクリックを line_click として計測する */
+        document.querySelectorAll('a[href*="line.me"]').forEach(function(el) {
+          el.addEventListener('click', function() {
+            gtag('event', 'line_click', { event_category: 'engagement', event_label: 'TENNOJI_LINE', page_path: window.location.pathname });
+          });
+        });
+      })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://meducate.oubijuku.com/sitemap.xml
