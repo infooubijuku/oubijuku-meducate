@@ -273,6 +273,7 @@
                     <div id="ns-near" class="rounded-lg p-5 mb-5" style="display:none;background:#FFF7E0;border:1px solid #E8CE8A;">
                         <p class="font-black mb-2" style="color:#8A6D1A;">この距離は、併願の組み直しも選択肢に入る大きさです</p>
                         <p class="text-sm md:text-base mb-3" id="ns-near-text"></p>
+                        <p class="text-sm md:text-base font-bold mb-3" id="ns-near-cmp"></p>
                         <a href="/articles/heigan" class="underline font-bold text-main-dark">併願の設計｜日程と傾向の2軸で決める受け方</a>
                         <span class="mx-1">／</span>
                         <a href="/articles/kumiawase" class="underline font-bold text-main-dark">4校の組み合わせ方｜日程の分散と仕上がりの山</a>
@@ -282,11 +283,13 @@
                         <p class="font-black text-main-dark mb-2" id="ns-cta-heading"></p>
                         <p class="text-sm md:text-base mb-4" id="ns-cta-text"></p>
                         <div class="flex flex-col sm:flex-row gap-3">
+                            <button type="button" id="ns-save" class="bg-main text-white font-bold text-center px-6 py-3.5 rounded shadow hover:opacity-90 tracking-wider">この結果を記録する</button>
                             <button type="button" id="ns-copy" class="bg-white border-2 border-main text-main-dark font-bold text-center px-6 py-3.5 rounded hover:bg-main-light transition tracking-wider">結果をコピーする</button>
                             <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white font-bold text-center px-6 py-3.5 rounded shadow hover:opacity-90 tracking-wider">公式LINEで相談する</a>
                             <a href="mailto:meducatetennoji@gmail.com" class="bg-white border-2 border-gray-300 text-main-dark font-bold text-center px-6 py-3.5 rounded hover:bg-gray-50 transition tracking-wider">メールで相談する</a>
                         </div>
                         <p class="text-xs text-gray-600 mt-3" id="ns-copy-done" style="display:none;">コピーしました。LINEやメールの相談文に、そのまま貼って送ってください。</p>
+                        <p class="text-xs text-gray-600 mt-3" id="ns-save-done" style="display:none;"></p>
                     </div>
                 </div>
             <p class="text-sm text-gray-600">この結果は、2026年度の合格最低点をもとにした目安です。合格最低点は年度により変わります。また、模試や過去問の得点率は、問題の難易度によって本番の得点率とそのまま一致するとは限りません。数字の出どころは、下の「情報元（一次情報）」をご覧ください。</p>
@@ -603,14 +606,8 @@
             }
             el('res-compare').innerHTML = cmpHtml;
             lastGaps = gaps;
-            // この端末に記録を残す（次回の比較用。利用者が入力を変えたときだけ上書きする）
-            if (userEdited) { try {
-                var nowD = new Date();
-                window.localStorage.setItem('meducate-kyori-v1', JSON.stringify({
-                    label: (nowD.getMonth() + 1) + '月' + nowD.getDate() + '日',
-                    gaps: gaps, rates: rates
-                }));
-            } catch (e) {} }
+            // 記録は自動では残さない（「この結果を記録する」ボタンが押されたときだけ保存する）
+            lastRates = rates.slice();
             renderNext(scores, targets, rates, gap, targetTotal, nowTotal, assumedExtra);
         }
 
@@ -622,6 +619,7 @@
         var GRADE_NAMES = ['高3・既卒（2027年度入試）', '高2（2028年度入試）', '高1（2029年度入試）'];
         var gradeOffset = 0;
         var lastGaps = null;
+        var lastRates = null;
         var prevSnap = null;
         try { prevSnap = JSON.parse(window.localStorage.getItem('meducate-kyori-v1') || 'null'); } catch (e) { prevSnap = null; }
         var userEdited = false;
@@ -657,15 +655,20 @@
             var prevEl = el('ns-prev');
             if (prevSnap && prevSnap.gaps && typeof prevSnap.gaps[current] === 'number') {
                 var prevGap = prevSnap.gaps[current];
+                var nowD2 = new Date();
+                var todayStr = nowD2.getFullYear() + '-' + (nowD2.getMonth() + 1) + '-' + nowD2.getDate();
+                var todayLabel = (nowD2.getMonth() + 1) + '月' + nowD2.getDate() + '日';
+                var isSameDay = prevSnap.date ? (prevSnap.date === todayStr) : (prevSnap.label === todayLabel);
+                var prevName = isSameDay ? '先ほど' : '前回（' + prevSnap.label + '）';
                 if (!userEdited) {
                     prevEl.textContent = (prevGap > 0)
-                        ? '前回（' + prevSnap.label + '）の記録では、この大学の不足は' + fmt(prevGap) + '点でした。得点率を変えると、前回との差がここに出ます。'
-                        : '前回（' + prevSnap.label + '）の記録では、この大学は最低点を超えていました。';
+                        ? prevName + 'の記録では、この大学の不足は' + fmt(prevGap) + '点でした。得点率を変えると、前回との差がここに出ます。'
+                        : prevName + 'の記録では、この大学は最低点を超えていました。';
                 } else if (prevGap > 0 && gap <= 0) {
-                    prevEl.textContent = '前回（' + prevSnap.label + '）は、あと' + fmt(prevGap) + '点でした。今回は最低点を超えています。';
+                    prevEl.textContent = prevName + 'は、あと' + fmt(prevGap) + '点でした。今回は最低点を超えています。';
                 } else if (prevGap > 0 && gap > 0) {
                     var d = prevGap - gap;
-                    prevEl.textContent = '前回（' + prevSnap.label + '）の不足は' + fmt(prevGap) + '点。今回で' + (d > 0 ? fmt(d) + '点縮まりました。' : (d < 0 ? fmt(-d) + '点広がりました。' : '変わりません。'));
+                    prevEl.textContent = prevName + 'の不足は' + fmt(prevGap) + '点。今回で' + (d > 0 ? fmt(d) + '点縮まりました。' : (d < 0 ? fmt(-d) + '点広がりました。' : '変わりません。'));
                 } else {
                     prevEl.textContent = '';
                 }
@@ -682,6 +685,18 @@
             if (near) {
                 el('ns-near').style.display = '';
                 el('ns-near-text').textContent = '1次試験まで残り' + days + '日で、不足は' + fmt(gap) + '点あります。志望校の完成度を上げる進め方と並行して、届く組み合わせへの組み替えを早めに検討する段階です。組み替えは、出願が始まる前に決めるほど選択肢が残ります。';
+                var cmpLine = '';
+                if (lastGaps) {
+                    var bestKey = null, bestGap = null;
+                    for (var ok in lastGaps) {
+                        if (ok === current) continue;
+                        if (bestGap === null || lastGaps[ok] < bestGap) { bestGap = lastGaps[ok]; bestKey = ok; }
+                    }
+                    if (bestKey && bestGap < gap) {
+                        cmpLine = '同じ得点率で計算すると、' + UNIS[bestKey].name + 'は' + (bestGap > 0 ? 'あと' + fmt(bestGap) + '点です。' : '最低点を超えています。');
+                    }
+                }
+                el('ns-near-cmp').textContent = cmpLine;
             } else {
                 el('ns-near').style.display = 'none';
             }
@@ -714,6 +729,7 @@
                 el('ns-cta-text').textContent = '無料相談では、この結果をもとに、最低点からどれだけ余裕を作るか、残りの期間の進め方を一緒に設計します。下の「結果をコピーする」で結果を控えて、LINEやメールでそのまま送ってください。';
             }
             el('ns-copy-done').style.display = 'none';
+            el('ns-save-done').style.display = 'none';
             // コピー用テキスト
             var lines = [];
             lines.push('【距離メーターの結果｜MEDUCATE天王寺校】');
@@ -781,6 +797,18 @@
             })(keys[j]);
         }
         el('hyo-extra-select').addEventListener('change', function() { userEdited = true; update(); });
+        el('ns-save').addEventListener('click', function() {
+            if (!lastGaps || !lastRates) return;
+            var nowD = new Date();
+            var label = (nowD.getMonth() + 1) + '月' + nowD.getDate() + '日';
+            var dateStr = nowD.getFullYear() + '-' + (nowD.getMonth() + 1) + '-' + nowD.getDate();
+            try {
+                window.localStorage.setItem('meducate-kyori-v1', JSON.stringify({ label: label, date: dateStr, gaps: lastGaps, rates: lastRates }));
+                var done = el('ns-save-done');
+                done.textContent = '記録しました（' + label + '）。次にこのページを開いたとき、この記録と比べます。';
+                done.style.display = '';
+            } catch (e) {}
+        });
         el('ns-copy').addEventListener('click', function() {
             function done() { el('ns-copy-done').style.display = ''; }
             if (navigator.clipboard && navigator.clipboard.writeText) {
