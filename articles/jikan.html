@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- GA4: MEDUCATE天王寺校プロパティ（meducatetennoji@gmail.com、2026-11-10作成） -->
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ0EP46CC8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YJ0EP46CC8');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no,address=no,email=no">
+    <link rel="icon" type="image/jpeg" href="/img/logo-medicate.jpg">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <meta name="theme-color" content="#1D5FA8">
+    <meta name="description" content="週の勉強時間は、志望校の配点の割合を出発点に、現在の得点率と伸びしろで補正して決めます。配点の割合をそのまま時間の割合にしない3つの理由、苦手科目に触る頻度の確保、理科2科目の偏りを防ぐ内訳の作り方を、大阪医科薬科大学志望・週30時間のモデルケースの割合バーと表で示します。">
+    <meta name="keywords" content="MEDUCATE,メデュケイト,天王寺,医学部受験,私立医学部,大阪医科薬科大学,関西医科大学,近畿大学,兵庫医科大学,個別指導">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="MEDUCATE 天王寺校">
+    <link rel="canonical" href="https://meducate.oubijuku.com/articles/jikan">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="配点の割合で、週の勉強時間を組み替える｜関西私立医学部4校受験の教科書 各論｜MEDUCATE 天王寺校">
+    <meta property="og:description" content="現役医学部生講師28名が伴走する、関西の私立医学部受験専門塾。365日使える自習室と毎朝のZoom朝勉強会で、勉強のリズムを支えます。JR天王寺駅北口徒歩5分。">
+    <meta property="og:url" content="https://meducate.oubijuku.com/articles/jikan">
+    <meta property="og:site_name" content="MEDUCATE 天王寺校">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:image" content="https://meducate.oubijuku.com/img/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="配点の割合で、週の勉強時間を組み替える｜関西私立医学部4校受験の教科書 各論｜MEDUCATE 天王寺校">
+    <meta name="twitter:description" content="現役医学部生講師28名が伴走する、関西の私立医学部受験専門塾。JR天王寺駅北口徒歩5分。">
+    <title>配点の割合で、週の勉強時間を組み替える｜関西私立医学部4校受験の教科書 各論｜MEDUCATE 天王寺校</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main: #1D5FA8;
+            --main-dark: #14497F;
+            --main-light: #EAF2FB;
+            --ink: #333333;
+            --line-green: #06C755;
+            --soft: #CFE0F0;
+        }
+        body { font-family: 'Noto Sans JP', sans-serif; color: var(--ink); line-height: 1.9; letter-spacing: 0.02em; background: #FDFEFF; }
+        h1, h2, h3 { font-family: 'Noto Serif JP', serif; letter-spacing: 0.03em; }
+        .text-main { color: var(--main); }
+        .text-main-dark { color: var(--main-dark); }
+        .bg-main { background-color: var(--main); }
+        .bg-main-light { background-color: var(--main-light); }
+        .bg-line { background-color: var(--line-green); }
+        .border-main { border-color: var(--main); }
+        .border-soft { border-color: var(--soft); }
+        .section-title { position: relative; padding-left: 1rem; }
+        .section-title::before { content: ''; position: absolute; left: 0; top: 0.25em; bottom: 0.25em; width: 4px; background: var(--main); }
+        h2.section-title { font-size: 1.55rem; }
+        @media (min-width: 768px) { h2.section-title { font-size: 2.05rem; } }
+        .card { background: #fff; border: 1px solid var(--soft); border-radius: 0.5rem; box-shadow: 0 1px 2px rgba(10,40,80,0.04), 0 14px 30px -18px rgba(20,73,127,0.25); }
+        table.info-table th, table.info-table td { border: 1px solid #BFD4EA; padding: 0.65rem 0.9rem; }
+        table.info-table th { background: var(--main-light); font-weight: 700; font-family: 'Noto Serif JP', serif; letter-spacing: 0.04em; }
+        @media (max-width: 767px) {
+            table.info-table { font-size: 13px; }
+            table.info-table th, table.info-table td { padding: 0.5rem 0.55rem; }
+        }
+        header { box-shadow: 0 1px 16px rgba(20, 73, 127, 0.07); }
+        ::selection { background: #CFE3F5; }
+        a.bg-main { box-shadow: 0 8px 20px -8px rgba(29,95,168,0.6); }
+        #mobile-nav { transition: transform 0.35s ease; transform: translateX(100%); }
+        #mobile-nav.open { transform: translateX(0); }
+        .paper-band { background: var(--main-light); background-image: radial-gradient(rgba(20,73,127,0.055) 1px, transparent 1px); background-size: 14px 14px; }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "MEDUCATE 天王寺校",
+      "description": "関西の私立医学部受験専門塾。現役医学部生講師28名が計画・管理・実践をマネジメント。JR天王寺駅北口から徒歩5分。",
+      "url": "https://meducate.oubijuku.com",
+      "sameAs": ["https://meducate.jp/"],
+      "telephone": "06-6779-9507",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "南河堀町9-43 ターミナル天王寺北口ビル201",
+        "addressLocality": "天王寺区",
+        "addressRegion": "大阪府",
+        "postalCode": "543-0054",
+        "addressCountry": "JP"
+      }
+    }
+    </script>
+</head>
+
+<body>
+
+    <!-- ヘッダー -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-soft">
+        <div class="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
+            <a href="/" class="flex items-center gap-2">
+                <img src="/img/logo-medicate.jpg" alt="MEDUCATE" class="w-10 h-10 rounded-full object-cover">
+                <span class="leading-tight">
+                    <span class="block text-xl font-black text-main-dark tracking-wide whitespace-nowrap" style="font-family:'Noto Serif JP',serif;">MEDUCATE <span class="text-base">天王寺校</span></span>
+                    <span class="hidden xl:block text-[10px] font-bold text-gray-500 tracking-wider">医学部受験専門｜個別指導</span>
+                </span>
+            </a>
+            <nav class="hidden lg:flex items-center gap-4 xl:gap-5 text-sm font-bold">
+                <a href="/course" class="hover:text-main-dark whitespace-nowrap">コース</a>
+            <a href="/teachers" class="hover:text-main-dark whitespace-nowrap">講師</a>
+                <a href="/universities" class="hover:text-main-dark whitespace-nowrap">大学別情報</a>
+            <a href="/articles" class="hover:text-main-dark whitespace-nowrap">記事</a>
+                <a href="/results" class="hover:text-main-dark whitespace-nowrap">実績</a>
+            <a href="/books" class="hover:text-main-dark whitespace-nowrap">参考書・動画</a>
+                <a href="/contact" class="hover:text-main-dark whitespace-nowrap">お問い合わせ</a>
+                <a href="https://ameblo.jp/meducate-tennoji/" target="_blank" rel="noopener" class="hover:text-main-dark">ブログ</a>
+                <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white px-4 py-2 rounded hover:opacity-90 whitespace-nowrap">公式LINEで相談</a>
+            </nav>
+            <div class="flex items-center gap-3 lg:hidden">
+                <button id="menu-btn" class="p-2" aria-label="メニューを開く">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- モバイルメニュー -->
+    <div id="mobile-nav" class="fixed inset-y-0 right-0 w-72 max-w-[85vw] bg-white z-[60] shadow-2xl lg:hidden">
+        <div class="flex items-center justify-between p-4 border-b border-soft">
+            <span class="font-black text-main-dark">メニュー</span>
+            <button id="menu-close" class="p-2" aria-label="メニューを閉じる">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col p-4 gap-1 font-bold">
+            <a href="/" class="py-3 border-b border-gray-100">トップ</a>
+            <a href="/course" class="py-3 border-b border-gray-100">コース・指導の形</a>
+            <a href="/teachers" class="py-3 border-b border-gray-100">校舎長・講師</a>
+            <a href="/universities" class="py-3 border-b border-gray-100">大学別情報</a>
+            <a href="/articles" class="py-3 border-b border-gray-100">記事</a>
+            <a href="/results" class="py-3 border-b border-gray-100">実績</a>
+            <a href="/books" class="py-3 border-b border-gray-100">参考書・動画</a>
+            <a href="/contact" class="py-3 border-b border-gray-100">アクセス・お問い合わせ</a>
+            <a href="https://ameblo.jp/meducate-tennoji/" target="_blank" rel="noopener" class="py-3">ブログ</a>
+        </nav>
+        <div class="p-4 flex flex-col gap-3">
+            <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white text-center font-bold py-3 rounded">公式LINEで相談する</a>
+            <a href="tel:0667799507" class="bg-main text-white text-center font-bold py-3 rounded">電話 06-6779-9507</a>
+        </div>
+    </div>
+
+    <!-- ページ見出し -->
+    <section class="paper-band border-b border-soft">
+        <div class="max-w-6xl mx-auto px-4 py-10 md:py-14">
+            <p class="text-xs font-bold text-main-dark mb-2"><a href="/articles" class="underline">記事</a> ｜ 関西私立医学部4校受験の教科書 ｜ 各論</p>
+            <h1 class="text-2xl md:text-4xl font-black leading-snug text-main-dark mb-3">配点の割合で、週の勉強時間を組み替える</h1>
+            <p class="text-sm md:text-base max-w-3xl">週の勉強時間の配分は、志望校の配点の割合から出発します。ただし、配点の割合をそのまま時間の割合にはしません。現在の得点率と伸びしろで補正し、苦手科目に触る頻度の下限を確保して、初めて実行できる配分になります。大阪医科薬科大学志望・週30時間のモデルケースで、組み替えの実際を示します。「関西私立医学部4校受験の教科書」の各論です。</p>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-10">
+        <h2 class="section-title font-black text-main-dark mb-6">時間の配分は、配点の割合から出発します</h2>
+        <p>週の勉強時間を分けるときの出発点は、志望校の配点の割合です。<a href="/articles/josho" class="underline text-main-dark">序章</a>で確認したとおり、関西の4校は配点の構造が違います。一般選抜の学科の割合は、次のとおりです。</p>
+        <div class="overflow-x-auto mt-6">
+            <table class="info-table w-full text-sm md:text-base">
+                <tr><th class="text-left">大学</th><th class="text-left">英語</th><th class="text-left">数学</th><th class="text-left">理科（2科目）</th></tr>
+                <tr><td class="font-bold">大阪医科薬科大学（400点）</td><td>100点（25%）</td><td>100点（25%）</td><td>200点（50%）</td></tr>
+                <tr><td class="font-bold">近畿大学（400点）</td><td>100点（25%）</td><td>100点（25%）</td><td>200点（50%）</td></tr>
+                <tr><td class="font-bold">関西医科大学（500点）</td><td>150点（30%）</td><td>150点（30%）</td><td>200点（40%）</td></tr>
+                <tr><td class="font-bold">兵庫医科大学（学科500点）</td><td>150点（30%）</td><td>150点（30%）</td><td>200点（40%）</td></tr>
+            </table>
+        </div>
+        <p class="text-sm text-gray-600 mt-3">兵庫医科大学は、学科500点のほかに小論文50点と面接・調査書等80点があり、合計630点です。学科の中の割合は上のとおりです。</p>
+        <p class="mt-4">ただし、これはあくまで出発点です。配点の割合を、そのまま時間の割合にして終わりにはしません。次の補正が要ります。</p>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-10">
+        <h2 class="section-title font-black text-main-dark mb-6">配点の割合を、そのまま時間の割合にしない理由</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="card p-6"><p class="font-black text-main text-lg mb-2">理由1｜現在の得点率が違う</p><p class="text-sm">同じ配点25%でも、得点率65%の科目と45%の科目では、残りの期間でやることが違います。得点率は、模試や過去問の結果から測ります。測り方には<a href="/kyori" class="underline text-main-dark">合格最低点までの距離メーター</a>が使えます。</p></div>
+            <div class="card p-6"><p class="font-black text-main text-lg mb-2">理由2｜伸びしろの大きさが違う</p><p class="text-sm">満点までの距離が大きい科目は、基礎〜標準を取り切るだけで積める点が大きい局面があります。逆に、得点率が高い科目は、残りの点を取るのに高度な演習が要り、時間あたりの伸びは小さくなります。</p></div>
+            <div class="card p-6"><p class="font-black text-main text-lg mb-2">理由3｜触れる頻度が定着を決める</p><p class="text-sm">時間をまとめて配っても、間隔が空けば定着は落ちます。苦手科目ほど「長く・たまに」ではなく「短くても、間を空けずに触る」枠を先に確保します。配分の前に、頻度の下限を決めるのが先です。</p></div>
+        </div>
+        <p class="mt-4">つまり手順は「配点の割合で素案を作る→得点率と伸びしろで補正する→頻度の下限を確保する」です。次のモデルケースで、実際の組み替えを見ます。</p>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-10">
+        <h2 class="section-title font-black text-main-dark mb-6">モデルケース｜大阪医科薬科大学志望・週30時間の組み替え</h2>
+        <p>大阪医科薬科大学（配点は英語25%・数学25%・理科50%）を志望し、週に30時間使える受験生の例です。現在の得点率は、英語65%・数学45%・理科55%（2科目の平均。内訳は物理65%・化学45%）とします。これは作り方を示すためのモデルケースです。</p>
+        <div class="flex flex-wrap gap-x-5 gap-y-2 text-sm my-6"><span class="flex items-center gap-2"><span class="inline-block w-4 h-4 rounded-sm" style="background:#E8862E"></span>英語</span><span class="flex items-center gap-2"><span class="inline-block w-4 h-4 rounded-sm" style="background:#2A9D8F"></span>数学</span><span class="flex items-center gap-2"><span class="inline-block w-4 h-4 rounded-sm" style="background:#1D5FA8"></span>理科</span></div>
+        <div class="space-y-6">
+            <div>
+                <div class="flex justify-between text-sm mb-1"><span class="font-bold">素案｜配点の割合のまま（週30時間）</span><span>英語7.5時間・数学7.5時間・理科15時間</span></div>
+                <div class="w-full rounded" style="background:#EAF2FB;height:18px;"><div class="flex" style="height:18px;"><div style="background:#E8862E;width:25%;height:18px;"></div><div style="background:#2A9D8F;width:25%;height:18px;"></div><div class="bg-main rounded-r" style="width:50%;height:18px;"></div></div></div>
+            </div>
+            <div>
+                <div class="flex justify-between text-sm mb-1"><span class="font-bold">補正後｜得点率と伸びしろで組み替え（週30時間）</span><span>英語6時間・数学10.5時間・理科13.5時間</span></div>
+                <div class="w-full rounded" style="background:#EAF2FB;height:18px;"><div class="flex" style="height:18px;"><div style="background:#E8862E;width:20%;height:18px;"></div><div style="background:#2A9D8F;width:35%;height:18px;"></div><div class="bg-main rounded-r" style="width:45%;height:18px;"></div></div></div>
+                <p class="text-xs text-gray-600 mt-1">左から英語・数学・理科。得点率45%で伸びしろの大きい数学を厚くし、理科は総量を少し抑えて内訳を組み替えます。</p>
+            </div>
+        </div>
+        <div class="overflow-x-auto mt-6">
+            <table class="info-table w-full text-sm md:text-base">
+                <tr><th class="text-left">科目</th><th class="text-left">配点の割合</th><th class="text-left">現在の得点率</th><th class="text-left">補正後の時間</th><th class="text-left">狙い</th></tr>
+                <tr><td class="font-bold">英語</td><td>25%</td><td>65%</td><td>6時間（20%）</td><td>長文を毎日触る頻度は維持し、量は落とす。落とした分を数学へ回す</td></tr>
+                <tr><td class="font-bold">数学</td><td>25%</td><td>45%</td><td>10.5時間（35%）</td><td>標準問題の取りこぼしを消す立て直しの中心。週の前半にまとまった演習枠を置く</td></tr>
+                <tr><td class="font-bold">理科・物理</td><td>25%（100点）</td><td>65%</td><td>5.5時間</td><td>演習中心で水準を維持し、初見の問題で道具を選ぶ練習に寄せる</td></tr>
+                <tr><td class="font-bold">理科・化学</td><td>25%（100点）</td><td>45%</td><td>8時間</td><td>立て直しの対象。毎日45分〜1時間の固定枠で頻度を確保し、週末にまとめて解き直す</td></tr>
+            </table>
+        </div>
+        <p class="mt-4">理科の内訳が、この組み替えのもう一つの要点です。理科2科目は各100点で配点は同じですが、得点率が物理65%・化学45%と開いているため、時間を半々にせず、化学に寄せます。ただし物理をゼロにはしません。片方だけを伸ばし、もう片方を放置すると、放置した側の定着が落ちて、理科全体の点が下がります。「総量は配点に寄せ、内訳は得点率で補正する」が、理科の偏りを防ぐ型です。</p>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-10">
+        <h2 class="section-title font-black text-main-dark mb-6">組み替えの手順｜4つのステップ</h2>
+        <ul class="space-y-3 text-sm md:text-base">
+            <li class="flex gap-4"><span class="font-black text-main-dark whitespace-nowrap w-24">ステップ1</span><span>現在地を測る。科目ごとの得点率を、模試と過去問から出す（<a href="/kyori" class="underline text-main-dark">距離メーター</a>で最低点までの距離と合わせて確認する）</span></li>
+            <li class="flex gap-4"><span class="font-black text-main-dark whitespace-nowrap w-24">ステップ2</span><span>配点の割合で素案を作る。志望校が複数ある場合は、軸にする1校の配点を基準にする（軸の決め方は<a href="/articles/heigan" class="underline text-main-dark">併願の設計</a>）</span></li>
+            <li class="flex gap-4"><span class="font-black text-main-dark whitespace-nowrap w-24">ステップ3</span><span>得点率と伸びしろで補正する。あわせて、苦手科目に触る頻度の下限（短くても間を空けない枠）を先に時間割へ置く</span></li>
+            <li class="flex gap-4"><span class="font-black text-main-dark whitespace-nowrap w-24">ステップ4</span><span>1週間実行し、週末に見直す。計画どおり触れたか、間違いの型がどう動いたかで、次の週の配分を直す（<a href="/articles/soron4" class="underline text-main-dark">総論4「続ける仕組みと完成度」</a>）</span></li>
+        </ul>
+        <p class="mt-4">組み替えは一度で完成させるものではありません。得点率が動けば配分も動きます。月ごとではなく週ごとに直す前提で、最初の素案は大まかで構いません。</p>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-10">
+        <h2 class="section-title font-black text-main-dark mb-6">兵庫医科大学を受ける場合｜学科の外の時間も置きます</h2>
+        <p>兵庫医科大学は、学科500点のほかに小論文50点と面接・調査書等80点があり、合計630点です。時間の配分でも、学科だけに全時間を寄せません。平常期は学科中心で進め、1次試験が近づく時期に、小論文を書く時間と面接の準備の時間を、週の計画の中に枠として置きます。学科の割合の作り方は上のモデルケースと同じで、対象が630点に広がる分、直前期の配分だけが変わります。</p>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-10">
+        <h2 class="section-title font-black text-main-dark mb-6">関西私立医学部4校受験の教科書｜このシリーズの読み方</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="card p-6"><p class="text-xs font-bold text-main mb-2">前に読む</p><p class="font-black text-main text-lg mb-2"><a href="/articles/soubi" class="underline">装備の考え方｜『いまやる1冊』の決め方と参考書の卒業</a></p></div>
+            <div class="card p-6"><p class="text-xs font-bold text-main mb-2">次に読む</p><p class="font-black text-main text-lg mb-2"><a href="/articles/heigan" class="underline">併願の設計｜日程と傾向の2軸で決める受け方</a></p></div>
+        </div>
+        <p class="mt-4">シリーズは、序章（配点と日程）→ 総論（点が取れるまでの進め方）→ 装備・各論（大学別・科目別）の順に読み進める構成です。<a href="/articles/kumiawase" class="underline text-main-dark">4校の組み合わせ方</a>、<a href="/articles/shutsugan" class="underline text-main-dark">出願の実務カレンダー</a>、<a href="/articles/gakuhi" class="underline text-main-dark">学費と奨学金の地図</a>は、このシリーズの各論・保護者向けの内容としてあわせて公開しています。</p>
+    </section>
+    <!-- 情報元（一次情報） -->
+    <section class="max-w-6xl mx-auto px-4 py-10">
+        <h2 class="section-title font-black text-main-dark mb-6">情報元（一次情報）</h2>
+        <p class="text-sm md:text-base mb-4">この記事の配点・日程・合格最低点などの数字は、各大学が公式に公表している一次情報で照合したものです。手続きの前には、必ず各大学の公式ページで最新の募集要項をご確認ください。</p>
+        <ul class="text-sm space-y-2">
+            <li>大阪医科薬科大学：<a href="https://www.ompu.ac.jp/admission/undergraduate/qt931k000000801q-att/afif3u000000fsvj.pdf" target="_blank" rel="noopener" class="underline text-main-dark">2027年度入試概要（PDF）</a>／<a href="https://www.ompu.ac.jp/admission/undergraduate/qt931k000000801q-att/qt931k0000009ldq.pdf" target="_blank" rel="noopener" class="underline text-main-dark">2026年度入試結果（PDF）</a>／<a href="https://www.ompu.ac.jp/admission/undergraduate/medical.html" target="_blank" rel="noopener" class="underline text-main-dark">入試情報</a></li>
+            <li>関西医科大学：<a href="https://www.kmu.ac.jp/juk/fom/exam/m3v58f0000001eg8-att/2027kmu-nyushigaiyo.pdf" target="_blank" rel="noopener" class="underline text-main-dark">2027年度入試概要（PDF）</a>／<a href="https://www.kmu.ac.jp/juk/fom/past/m3v58f0000000rxa-att/2026nyushikekka.pdf" target="_blank" rel="noopener" class="underline text-main-dark">2026年度入試結果（PDF）</a>（<a href="https://www.kmu.ac.jp/juk/fom/exam/nyushigaiyou.html" target="_blank" rel="noopener" class="underline text-main-dark">入試概要</a>・<a href="https://www.kmu.ac.jp/juk/fom/past/past_results.html" target="_blank" rel="noopener" class="underline text-main-dark">入試結果</a>）</li>
+            <li>近畿大学：<a href="https://kindai.jp/exam/capacity/" target="_blank" rel="noopener" class="underline text-main-dark">入学定員</a>・<a href="https://kindai.jp/exam/system/general1_a/subject/" target="_blank" rel="noopener" class="underline text-main-dark">試験科目（一般入試・前期A日程）</a>／<a href="https://kindai.jp/assets/pdf/exam/results/r8/260220/r8_ippan_zenkia_260220.pdf" target="_blank" rel="noopener" class="underline text-main-dark">2026年度入試結果・一般前期A（PDF）</a>（<a href="https://kindai.jp/exam/results/" target="_blank" rel="noopener" class="underline text-main-dark">入試結果</a>）</li>
+            <li>兵庫医科大学：<a href="https://www.hyo-med.ac.jp/files/20260526/8a4a55b457bee59e1a6643f0de1f4bc799bc13e3.pdf" target="_blank" rel="noopener" class="underline text-main-dark">2027年度入試資料（PDF）</a>・<a href="https://www.hyo-med.ac.jp/admission/outline/capacity_nishinomiya/" target="_blank" rel="noopener" class="underline text-main-dark">入学定員</a>／<a href="https://www.hyo-med.ac.jp/admission/outline/statistics/nishinomiya_2026/" target="_blank" rel="noopener" class="underline text-main-dark">2026年度入試結果</a></li>
+        </ul>
+    </section>
+    <!-- 相談の入口（全ページ共通） -->
+    <section class="max-w-6xl mx-auto px-4 pb-4">
+        <div class="border-2 border-line rounded-lg p-5 md:p-6 bg-[#F2FBF3]">
+            <p class="font-black text-main-dark text-lg mb-2">無料相談を受け付けています</p>
+            <p class="text-sm md:text-base mb-4">相談では、志望校までの距離と、最初の一か月の進め方をお伝えします。料金は、コースが決まった時点で書面でご提示します。相談したからといって、入塾を前提にはしません。お電話は平日10時〜20時にお願いします（授業中は出られないことがあります）。ご連絡は公式LINEまたはメール（meducatetennoji@gmail.com）でお願いします。</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white font-bold text-center px-6 py-3.5 rounded shadow hover:opacity-90 tracking-wider">公式LINEで無料相談</a>
+                <a href="mailto:meducatetennoji@gmail.com" class="bg-white border-2 border-main text-main-dark font-bold text-center px-6 py-3.5 rounded hover:bg-main-light transition tracking-wider">メールで問い合わせ</a>
+                <a href="/contact" class="bg-white border-2 border-gray-300 text-main-dark font-bold text-center px-6 py-3.5 rounded hover:bg-gray-50 transition tracking-wider">お問い合わせページへ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-[#22303E] text-gray-200">
+        <div class="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div>
+                <p class="text-[10px] font-bold tracking-[0.35em] text-gray-400 mb-1">MEDUCATE TENNOJI</p>
+                <p class="text-xl font-black text-white mb-3" style="font-family:'Noto Serif JP',serif;letter-spacing:0.06em;">MEDUCATE 天王寺校</p>
+                <p class="text-sm leading-relaxed">〒543-0054 大阪市天王寺区南河堀町9-43<br>ターミナル天王寺北口ビル201<br>JR天王寺駅 北口から徒歩5分<br>電話：<a href="tel:0667799507" class="underline">06-6779-9507</a><br>校舎長：内田憲一<br>運営：もものはな株式会社</p>
+                <p class="text-sm mt-4">中学受験・大学受験の桜灯（おうび）塾と同じビルです。</p>
+            </div>
+            <nav class="text-sm">
+                <p class="font-black text-white mb-3">サイトマップ</p>
+                <ul class="space-y-2">
+                    <li><a href="/" class="hover:underline">トップ</a></li>
+                    <li><a href="/course" class="hover:underline">コース・指導の形</a></li>
+                    <li><a href="/teachers" class="hover:underline">校舎長・講師</a></li>
+                    <li><a href="/universities" class="hover:underline">大学別情報</a></li>
+                    <li><a href="/articles" class="hover:underline">記事</a></li>
+                    <li><a href="/results" class="hover:underline">実績</a></li>
+                    <li><a href="/books" class="hover:underline">参考書・動画</a></li>
+                    <li><a href="/contact" class="hover:underline">アクセス・お問い合わせ</a></li>
+                    <li><a href="https://ameblo.jp/meducate-tennoji/" target="_blank" rel="noopener" class="hover:underline">ブログ</a></li>
+                </ul>
+            </nav>
+            <div class="text-sm">
+                <p class="font-black text-white mb-3">関連サイト</p>
+                <ul class="space-y-2">
+                    <li><a href="https://meducate.jp/" target="_blank" rel="noopener" class="hover:underline">MEDUCATE 本部サイト</a></li>
+                    <li><a href="https://oubijuku-omu.com/" target="_blank" rel="noopener" class="hover:underline">大阪公立大学専門 桜灯塾（大学受験）</a></li>
+                    <li><a href="https://oubijuku.com/" target="_blank" rel="noopener" class="hover:underline">中学受験専門 桜灯塾（天王寺）</a></li>
+                    <li><a href="https://ringo.oubijuku.com/" target="_blank" rel="noopener" class="hover:underline">りんご塾 天王寺校</a></li>
+                </ul>
+                <div class="flex flex-col gap-3 mt-6">
+                    <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white text-center font-bold py-3 rounded">公式LINE</a>
+                    <a href="tel:0667799507" class="bg-main text-white text-center font-bold py-3 rounded">電話 06-6779-9507</a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-600 py-4 text-center text-xs text-gray-400">© MEDUCATE 天王寺校</div>
+    </footer>
+
+    <!-- モバイル固定CTA -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 grid grid-cols-2 lg:hidden shadow-[0_-4px_12px_rgba(0,0,0,0.12)]">
+        <a href="tel:0667799507" class="bg-main text-white text-center font-bold py-3 text-sm">電話する<br><span class="text-xs">06-6779-9507</span></a>
+        <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white text-center font-bold py-3 text-sm">LINEで相談<br><span class="text-xs">公式LINE</span></a>
+    </div>
+    <div class="h-14 lg:hidden"></div>
+
+    <script>
+        // モバイルメニュー
+        var nav = document.getElementById('mobile-nav');
+        document.getElementById('menu-btn').addEventListener('click', function(){ nav.classList.add('open'); });
+        document.getElementById('menu-close').addEventListener('click', function(){ nav.classList.remove('open'); });
+    </script>
+
+    <!-- GA4 イベントトラッキング -->
+    <script>
+      (function() {
+        if (typeof gtag !== 'function') return;
+        document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
+          el.addEventListener('click', function() {
+            gtag('event', 'phone_call_click', { event_category: 'engagement', event_label: el.getAttribute('href').replace('tel:', ''), page_path: window.location.pathname });
+          });
+        });
+        /* メールリンクのクリックを email_click として計測する */
+        document.querySelectorAll('a[href^="mailto:"]').forEach(function(el) {
+          el.addEventListener('click', function() {
+            gtag('event', 'email_click', { event_category: 'engagement', event_label: 'MEDUCATE_MAIL', page_path: window.location.pathname });
+          });
+        });
+        /* 天王寺校の公式LINE（開設後にリンクを差し替え）のクリックを line_click として計測する */
+        document.querySelectorAll('a[href*="line.me"]').forEach(function(el) {
+          el.addEventListener('click', function() {
+            gtag('event', 'line_click', { event_category: 'engagement', event_label: 'TENNOJI_LINE', page_path: window.location.pathname });
+          });
+        });
+      })();
+    </script>
+</body>
+</html>
