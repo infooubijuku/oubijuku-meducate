@@ -190,10 +190,10 @@
     <section class="max-w-6xl mx-auto px-4 pb-4">
         <div class="border-2 border-line rounded-lg p-5 md:p-6 bg-[#F2FBF3]">
             <p class="font-black text-main-dark text-lg mb-2">無料相談を受け付けています</p>
-            <p class="text-sm md:text-base mb-4">相談では、志望校までの距離と、最初の一か月の進め方をお伝えします。料金は、コースが決まった時点で書面でご提示します（サイトに掲載できない決まりがあります）。相談したからといって、入塾を前提にはしません。</p>
+            <p class="text-sm md:text-base mb-4">相談では、志望校までの距離と、最初の一か月の進め方をお伝えします。料金は、コースが決まった時点で書面でご提示します（サイトに掲載できない決まりがあります）。相談したからといって、入塾を前提にはしません。お電話は授業中などで出られないことがあります。ご連絡は公式LINEまたはメール（meducatetennoji@gmail.com）でお願いします。</p>
             <div class="flex flex-col sm:flex-row gap-3">
                 <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white font-bold text-center px-6 py-3.5 rounded shadow hover:opacity-90 tracking-wider">公式LINEで無料相談</a>
-                <a href="tel:0667799507" class="bg-white border-2 border-main text-main-dark font-bold text-center px-6 py-3.5 rounded hover:bg-main-light transition tracking-wider">電話 06-6779-9507</a>
+                <a href="mailto:meducatetennoji@gmail.com" class="bg-white border-2 border-main text-main-dark font-bold text-center px-6 py-3.5 rounded hover:bg-main-light transition tracking-wider">メールで問い合わせ</a>
                 <a href="/contact" class="bg-white border-2 border-gray-300 text-main-dark font-bold text-center px-6 py-3.5 rounded hover:bg-gray-50 transition tracking-wider">お問い合わせページへ</a>
             </div>
         </div>
@@ -257,6 +257,12 @@
         document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
           el.addEventListener('click', function() {
             gtag('event', 'phone_call_click', { event_category: 'engagement', event_label: el.getAttribute('href').replace('tel:', ''), page_path: window.location.pathname });
+          });
+        });
+        /* メールリンクのクリックを email_click として計測する */
+        document.querySelectorAll('a[href^="mailto:"]').forEach(function(el) {
+          el.addEventListener('click', function() {
+            gtag('event', 'email_click', { event_category: 'engagement', event_label: 'MEDUCATE_MAIL', page_path: window.location.pathname });
           });
         });
         /* 天王寺校の公式LINE（開設後にリンクを差し替え）のクリックを line_click として計測する */
