@@ -270,6 +270,13 @@
                         <p class="text-sm md:text-base mb-3" id="ns-far-text"></p>
                         <a href="/articles/heigan" class="underline font-bold text-main-dark">併願の設計｜日程と傾向の2軸で決める受け方</a>
                     </div>
+                    <div id="ns-near" class="rounded-lg p-5 mb-5" style="display:none;background:#FFF7E0;border:1px solid #E8CE8A;">
+                        <p class="font-black mb-2" style="color:#8A6D1A;">この距離は、併願の組み直しも選択肢に入る大きさです</p>
+                        <p class="text-sm md:text-base mb-3" id="ns-near-text"></p>
+                        <a href="/articles/heigan" class="underline font-bold text-main-dark">併願の設計｜日程と傾向の2軸で決める受け方</a>
+                        <span class="mx-1">／</span>
+                        <a href="/articles/kumiawase" class="underline font-bold text-main-dark">4校の組み合わせ方｜日程の分散と仕上がりの山</a>
+                    </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6" id="ns-cards"></div>
                     <div class="rounded-lg p-5 md:p-6" style="background:#F2FBF3;border:2px solid #06C755;">
                         <p class="font-black text-main-dark mb-2" id="ns-cta-heading"></p>
@@ -582,38 +589,42 @@
                 var g = tgt - tot;
                 gaps[order4[c]] = g;
                 var sel = (order4[c] === current);
+                var estLine = (order4[c] === 'hyo' && assumedHyo > 0)
+                    ? '<p class="text-sm">推定 ' + fmt(tot + assumedHyo) + '点／' + uu.total + '点（学科' + fmt(tot) + '点＋小論文・面接等の想定' + fmt(assumedHyo) + '点）</p>'
+                    : '<p class="text-sm">推定 ' + fmt(tot) + '点／' + uu.total + '点</p>';
                 var state = (g > 0)
                     ? '<span style="color:#C0392B;">あと' + fmt(g) + '点</span>'
                     : '<span style="color:#1D7A3A;">最低点超え +' + fmt(-g) + '点</span>';
                 cmpHtml += '<button type="button" data-cmp="' + order4[c] + '" class="card p-4 text-left w-full hover:shadow-md transition" style="' + (sel ? 'border:2px solid #1D5FA8;background:#EAF2FB;' : '') + '">'
                     + '<p class="font-black text-main-dark text-sm mb-1">' + uu.name + (uu.firstOnly ? '（1次）' : '') + '</p>'
-                    + '<p class="text-sm">推定 ' + fmt(tot) + '点／' + uu.total + '点</p>'
+                    + estLine
                     + '<p class="text-sm">最低点 ' + fmt(uu.min) + '点</p>'
                     + '<p class="font-black">' + state + '</p></button>';
             }
             el('res-compare').innerHTML = cmpHtml;
             lastGaps = gaps;
-            // この端末に記録を残す（次回の比較用）
-            try {
+            // この端末に記録を残す（次回の比較用。利用者が入力を変えたときだけ上書きする）
+            if (userEdited) { try {
                 var nowD = new Date();
                 window.localStorage.setItem('meducate-kyori-v1', JSON.stringify({
                     label: (nowD.getMonth() + 1) + '月' + nowD.getDate() + '日',
                     gaps: gaps, rates: rates
                 }));
-            } catch (e) {}
+            } catch (e) {} }
             renderNext(scores, targets, rates, gap, targetTotal, nowTotal, assumedExtra);
         }
 
         var SUBJ_NEXT = {
             eng: { href: '/articles/eigo', title: '英語｜4校で形式がここまで違う', desc: '自由英作文の有無、長文の量と速さ。形式の違いが、そのまま点差になります。', act: '志望校の過去問を1年分、制限時間どおりに解いて、落とした問題を語彙・文法・読解に分ける' },
             math: { href: '/articles/sugaku', title: '数学｜近畿だけ別競技、3校は記述で点差がつく', desc: '数IIIのない近畿と、記述で差がつく3校。落とす場所と、立て直し方を見ます。', act: '志望校の過去問を1年分、時間を計って解いて、部分点が取れた問題と、最初から手が出なかった問題を分ける' },
-            sci: { href: '/articles/rika', title: '理科｜2科目を、当日に選ぶということ', desc: '4校とも200点で、いちばん重い科目です。当日に選べるのは1校だけ。選択の形と、点差のつき方を整理します。', act: '選んだ2科目の過去問を、本番と同じ120分通しで解いて、科目を切り替えるタイミングを決める' }
+            sci: { href: '/articles/rika', title: '理科｜2科目を、当日に選ぶということ', desc: '4校とも200点で、いちばん重い科目です。試験当日に問題を見てから科目を選べるのは、関西医科大学だけです。4校の選択の形と、点差のつき方を整理します。', act: '選んだ2科目の過去問を、本番と同じ120分通しで解いて、科目を切り替えるタイミングを決める' }
         };
         var GRADE_NAMES = ['高3・既卒（2027年度入試）', '高2（2028年度入試）', '高1（2029年度入試）'];
         var gradeOffset = 0;
         var lastGaps = null;
         var prevSnap = null;
         try { prevSnap = JSON.parse(window.localStorage.getItem('meducate-kyori-v1') || 'null'); } catch (e) { prevSnap = null; }
+        var userEdited = false;
         function examLabelShifted(u) { return u.examLabel.replace('2027', String(2027 + gradeOffset)); }
         function examDateShifted(u) {
             var parts = u.exam.split('-');
@@ -646,7 +657,11 @@
             var prevEl = el('ns-prev');
             if (prevSnap && prevSnap.gaps && typeof prevSnap.gaps[current] === 'number') {
                 var prevGap = prevSnap.gaps[current];
-                if (prevGap > 0 && gap <= 0) {
+                if (!userEdited) {
+                    prevEl.textContent = (prevGap > 0)
+                        ? '前回（' + prevSnap.label + '）の記録では、この大学の不足は' + fmt(prevGap) + '点でした。得点率を変えると、前回との差がここに出ます。'
+                        : '前回（' + prevSnap.label + '）の記録では、この大学は最低点を超えていました。';
+                } else if (prevGap > 0 && gap <= 0) {
                     prevEl.textContent = '前回（' + prevSnap.label + '）は、あと' + fmt(prevGap) + '点でした。今回は最低点を超えています。';
                 } else if (prevGap > 0 && gap > 0) {
                     var d = prevGap - gap;
@@ -661,6 +676,14 @@
                 el('ns-far-text').textContent = 'この不足を残りの期間で埋めるには、1週間に約' + fmt(pace) + '点の伸びが要ります。1つの大学の完成度を上げる通常の進め方では、届きにくい距離です。選択肢は、併願の組み替えで「届く組み合わせ」に見直すことと、来年度を見据えて設計することです。どちらも、早いほど選択肢が残ります。';
             } else {
                 el('ns-far').style.display = 'none';
+            }
+            // 大きな不足が直前期に残っているときの出口（週ペースでは届く計算でも、受け方の見直しを出す）
+            var near = (!far && gap >= 50 && days > 0 && days <= 180);
+            if (near) {
+                el('ns-near').style.display = '';
+                el('ns-near-text').textContent = '1次試験まで残り' + days + '日で、不足は' + fmt(gap) + '点あります。志望校の完成度を上げる進め方と並行して、届く組み合わせへの組み替えを早めに検討する段階です。組み替えは、出願が始まる前に決めるほど選択肢が残ります。';
+            } else {
+                el('ns-near').style.display = 'none';
             }
             // 科目カード：不足時は目標までの差が大きい順、超過時は得点率が低い順
             var order = [0, 1, 2];
@@ -745,17 +768,19 @@
             (function(key) {
                 var num = el('rate-' + key), slider = el('slider-' + key);
                 num.addEventListener('input', function() {
+                    userEdited = true;
                     var n = parseFloat(num.value);
                     slider.value = isNaN(n) ? 0 : Math.max(0, Math.min(100, n));
                     update();
                 });
                 slider.addEventListener('input', function() {
+                    userEdited = true;
                     num.value = slider.value;
                     update();
                 });
             })(keys[j]);
         }
-        el('hyo-extra-select').addEventListener('change', update);
+        el('hyo-extra-select').addEventListener('change', function() { userEdited = true; update(); });
         el('ns-copy').addEventListener('click', function() {
             function done() { el('ns-copy-done').style.display = ''; }
             if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -776,6 +801,16 @@
         var q = null;
         try { q = new URLSearchParams(window.location.search).get('u'); } catch (e) { q = null; }
         var map = { ompu: 'ompu', kmu: 'kmu', kindai: 'kindai', hyo: 'hyo', 'hyo-med': 'hyo' };
+        // 前回の記録があれば、前回の得点率を入力欄に戻す（開いた直後から前回との比較が見える）
+        if (prevSnap && prevSnap.rates && prevSnap.rates.length === 3) {
+            for (var pi = 0; pi < 3; pi++) {
+                var pv = prevSnap.rates[pi];
+                if (typeof pv === 'number') {
+                    el('rate-' + keys[pi]).value = pv;
+                    el('slider-' + keys[pi]).value = Math.round(pv);
+                }
+            }
+        }
         setUniversity(map[q] || 'ompu');
     })();
     </script>
