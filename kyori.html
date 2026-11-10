@@ -268,6 +268,7 @@
                     <div id="ns-far" class="rounded-lg p-5 mb-5" style="display:none;background:#FDF0EC;border:1px solid #E5B4A8;">
                         <p class="font-black mb-2" style="color:#A93226;">この距離は、受け方の設計から見直す段階です</p>
                         <p class="text-sm md:text-base mb-3" id="ns-far-text"></p>
+                        <p class="text-sm md:text-base font-bold mb-3" id="ns-far-cmp"></p>
                         <a href="/articles/heigan" class="underline font-bold text-main-dark">併願の設計｜日程と傾向の2軸で決める受け方</a>
                     </div>
                     <div id="ns-near" class="rounded-lg p-5 mb-5" style="display:none;background:#FFF7E0;border:1px solid #E8CE8A;">
@@ -672,7 +673,21 @@
                 } else {
                     prevEl.textContent = '';
                 }
-            } else { prevEl.textContent = ''; }
+            } else { prevEl.textContent = prevSnap ? '' : 'まだ記録がありません。結果が固まったら、下の「この結果を記録する」を押してください。次に開いたとき、前回の記録と比べられます。'; }
+            // 4校比較の一文（毎回計算し直して両ブロックに同期する。出すのは、最も近い他大学の不足が選んだ大学の半分以下のときだけ）
+            var cmpLine = '';
+            if (lastGaps && gap > 0) {
+                var bestKey = null, bestGap = null;
+                for (var ok2 in lastGaps) {
+                    if (ok2 === current) continue;
+                    if (bestGap === null || lastGaps[ok2] < bestGap) { bestGap = lastGaps[ok2]; bestKey = ok2; }
+                }
+                if (bestKey && bestGap < gap && bestGap * 2 <= gap) {
+                    cmpLine = '同じ得点率で計算すると、' + UNIS[bestKey].name + 'は' + (bestGap > 0 ? 'あと' + fmt(bestGap) + '点です。' : '最低点を超えています。');
+                }
+            }
+            el('ns-far-cmp').textContent = cmpLine;
+            el('ns-near-cmp').textContent = cmpLine;
             // 大きな距離のときの出口
             if (far) {
                 el('ns-far').style.display = '';
@@ -685,18 +700,6 @@
             if (near) {
                 el('ns-near').style.display = '';
                 el('ns-near-text').textContent = '1次試験まで残り' + days + '日で、不足は' + fmt(gap) + '点あります。志望校の完成度を上げる進め方と並行して、届く組み合わせへの組み替えを早めに検討する段階です。組み替えは、出願が始まる前に決めるほど選択肢が残ります。';
-                var cmpLine = '';
-                if (lastGaps) {
-                    var bestKey = null, bestGap = null;
-                    for (var ok in lastGaps) {
-                        if (ok === current) continue;
-                        if (bestGap === null || lastGaps[ok] < bestGap) { bestGap = lastGaps[ok]; bestKey = ok; }
-                    }
-                    if (bestKey && bestGap < gap) {
-                        cmpLine = '同じ得点率で計算すると、' + UNIS[bestKey].name + 'は' + (bestGap > 0 ? 'あと' + fmt(bestGap) + '点です。' : '最低点を超えています。');
-                    }
-                }
-                el('ns-near-cmp').textContent = cmpLine;
             } else {
                 el('ns-near').style.display = 'none';
             }
@@ -803,7 +806,10 @@
             var label = (nowD.getMonth() + 1) + '月' + nowD.getDate() + '日';
             var dateStr = nowD.getFullYear() + '-' + (nowD.getMonth() + 1) + '-' + nowD.getDate();
             try {
-                window.localStorage.setItem('meducate-kyori-v1', JSON.stringify({ label: label, date: dateStr, gaps: lastGaps, rates: lastRates }));
+                var snap = { label: label, date: dateStr, gaps: lastGaps, rates: lastRates };
+                window.localStorage.setItem('meducate-kyori-v1', JSON.stringify(snap));
+                prevSnap = snap;
+                update();
                 var done = el('ns-save-done');
                 done.textContent = '記録しました（' + label + '）。次にこのページを開いたとき、この記録と比べます。';
                 done.style.display = '';
