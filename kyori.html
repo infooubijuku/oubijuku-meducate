@@ -160,7 +160,7 @@
         <div class="max-w-6xl mx-auto px-4 py-10 md:py-14">
             <p class="text-xs font-bold text-main-dark mb-2">無料ツール</p>
             <h1 class="text-2xl md:text-4xl font-black leading-snug text-main-dark mb-3">合格最低点までの距離メーター</h1>
-            <p class="text-sm md:text-base max-w-3xl">志望校を選んで、英語・数学・理科の「今の得点率」を入れてください。2026年度の合格最低点と比べて、今の推定得点と、あと何点必要か、科目ごとの目標点の例を表示します。模試や過去問演習の結果を入れると、計画を立てる出発点が見えてきます。</p>
+            <p class="text-sm md:text-base max-w-3xl">大学と学年を選んで、英語・数学・理科の「今の得点率」を入れてください。2026年度の合格最低点と比べて、今の推定得点と、あと何点必要か、科目ごとの目標点の例を表示します。得点率は4校で共通に使われ、4校ぶんの距離を並べて比べることもできます。模試や過去問演習の結果を入れると、計画を立てる出発点が見えてきます。</p>
         </div>
     </section>
 
@@ -173,9 +173,17 @@
             <button type="button" class="uni-btn" data-u="kindai">近畿大学</button>
             <button type="button" class="uni-btn" data-u="hyo">兵庫医科大学</button>
         </div>
-        <p class="text-sm text-gray-600 mb-8" id="uni-summary">大阪医科薬科大学｜2026年度 一般選抜・前期の正規合格者最低点は287点／400点です。</p>
+        <p class="text-sm text-gray-600 mb-6" id="uni-summary">大阪医科薬科大学｜2026年度 一般選抜・前期の正規合格者最低点は287点／400点です。</p>
 
-        <h2 class="section-title font-black text-main-dark mb-6">2．今の得点率を入れる</h2>
+                <p class="font-bold mb-3">学年（いつの入試を受けるか）</p>
+        <div class="grid grid-cols-3 gap-3 mb-3 max-w-2xl">
+            <button type="button" class="grade-btn uni-btn active" data-g="0">高3・既卒</button>
+            <button type="button" class="grade-btn uni-btn" data-g="1">高2</button>
+            <button type="button" class="grade-btn uni-btn" data-g="2">高1</button>
+        </div>
+        <p class="text-sm text-gray-600 mb-8" id="grade-note">高3・既卒：2027年度入試（2027年2月）までの残り日数で計算します。</p>
+
+<h2 class="section-title font-black text-main-dark mb-6">2．今の得点率を入れる</h2>
         <p class="text-sm text-gray-600 mb-5">直近の模試や過去問演習で取れた得点率（％）を入れてください。理科は、2科目合わせた得点率（200点満点に換算したときの割合）で入れます。</p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
             <div class="card p-5">
@@ -223,6 +231,11 @@
             <p class="font-black text-main-dark text-lg mb-4" id="res-title">大阪医科薬科大学｜正規合格者最低点 287点／400点（2026年度・一般選抜 前期）</p>
             <p class="text-sm md:text-base" id="res-empty">英語・数学・理科の3科目すべての得点率を入力すると、ここに結果が表示されます。</p>
             <div id="res-body" style="display:none;">
+                <div class="mb-8">
+                    <p class="font-black text-main-dark mb-2">4校で比べる（同じ得点率で計算）</p>
+                    <p class="text-sm text-gray-600 mb-3">大学を切り替えなくても、4校それぞれの距離が見られます。カードを選ぶと、その大学の詳しい結果に切り替わります。兵庫医科大学は小論文・面接等の想定（下で選んだ想定）を使い、近畿大学は1次合格最低点で計算しています。</p>
+                    <div id="res-compare" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"></div>
+                </div>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                     <div class="bg-main-light rounded-lg p-4 text-center">
                         <p class="text-xs font-bold text-gray-600 mb-1" id="res-now-label">現在の推定得点</p>
@@ -242,15 +255,21 @@
                     <div class="min-marker" id="res-marker" style="left:70%;"><span class="min-marker-label" id="res-marker-label">最低点</span></div>
                 </div>
                 <p class="text-xs text-gray-600 mb-8" id="res-bar-note">左から英語・数学・理科の換算点。赤い線が合格最低点の位置です。</p>
+                <p class="text-sm md:text-base mb-4" id="res-plus5"></p>
                 <p class="font-black text-main-dark mb-2">科目ごとの目標点の例（最低点に届く配分の例）</p>
                 <p class="text-sm text-gray-600 mb-4">不足分を、各科目の「満点までの伸びしろ」に比例して配った計算例です。今の得点率が低い科目ほど、大きく引き上げる配分になります。これは配分の例であって、塾の推奨配分ではありません。どの科目から上げるかは、得意・不得意と残りの期間で変わります。</p>
                 <div class="overflow-x-auto mb-6"><table class="info-table w-full text-sm md:text-base"><thead>
-                    <tr><th class="text-left">科目</th><th class="text-left">満点</th><th class="text-left">今の換算点（得点率）</th><th class="text-left">目標点の例（得点率）</th></tr>
+                    <tr><th class="text-left">科目</th><th class="text-left">満点</th><th class="text-left">今の換算点（得点率）</th><th class="text-left">目標点の例（得点率）</th><th class="text-left">余裕を持った目標の例（得点率）</th></tr>
                 </thead><tbody id="res-table"></tbody></table></div>
-                <p class="text-sm text-gray-600">この結果は、2026年度の合格最低点をもとにした目安です。合格最低点は年度により変わります。また、模試や過去問の得点率は、問題の難易度によって本番の得点率とそのまま一致するとは限りません。数字の出どころは、下の「情報元（一次情報）」をご覧ください。</p>
-                <div id="next-steps" class="border-t border-soft mt-8 pt-6">
+                                <div id="next-steps" class="border-t border-soft mt-8 pt-6">
                     <p class="font-black text-main-dark text-lg mb-2" id="ns-heading"></p>
                     <p class="text-sm md:text-base mb-5" id="ns-pace"></p>
+                    <p class="text-sm font-bold text-main-dark mb-3" id="ns-prev"></p>
+                    <div id="ns-far" class="rounded-lg p-5 mb-5" style="display:none;background:#FDF0EC;border:1px solid #E5B4A8;">
+                        <p class="font-black mb-2" style="color:#A93226;">この距離は、受け方の設計から見直す段階です</p>
+                        <p class="text-sm md:text-base mb-3" id="ns-far-text"></p>
+                        <a href="/articles/heigan" class="underline font-bold text-main-dark">併願の設計｜日程と傾向の2軸で決める受け方</a>
+                    </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6" id="ns-cards"></div>
                     <div class="rounded-lg p-5 md:p-6" style="background:#F2FBF3;border:2px solid #06C755;">
                         <p class="font-black text-main-dark mb-2" id="ns-cta-heading"></p>
@@ -263,6 +282,7 @@
                         <p class="text-xs text-gray-600 mt-3" id="ns-copy-done" style="display:none;">コピーしました。LINEやメールの相談文に、そのまま貼って送ってください。</p>
                     </div>
                 </div>
+            <p class="text-sm text-gray-600">この結果は、2026年度の合格最低点をもとにした目安です。合格最低点は年度により変わります。また、模試や過去問の得点率は、問題の難易度によって本番の得点率とそのまま一致するとは限りません。数字の出どころは、下の「情報元（一次情報）」をご覧ください。</p>
             </div>
             <div class="border-t border-soft mt-8 pt-6">
                 <p class="font-black text-main-dark mb-3">あわせて読みたい（大学別情報と教科書）</p>
@@ -452,7 +472,7 @@
             if (!UNIS[key]) key = 'ompu';
             current = key;
             var u = uni();
-            var btns = document.querySelectorAll('.uni-btn');
+            var btns = document.querySelectorAll('.uni-btn[data-u]');
             for (var i = 0; i < btns.length; i++) {
                 btns[i].classList.toggle('active', btns[i].getAttribute('data-u') === key);
             }
@@ -537,43 +557,110 @@
                 ? '左から英語・数学・理科の換算点と、小論文・面接等の想定分（グレー）。赤い線が合格最低点417.5点の位置です。'
                 : '左から英語・数学・理科の換算点。赤い線が' + (u.firstOnly ? '1次合格最低点' : '合格最低点') + 'の位置です。';
 
-            // 目標点の例
+            // 目標点の例（+5%の列も並べる）
             var maxArr = u.subjects.map(function(s) { return s.max; });
             var targets = allocateTargets(scores, maxArr, targetTotal);
+            var target5Total = targetTotal * 1.05;
+            var targets5 = allocateTargets(scores, maxArr, target5Total);
             var rows = '';
             for (var t = 0; t < 3; t++) {
                 var s = u.subjects[t];
-                rows += '<tr><th class="text-left">' + s.label + '</th><td>' + s.max + '点</td><td>' + fmt(scores[t]) + '点（' + fmt(rates[t]) + '％）</td><td>' + fmt(targets[t]) + '点（' + fmt(targets[t] / s.max * 100) + '％）</td></tr>';
+                rows += '<tr><th class="text-left">' + s.label + '</th><td>' + s.max + '点</td><td>' + fmt(scores[t]) + '点（' + fmt(rates[t]) + '％）</td><td>' + fmt(targets[t]) + '点（' + fmt(targets[t] / s.max * 100) + '％）</td><td>' + fmt(targets5[t]) + '点（' + fmt(targets5[t] / s.max * 100) + '％）</td></tr>';
             }
             el('res-table').innerHTML = rows;
+            var plusLabel = (current === 'hyo') ? '学科の必要点+5%' : (u.firstOnly ? '1次合格最低点+5%' : '合格最低点+5%');
+            el('res-plus5').textContent = '余裕を持った目標（' + plusLabel + '）は ' + fmt(target5Total) + ' 点です。最低点は合格者の一番下の点なので、実戦の目標はこちらの列に置く読み方もあります。';
+
+            // 4校比較（同じ得点率で全校を計算）
+            var assumedHyo = parseFloat(el('hyo-extra-select').value) || 0;
+            var gaps = {}, cmpHtml = '';
+            var order4 = ['ompu', 'kmu', 'kindai', 'hyo'];
+            for (var c = 0; c < 4; c++) {
+                var uu = UNIS[order4[c]], tot = 0;
+                for (var k = 0; k < 3; k++) { tot += uu.subjects[k].max * rates[k] / 100; }
+                var tgt = (order4[c] === 'hyo') ? (uu.min - assumedHyo) : uu.min;
+                var g = tgt - tot;
+                gaps[order4[c]] = g;
+                var sel = (order4[c] === current);
+                var state = (g > 0)
+                    ? '<span style="color:#C0392B;">あと' + fmt(g) + '点</span>'
+                    : '<span style="color:#1D7A3A;">最低点超え +' + fmt(-g) + '点</span>';
+                cmpHtml += '<button type="button" data-cmp="' + order4[c] + '" class="card p-4 text-left w-full hover:shadow-md transition" style="' + (sel ? 'border:2px solid #1D5FA8;background:#EAF2FB;' : '') + '">'
+                    + '<p class="font-black text-main-dark text-sm mb-1">' + uu.name + (uu.firstOnly ? '（1次）' : '') + '</p>'
+                    + '<p class="text-sm">推定 ' + fmt(tot) + '点／' + uu.total + '点</p>'
+                    + '<p class="text-sm">最低点 ' + fmt(uu.min) + '点</p>'
+                    + '<p class="font-black">' + state + '</p></button>';
+            }
+            el('res-compare').innerHTML = cmpHtml;
+            lastGaps = gaps;
+            // この端末に記録を残す（次回の比較用）
+            try {
+                var nowD = new Date();
+                window.localStorage.setItem('meducate-kyori-v1', JSON.stringify({
+                    label: (nowD.getMonth() + 1) + '月' + nowD.getDate() + '日',
+                    gaps: gaps, rates: rates
+                }));
+            } catch (e) {}
             renderNext(scores, targets, rates, gap, targetTotal, nowTotal, assumedExtra);
         }
 
         var SUBJ_NEXT = {
-            eng: { href: '/articles/eigo', title: '英語｜4校で形式がここまで違う', desc: '自由英作文の有無、長文の量と速さ。形式の違いが、そのまま点差になります。' },
-            math: { href: '/articles/sugaku', title: '数学｜近畿だけ別競技、3校は記述で点差がつく', desc: '数IIIのない近畿と、記述で差がつく3校。落とす場所と、立て直し方を見ます。' },
-            sci: { href: '/articles/rika', title: '理科｜2科目を、当日に選ぶということ', desc: '4校とも200点で、いちばん重い科目です。当日に選べるのは1校だけ。選択の形と、点差のつき方を整理します。' }
+            eng: { href: '/articles/eigo', title: '英語｜4校で形式がここまで違う', desc: '自由英作文の有無、長文の量と速さ。形式の違いが、そのまま点差になります。', act: '志望校の過去問を1年分、制限時間どおりに解いて、落とした問題を語彙・文法・読解に分ける' },
+            math: { href: '/articles/sugaku', title: '数学｜近畿だけ別競技、3校は記述で点差がつく', desc: '数IIIのない近畿と、記述で差がつく3校。落とす場所と、立て直し方を見ます。', act: '志望校の過去問を1年分、時間を計って解いて、部分点が取れた問題と、最初から手が出なかった問題を分ける' },
+            sci: { href: '/articles/rika', title: '理科｜2科目を、当日に選ぶということ', desc: '4校とも200点で、いちばん重い科目です。当日に選べるのは1校だけ。選択の形と、点差のつき方を整理します。', act: '選んだ2科目の過去問を、本番と同じ120分通しで解いて、科目を切り替えるタイミングを決める' }
         };
+        var GRADE_NAMES = ['高3・既卒（2027年度入試）', '高2（2028年度入試）', '高1（2029年度入試）'];
+        var gradeOffset = 0;
+        var lastGaps = null;
+        var prevSnap = null;
+        try { prevSnap = JSON.parse(window.localStorage.getItem('meducate-kyori-v1') || 'null'); } catch (e) { prevSnap = null; }
+        function examLabelShifted(u) { return u.examLabel.replace('2027', String(2027 + gradeOffset)); }
+        function examDateShifted(u) {
+            var parts = u.exam.split('-');
+            return new Date((parseInt(parts[0], 10) + gradeOffset) + '-' + parts[1] + '-' + parts[2] + 'T00:00:00');
+        }
         var lastCopyText = '';
 
         function renderNext(scores, targets, rates, gap, targetTotal, nowTotal, assumedExtra) {
             var u = uni();
             var i;
-            // 1次試験までの残り日数
+            // 1次試験までの残り日数（学年で入試年度がずれる）
             var today = new Date(); today.setHours(0, 0, 0, 0);
-            var exam = new Date(u.exam + 'T00:00:00');
+            var exam = examDateShifted(u);
             var days = Math.round((exam - today) / 86400000);
+            var pace = (gap > 0 && days > 0) ? gap / (days / 7) : 0;
+            var far = (gap > 0 && days > 0 && pace > 8);
             if (gap > 0) {
                 el('ns-heading').textContent = 'あと' + fmt(gap) + '点を取りに行く';
                 if (days > 0) {
-                    var pace = gap / (days / 7);
-                    el('ns-pace').innerHTML = '1次試験（' + u.examLabel + '）まで、あと' + days + '日。不足' + fmt(gap) + '点を週に直すと、約' + fmt(pace) + '点ペースです。週の時間の組み方は<a href="/articles/jikan" class="underline text-main-dark">「配点の割合で、週の勉強時間を組み替える」</a>にまとめています。';
+                    var note = (gradeOffset > 0) ? '（' + (2027 + gradeOffset) + '年度の日程はまだ公表されていないため、2027年度と同じ時期で計算しています）' : '';
+                    el('ns-pace').innerHTML = '1次試験（' + examLabelShifted(u) + '）まで、あと' + days + '日。不足' + fmt(gap) + '点は、1週間に約' + fmt(pace) + '点ずつ伸ばす計算です。週の時間の組み方は<a href="/articles/jikan" class="underline text-main-dark">「配点の割合で、週の勉強時間を組み替える」</a>にまとめています。' + note;
                 } else {
                     el('ns-pace').textContent = '';
                 }
             } else {
                 el('ns-heading').textContent = '最低点は超えています。次は、上積みと崩れない形です';
                 el('ns-pace').innerHTML = 'この水準を本番で再現するための進め方は、<a href="/articles/soron4" class="underline text-main-dark">総論「続ける仕組みと完成度」</a>にまとめています。';
+            }
+            // 前回との比較（この端末に残した記録）
+            var prevEl = el('ns-prev');
+            if (prevSnap && prevSnap.gaps && typeof prevSnap.gaps[current] === 'number') {
+                var prevGap = prevSnap.gaps[current];
+                if (prevGap > 0 && gap <= 0) {
+                    prevEl.textContent = '前回（' + prevSnap.label + '）は、あと' + fmt(prevGap) + '点でした。今回は最低点を超えています。';
+                } else if (prevGap > 0 && gap > 0) {
+                    var d = prevGap - gap;
+                    prevEl.textContent = '前回（' + prevSnap.label + '）の不足は' + fmt(prevGap) + '点。今回で' + (d > 0 ? fmt(d) + '点縮まりました。' : (d < 0 ? fmt(-d) + '点広がりました。' : '変わりません。'));
+                } else {
+                    prevEl.textContent = '';
+                }
+            } else { prevEl.textContent = ''; }
+            // 大きな距離のときの出口
+            if (far) {
+                el('ns-far').style.display = '';
+                el('ns-far-text').textContent = 'この不足を残りの期間で埋めるには、1週間に約' + fmt(pace) + '点の伸びが要ります。1つの大学の完成度を上げる通常の進め方では、届きにくい距離です。選択肢は、併願の組み替えで「届く組み合わせ」に見直すことと、来年度を見据えて設計することです。どちらも、早いほど選択肢が残ります。';
+            } else {
+                el('ns-far').style.display = 'none';
             }
             // 科目カード：不足時は目標までの差が大きい順、超過時は得点率が低い順
             var order = [0, 1, 2];
@@ -588,11 +675,15 @@
                 cards += '<a href="' + meta.href + '" class="card p-5 block hover:shadow-md transition">'
                     + '<p class="font-black text-main-dark mb-1"><span class="inline-block w-3.5 h-3.5 rounded-sm mr-1 align-middle" style="background:' + s.color + '"></span>' + head + '</p>'
                     + '<p class="font-bold text-sm mb-1">' + meta.title + '</p>'
-                    + '<p class="text-sm text-gray-600">' + meta.desc + '</p></a>';
+                    + '<p class="text-sm text-gray-600">' + meta.desc + '</p>'
+                    + '<p class="text-sm mt-2"><span class="font-bold text-main-dark">今週の1手：</span>' + meta.act + '</p></a>';
             }
             el('ns-cards').innerHTML = cards;
             // 相談CTA（結果連動）
-            if (gap > 0) {
+            if (far) {
+                el('ns-cta-heading').textContent = 'この結果をもとに、受け方から設計し直す';
+                el('ns-cta-text').textContent = '無料相談では、この結果をもとに、併願の組み替えと、来年度を見据える場合の進め方を一緒に設計します。下の「結果をコピーする」で結果を控えて、LINEやメールでそのまま送ってください。';
+            } else if (gap > 0) {
                 el('ns-cta-heading').textContent = 'この結果をもとに、あと' + fmt(gap) + '点の取り方を設計する';
                 el('ns-cta-text').textContent = '無料相談では、この結果をもとに、どの科目のどこで' + fmt(gap) + '点を取るか、最初の一か月の進め方まで一緒に設計します。下の「結果をコピーする」で結果を控えて、LINEやメールでそのまま送ってください。';
             } else {
@@ -604,6 +695,7 @@
             var lines = [];
             lines.push('【距離メーターの結果｜MEDUCATE天王寺校】');
             lines.push('志望校：' + u.name);
+            lines.push('学年：' + GRADE_NAMES[gradeOffset]);
             if (current === 'hyo') {
                 lines.push('今の推定得点（学科のみ）：' + fmt(nowTotal) + '点／500点');
                 lines.push('合格最低点（2026年度）：' + fmt(u.min) + '点／630点');
@@ -616,19 +708,39 @@
                 lines.push('合格最低点（2026年度）：' + fmt(u.min) + '点');
             }
             lines.push(gap > 0 ? ('最低点までの不足：' + fmt(gap) + '点') : ('最低点を上回る分：' + fmt(-gap) + '点'));
+            lines.push('余裕を持った目標（最低点+5%）：' + fmt(targetTotal * 1.05) + '点');
             for (i = 0; i < 3; i++) {
                 var s2 = u.subjects[i];
                 lines.push('・' + s2.label + '：' + fmt(scores[i]) + '点（' + fmt(rates[i]) + '％）→ 目標の例 ' + fmt(targets[i]) + '点（' + fmt(targets[i] / s2.max * 100) + '％）');
             }
-            if (days > 0) lines.push('1次試験（' + u.examLabel + '）まで：あと' + days + '日');
+            if (days > 0) lines.push('1次試験（' + examLabelShifted(u) + '）まで：あと' + days + '日' + (gradeOffset > 0 ? '（日程は2027年度と同じ時期で計算）' : ''));
             lines.push('https://meducate.oubijuku.com/kyori?u=' + current);
             lastCopyText = lines.join('\n');
         }
 
-        var btns = document.querySelectorAll('.uni-btn');
+        var btns = document.querySelectorAll('.uni-btn[data-u]');
         for (var i = 0; i < btns.length; i++) {
             btns[i].addEventListener('click', function() { setUniversity(this.getAttribute('data-u')); });
         }
+        var GRADE_NOTES = [
+            '高3・既卒：2027年度入試（2027年2月）までの残り日数で計算します。',
+            '高2：2028年度入試が対象です。日程はまだ公表されていないため、2027年度と同じ時期として、残り日数を計算します。',
+            '高1：2029年度入試が対象です。日程はまだ公表されていないため、2027年度と同じ時期として、残り日数を計算します。'
+        ];
+        var gbtns = document.querySelectorAll('.grade-btn');
+        for (var gi = 0; gi < gbtns.length; gi++) {
+            gbtns[gi].addEventListener('click', function() {
+                gradeOffset = parseInt(this.getAttribute('data-g'), 10) || 0;
+                for (var gj = 0; gj < gbtns.length; gj++) { gbtns[gj].classList.toggle('active', gbtns[gj] === this); }
+                el('grade-note').textContent = GRADE_NOTES[gradeOffset];
+                update();
+            });
+        }
+        el('res-compare').addEventListener('click', function(ev) {
+            var node = ev.target;
+            while (node && node !== this && !node.getAttribute('data-cmp')) { node = node.parentElement; }
+            if (node && node.getAttribute('data-cmp')) { setUniversity(node.getAttribute('data-cmp')); }
+        });
         for (var j = 0; j < 3; j++) {
             (function(key) {
                 var num = el('rate-' + key), slider = el('slider-' + key);
