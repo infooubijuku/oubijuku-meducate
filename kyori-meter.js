@@ -277,7 +277,7 @@
                     if (ok2 === current) continue;
                     if (bestGap === null || lastGaps[ok2] < bestGap) { bestGap = lastGaps[ok2]; bestKey = ok2; }
                 }
-                if (bestKey && bestGap < gap && bestGap * 2 <= gap) {
+                if (bestKey && bestGap < gap && bestGap * 2 <= gap && bestGap < 50) {
                     cmpLine = '同じ得点率で計算すると、' + UNIS[bestKey].name + 'は' + (bestGap > 0 ? 'あと' + fmt(bestGap) + '点です。' : '最低点を超えています。');
                 }
             }
