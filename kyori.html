@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- GA4: MEDUCATE天王寺校プロパティ（meducatetennoji@gmail.com、2026-11-10作成） -->
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ0EP46CC8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YJ0EP46CC8');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no,address=no,email=no">
+    <link rel="icon" type="image/jpeg" href="/img/logo-medicate.jpg">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <meta name="theme-color" content="#1D5FA8">
+    <meta name="description" content="関西の私立医学部4校（大阪医科薬科大学・関西医科大学・近畿大学・兵庫医科大学）について、今の得点率から合格最低点までの距離を測る無料メーターです。大学を選んで英語・数学・理科の得点率を入れると、現在の推定得点、最低点までの不足点、科目ごとの目標点の例を表示します。数字は2026年度入試結果の合格最低点（各大学の公式公表）をもとにしています。">
+    <meta name="keywords" content="MEDUCATE,メデュケイト,天王寺,医学部受験,私立医学部,大阪医科薬科大学,関西医科大学,近畿大学,兵庫医科大学,合格最低点,個別指導">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="MEDUCATE 天王寺校">
+    <link rel="canonical" href="https://meducate.oubijuku.com/kyori">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="合格最低点までの距離メーター｜関西私立医学部4校｜MEDUCATE 天王寺校">
+    <meta property="og:description" content="現役医学部生講師28名が伴走する、関西の私立医学部受験専門塾。365日使える自習室と毎朝のZoom朝勉強会で、勉強のリズムを支えます。JR天王寺駅北口徒歩5分。">
+    <meta property="og:url" content="https://meducate.oubijuku.com/kyori">
+    <meta property="og:site_name" content="MEDUCATE 天王寺校">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:image" content="https://meducate.oubijuku.com/img/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="合格最低点までの距離メーター｜関西私立医学部4校｜MEDUCATE 天王寺校">
+    <meta name="twitter:description" content="現役医学部生講師28名が伴走する、関西の私立医学部受験専門塾。JR天王寺駅北口徒歩5分。">
+    <title>合格最低点までの距離メーター｜関西私立医学部4校｜MEDUCATE 天王寺校</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main: #1D5FA8;
+            --main-dark: #14497F;
+            --main-light: #EAF2FB;
+            --ink: #333333;
+            --line-green: #06C755;
+            --soft: #CFE0F0;
+        }
+        body { font-family: 'Noto Sans JP', sans-serif; color: var(--ink); line-height: 1.9; letter-spacing: 0.02em; background: #FDFEFF; }
+        h1, h2, h3 { font-family: 'Noto Serif JP', serif; letter-spacing: 0.03em; }
+        .text-main { color: var(--main); }
+        .text-main-dark { color: var(--main-dark); }
+        .bg-main { background-color: var(--main); }
+        .bg-main-light { background-color: var(--main-light); }
+        .bg-line { background-color: var(--line-green); }
+        .border-main { border-color: var(--main); }
+        .border-soft { border-color: var(--soft); }
+        .section-title { position: relative; padding-left: 1rem; }
+        .section-title::before { content: ''; position: absolute; left: 0; top: 0.25em; bottom: 0.25em; width: 4px; background: var(--main); }
+        h2.section-title { font-size: 1.55rem; }
+        @media (min-width: 768px) { h2.section-title { font-size: 2.05rem; } }
+        .card { background: #fff; border: 1px solid var(--soft); border-radius: 0.5rem; box-shadow: 0 1px 2px rgba(10,40,80,0.04), 0 14px 30px -18px rgba(20,73,127,0.25); }
+        table.info-table th, table.info-table td { border: 1px solid #BFD4EA; padding: 0.65rem 0.9rem; }
+        table.info-table th { background: var(--main-light); font-weight: 700; font-family: 'Noto Serif JP', serif; letter-spacing: 0.04em; }
+        @media (max-width: 767px) {
+            table.info-table { font-size: 13px; }
+            table.info-table th, table.info-table td { padding: 0.5rem 0.55rem; }
+        }
+        header { box-shadow: 0 1px 16px rgba(20, 73, 127, 0.07); }
+        ::selection { background: #CFE3F5; }
+        a.bg-main { box-shadow: 0 8px 20px -8px rgba(29,95,168,0.6); }
+        #mobile-nav { transition: transform 0.35s ease; transform: translateX(100%); }
+        #mobile-nav.open { transform: translateX(0); }
+        .paper-band { background: var(--main-light); background-image: radial-gradient(rgba(20,73,127,0.055) 1px, transparent 1px); background-size: 14px 14px; }
+        .uni-btn { border: 2px solid var(--soft); background: #fff; color: var(--ink); border-radius: 0.5rem; padding: 0.7rem 0.5rem; font-weight: 700; font-size: 0.9rem; width: 100%; cursor: pointer; transition: all 0.15s ease; }
+        .uni-btn.active { border-color: var(--main); background: var(--main); color: #fff; }
+        input[type="range"] { width: 100%; accent-color: var(--main); }
+        input[type="number"] { border: 1px solid #BFD4EA; border-radius: 0.375rem; padding: 0.35rem 0.5rem; width: 5.5rem; text-align: right; font-size: 1rem; }
+        select { border: 1px solid #BFD4EA; border-radius: 0.375rem; padding: 0.4rem 0.5rem; font-size: 0.95rem; background: #fff; }
+        .min-marker { position: absolute; top: -4px; bottom: -4px; width: 3px; background: #C0392B; }
+        .min-marker-label { position: absolute; top: -1.7rem; transform: translateX(-50%); font-size: 0.72rem; font-weight: 700; color: #C0392B; white-space: nowrap; }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "MEDUCATE 天王寺校",
+      "description": "関西の私立医学部受験専門塾。現役医学部生講師28名が計画・管理・実践をマネジメント。JR天王寺駅北口から徒歩5分。",
+      "url": "https://meducate.oubijuku.com",
+      "sameAs": ["https://meducate.jp/"],
+      "telephone": "06-6779-9507",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "南河堀町9-43 ターミナル天王寺北口ビル201",
+        "addressLocality": "天王寺区",
+        "addressRegion": "大阪府",
+        "postalCode": "543-0054",
+        "addressCountry": "JP"
+      }
+    }
+    </script>
+</head>
+
+<body>
+
+    <!-- ヘッダー -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-soft">
+        <div class="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
+            <a href="/" class="flex items-center gap-2">
+                <img src="/img/logo-medicate.jpg" alt="MEDUCATE" class="w-10 h-10 rounded-full object-cover">
+                <span class="leading-tight">
+                    <span class="block text-xl font-black text-main-dark tracking-wide whitespace-nowrap" style="font-family:'Noto Serif JP',serif;">MEDUCATE <span class="text-base">天王寺校</span></span>
+                    <span class="hidden xl:block text-[10px] font-bold text-gray-500 tracking-wider">医学部受験専門｜個別指導</span>
+                </span>
+            </a>
+            <nav class="hidden lg:flex items-center gap-4 xl:gap-5 text-sm font-bold">
+                <a href="/course" class="hover:text-main-dark whitespace-nowrap">コース</a>
+            <a href="/teachers" class="hover:text-main-dark whitespace-nowrap">講師</a>
+                <a href="/universities" class="hover:text-main-dark whitespace-nowrap">大学別情報</a>
+            <a href="/articles" class="hover:text-main-dark whitespace-nowrap">記事</a>
+                <a href="/results" class="hover:text-main-dark whitespace-nowrap">実績</a>
+            <a href="/books" class="hover:text-main-dark whitespace-nowrap">参考書・動画</a>
+                <a href="/contact" class="hover:text-main-dark whitespace-nowrap">お問い合わせ</a>
+                <a href="https://ameblo.jp/meducate-tennoji/" target="_blank" rel="noopener" class="hover:text-main-dark">ブログ</a>
+                <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white px-4 py-2 rounded hover:opacity-90 whitespace-nowrap">公式LINEで相談</a>
+            </nav>
+            <div class="flex items-center gap-3 lg:hidden">
+                <button id="menu-btn" class="p-2" aria-label="メニューを開く">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- モバイルメニュー -->
+    <div id="mobile-nav" class="fixed inset-y-0 right-0 w-72 max-w-[85vw] bg-white z-[60] shadow-2xl lg:hidden">
+        <div class="flex items-center justify-between p-4 border-b border-soft">
+            <span class="font-black text-main-dark">メニュー</span>
+            <button id="menu-close" class="p-2" aria-label="メニューを閉じる">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col p-4 gap-1 font-bold">
+            <a href="/" class="py-3 border-b border-gray-100">トップ</a>
+            <a href="/course" class="py-3 border-b border-gray-100">コース・指導の形</a>
+            <a href="/teachers" class="py-3 border-b border-gray-100">校舎長・講師</a>
+            <a href="/universities" class="py-3 border-b border-gray-100">大学別情報</a>
+            <a href="/articles" class="py-3 border-b border-gray-100">記事</a>
+            <a href="/results" class="py-3 border-b border-gray-100">実績</a>
+            <a href="/books" class="py-3 border-b border-gray-100">参考書・動画</a>
+            <a href="/contact" class="py-3 border-b border-gray-100">アクセス・お問い合わせ</a>
+            <a href="https://ameblo.jp/meducate-tennoji/" target="_blank" rel="noopener" class="py-3">ブログ</a>
+        </nav>
+        <div class="p-4 flex flex-col gap-3">
+            <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white text-center font-bold py-3 rounded">公式LINEで相談する</a>
+            <a href="tel:0667799507" class="bg-main text-white text-center font-bold py-3 rounded">電話 06-6779-9507</a>
+        </div>
+    </div>
+
+    <!-- ページ見出し -->
+    <section class="paper-band border-b border-soft">
+        <div class="max-w-6xl mx-auto px-4 py-10 md:py-14">
+            <p class="text-xs font-bold text-main-dark mb-2">無料ツール</p>
+            <h1 class="text-2xl md:text-4xl font-black leading-snug text-main-dark mb-3">合格最低点までの距離メーター</h1>
+            <p class="text-sm md:text-base max-w-3xl">志望校を選んで、英語・数学・理科の「今の得点率」を入れてください。2026年度の合格最低点と比べて、今の推定得点と、あと何点必要か、科目ごとの目標点の例を表示します。模試や過去問演習の結果を入れると、計画を立てる出発点が見えてきます。</p>
+        </div>
+    </section>
+
+    <!-- メーター本体 -->
+    <section class="max-w-6xl mx-auto px-4 py-10">
+        <h2 class="section-title font-black text-main-dark mb-6">1．大学を選ぶ</h2>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-3">
+            <button type="button" class="uni-btn" data-u="ompu">大阪医科薬科大学</button>
+            <button type="button" class="uni-btn" data-u="kmu">関西医科大学</button>
+            <button type="button" class="uni-btn" data-u="kindai">近畿大学</button>
+            <button type="button" class="uni-btn" data-u="hyo">兵庫医科大学</button>
+        </div>
+        <p class="text-sm text-gray-600 mb-8" id="uni-summary">大阪医科薬科大学｜2026年度 一般選抜・前期の正規合格者最低点は287点／400点です。</p>
+
+        <h2 class="section-title font-black text-main-dark mb-6">2．今の得点率を入れる</h2>
+        <p class="text-sm text-gray-600 mb-5">直近の模試や過去問演習で取れた得点率（％）を入れてください。理科は、2科目合わせた得点率（200点満点に換算したときの割合）で入れます。</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+            <div class="card p-5">
+                <div class="flex items-center justify-between gap-2 mb-3">
+                    <label for="rate-eng" class="font-bold flex items-center gap-2"><span class="inline-block w-4 h-4 rounded-sm" style="background:#E8862E"></span>英語<span class="text-sm text-gray-500 font-normal" id="max-eng">／100点満点</span></label>
+                    <span class="flex items-center gap-1"><input type="number" id="rate-eng" min="0" max="100" step="0.5" inputmode="decimal" placeholder="例：60"><span class="font-bold">％</span></span>
+                </div>
+                <input type="range" id="slider-eng" min="0" max="100" step="1" value="0" aria-label="英語の得点率スライダー">
+                <p class="text-sm text-gray-600 mt-2">今の換算点：<span id="score-eng" class="font-bold text-main-dark">―</span></p>
+            </div>
+            <div class="card p-5">
+                <div class="flex items-center justify-between gap-2 mb-3">
+                    <label for="rate-math" class="font-bold flex items-center gap-2"><span class="inline-block w-4 h-4 rounded-sm" style="background:#2A9D8F"></span>数学<span class="text-sm text-gray-500 font-normal" id="max-math">／100点満点</span></label>
+                    <span class="flex items-center gap-1"><input type="number" id="rate-math" min="0" max="100" step="0.5" inputmode="decimal" placeholder="例：50"><span class="font-bold">％</span></span>
+                </div>
+                <input type="range" id="slider-math" min="0" max="100" step="1" value="0" aria-label="数学の得点率スライダー">
+                <p class="text-sm text-gray-600 mt-2">今の換算点：<span id="score-math" class="font-bold text-main-dark">―</span></p>
+            </div>
+            <div class="card p-5">
+                <div class="flex items-center justify-between gap-2 mb-3">
+                    <label for="rate-sci" class="font-bold flex items-center gap-2"><span class="inline-block w-4 h-4 rounded-sm" style="background:#1D5FA8"></span>理科（2科目合計）<span class="text-sm text-gray-500 font-normal" id="max-sci">／200点満点</span></label>
+                    <span class="flex items-center gap-1"><input type="number" id="rate-sci" min="0" max="100" step="0.5" inputmode="decimal" placeholder="例：55"><span class="font-bold">％</span></span>
+                </div>
+                <input type="range" id="slider-sci" min="0" max="100" step="1" value="0" aria-label="理科の得点率スライダー">
+                <p class="text-sm text-gray-600 mt-2">今の換算点：<span id="score-sci" class="font-bold text-main-dark">―</span></p>
+            </div>
+        </div>
+
+        <div id="hyo-extra" class="card p-5 md:p-6 mb-8" style="display:none;">
+            <p class="font-black text-main-dark text-lg mb-2">兵庫医科大学は、小論文・面接等の想定を置いて計算します</p>
+            <p class="text-sm mb-4">兵庫医科大学の合格最低点417.5点（630点満点）のうち、学科（英語・数学・理科）以外は小論文50点と面接・調査書等80点で、最大130点あります。学科で必要な点数は、この130点のうち何点取れるかで変わるため、このメーターでは学科の目標を一つに決めず、想定を選んで計算する形にしています。</p>
+            <label for="hyo-extra-select" class="text-sm font-bold mr-3">小論文・面接等で取る想定の点数</label>
+            <select id="hyo-extra-select">
+                <option value="0">0点（学科だけで届かせる計算）</option>
+                <option value="32.5">32.5点（最大130点の4分の1）</option>
+                <option value="65" selected>65点（最大130点の半分）</option>
+                <option value="97.5">97.5点（最大130点の4分の3）</option>
+                <option value="130">130点（満点の想定）</option>
+            </select>
+            <p class="text-sm text-gray-600 mt-3" id="hyo-need-line"></p>
+        </div>
+
+        <h2 class="section-title font-black text-main-dark mb-6">3．結果を見る</h2>
+        <div class="card p-6 md:p-8">
+            <p class="font-black text-main-dark text-lg mb-4" id="res-title">大阪医科薬科大学｜正規合格者最低点 287点／400点（2026年度・一般選抜 前期）</p>
+            <p class="text-sm md:text-base" id="res-empty">英語・数学・理科の3科目すべての得点率を入力すると、ここに結果が表示されます。</p>
+            <div id="res-body" style="display:none;">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                    <div class="bg-main-light rounded-lg p-4 text-center">
+                        <p class="text-xs font-bold text-gray-600 mb-1" id="res-now-label">現在の推定得点</p>
+                        <p class="text-3xl font-black text-main-dark"><span id="res-now">―</span><span class="text-base font-bold" id="res-now-unit">点</span></p>
+                    </div>
+                    <div class="bg-main-light rounded-lg p-4 text-center">
+                        <p class="text-xs font-bold text-gray-600 mb-1" id="res-min-label">合格最低点（2026年度）</p>
+                        <p class="text-3xl font-black text-main-dark"><span id="res-min">―</span><span class="text-base font-bold">点</span></p>
+                    </div>
+                    <div class="rounded-lg p-4 text-center" style="background:#FDF0EC;">
+                        <p class="text-xs font-bold text-gray-600 mb-1" id="res-gap-label">最低点までの不足</p>
+                        <p class="text-3xl font-black" style="color:#C0392B;"><span id="res-gap">―</span><span class="text-base font-bold">点</span></p>
+                    </div>
+                </div>
+                <div class="relative mt-10 mb-2">
+                    <div class="w-full rounded flex overflow-hidden" style="background:#EAF2FB;height:26px;" id="res-bar"></div>
+                    <div class="min-marker" id="res-marker" style="left:70%;"><span class="min-marker-label" id="res-marker-label">最低点</span></div>
+                </div>
+                <p class="text-xs text-gray-600 mb-8" id="res-bar-note">左から英語・数学・理科の換算点。赤い線が合格最低点の位置です。</p>
+                <p class="font-black text-main-dark mb-2">科目ごとの目標点の例（最低点に届く配分の例）</p>
+                <p class="text-sm text-gray-600 mb-4">不足分を、各科目の「満点までの伸びしろ」に比例して配った計算例です。今の得点率が低い科目ほど、大きく引き上げる配分になります。これは配分の例であって、塾の推奨配分ではありません。どの科目から上げるかは、得意・不得意と残りの期間で変わります。</p>
+                <div class="overflow-x-auto mb-6"><table class="info-table w-full text-sm md:text-base"><thead>
+                    <tr><th class="text-left">科目</th><th class="text-left">満点</th><th class="text-left">今の換算点（得点率）</th><th class="text-left">目標点の例（得点率）</th></tr>
+                </thead><tbody id="res-table"></tbody></table></div>
+                <p class="text-sm text-gray-600">この結果は、2026年度の合格最低点をもとにした目安です。合格最低点は年度により変わります。また、模試や過去問の得点率は、問題の難易度によって本番の得点率とそのまま一致するとは限りません。数字の出どころは、下の「情報元（一次情報）」をご覧ください。</p>
+            </div>
+            <div class="border-t border-soft mt-8 pt-6">
+                <p class="font-black text-main-dark mb-3">結果を持って、次へ進む</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <a href="/universities/ompu" id="exit-uni" class="card p-5 block hover:shadow-md transition">
+                        <p class="text-xs font-bold text-main mb-1">大学別情報</p>
+                        <p class="font-black text-main-dark" id="exit-uni-label">大阪医科薬科大学のページを見る</p>
+                        <p class="text-sm">日程・配点・前年度の結果など、この大学の入試情報をまとめています。</p>
+                    </a>
+                    <a href="/articles/heigan" class="card p-5 block hover:shadow-md transition">
+                        <p class="text-xs font-bold text-main mb-1">関西私立医学部4校受験の教科書</p>
+                        <p class="font-black text-main-dark">併願の設計｜日程と傾向の2軸で決める</p>
+                        <p class="text-sm">この大学と、どの大学を組み合わせて受けるか。日程と傾向の2つの軸で設計します。</p>
+                    </a>
+                </div>
+                <p class="text-sm mb-4">配点と日程の読み方は<a href="/articles/josho" class="underline text-main-dark">序章「私立医学部入試は『配点と日程』から読む」</a>にまとめています。自分の数字で計画を立てたいときは、無料相談で一緒に計算します。</p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white font-bold text-center px-6 py-3.5 rounded shadow hover:opacity-90 tracking-wider">公式LINEで無料相談</a>
+                    <a href="/contact" class="bg-white border-2 border-gray-300 text-main-dark font-bold text-center px-6 py-3.5 rounded hover:bg-gray-50 transition tracking-wider">お問い合わせページへ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-10">
+        <h2 class="section-title font-black text-main-dark mb-6">使い方と、数字の読み方</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="card p-6"><p class="font-black text-main text-lg mb-2">得点率は「最近の実力」で入れる</p><p class="text-sm">直近の模試や、時間を計って解いた過去問演習の得点率を入れてください。いちばん良かった回ではなく、最近数回の平均に近い数字で入れると、距離の見え方が安定します。</p></div>
+            <div class="card p-6"><p class="font-black text-main text-lg mb-2">目標点は「配分の例」として読む</p><p class="text-sm">科目ごとの目標点は、最低点に届く配分の計算例です。科目別の合格者平均点は4校とも公表されていないので、このメーターでも作っていません。実際にどの科目を上げるかは、残りの期間と得意・不得意で決めます。</p></div>
+            <div class="card p-6"><p class="font-black text-main text-lg mb-2">最低点は年度で動く</p><p class="text-sm">使っているのは2026年度の合格最低点です。問題の難易度や志願者数で、最低点は年度ごとに変わります。届いた・届かないを一度で判断せず、模試のたびに入れ直して、距離の縮み方を見る使い方が向いています。</p></div>
+        </div>
+        <p class="text-sm text-gray-600 mt-4">近畿大学については、正規合格の最低点が公式に切り分けて公表されていないため、このメーターでは1次合格最低点（248点／400点）までの距離を表示しています。</p>
+    </section>
+
+    <!-- 情報元（一次情報） -->
+    <section class="max-w-6xl mx-auto px-4 py-10">
+        <h2 class="section-title font-black text-main-dark mb-6">情報元（一次情報）</h2>
+        <p class="text-sm md:text-base mb-4">このページの配点・日程・合格最低点などの数字は、各大学が公式に公表している一次情報で照合したものです。手続きの前には、必ず各大学の公式ページで最新の募集要項をご確認ください。</p>
+        <ul class="text-sm space-y-2">
+            <li>大阪医科薬科大学：<a href="https://www.ompu.ac.jp/admission/undergraduate/qt931k000000801q-att/afif3u000000fsvj.pdf" target="_blank" rel="noopener" class="underline text-main-dark">2027年度入試概要（PDF）</a>／<a href="https://www.ompu.ac.jp/admission/undergraduate/qt931k000000801q-att/qt931k0000009ldq.pdf" target="_blank" rel="noopener" class="underline text-main-dark">2026年度入試結果（PDF）</a>／<a href="https://www.ompu.ac.jp/admission/undergraduate/medical.html" target="_blank" rel="noopener" class="underline text-main-dark">入試情報</a></li>
+            <li>関西医科大学：<a href="https://www.kmu.ac.jp/juk/fom/exam/m3v58f0000001eg8-att/2027kmu-nyushigaiyo.pdf" target="_blank" rel="noopener" class="underline text-main-dark">2027年度入試概要（PDF）</a>／<a href="https://www.kmu.ac.jp/juk/fom/past/m3v58f0000000rxa-att/2026nyushikekka.pdf" target="_blank" rel="noopener" class="underline text-main-dark">2026年度入試結果（PDF）</a>（<a href="https://www.kmu.ac.jp/juk/fom/exam/nyushigaiyou.html" target="_blank" rel="noopener" class="underline text-main-dark">入試概要</a>・<a href="https://www.kmu.ac.jp/juk/fom/past/past_results.html" target="_blank" rel="noopener" class="underline text-main-dark">入試結果</a>）</li>
+            <li>近畿大学：<a href="https://kindai.jp/exam/capacity/" target="_blank" rel="noopener" class="underline text-main-dark">入学定員</a>・<a href="https://kindai.jp/exam/system/general1_a/subject/" target="_blank" rel="noopener" class="underline text-main-dark">試験科目（一般入試・前期A日程）</a>／<a href="https://kindai.jp/assets/pdf/exam/results/r8/260220/r8_ippan_zenkia_260220.pdf" target="_blank" rel="noopener" class="underline text-main-dark">2026年度入試結果・一般前期A（PDF）</a>（<a href="https://kindai.jp/exam/results/" target="_blank" rel="noopener" class="underline text-main-dark">入試結果</a>）</li>
+            <li>兵庫医科大学：<a href="https://www.hyo-med.ac.jp/files/20260526/8a4a55b457bee59e1a6643f0de1f4bc799bc13e3.pdf" target="_blank" rel="noopener" class="underline text-main-dark">2027年度入試資料（PDF）</a>・<a href="https://www.hyo-med.ac.jp/admission/outline/capacity_nishinomiya/" target="_blank" rel="noopener" class="underline text-main-dark">入学定員</a>／<a href="https://www.hyo-med.ac.jp/admission/outline/statistics/nishinomiya_2026/" target="_blank" rel="noopener" class="underline text-main-dark">2026年度入試結果</a></li>
+        </ul>
+    </section>
+    <!-- 相談の入口（全ページ共通） -->
+    <section class="max-w-6xl mx-auto px-4 pb-4">
+        <div class="border-2 border-line rounded-lg p-5 md:p-6 bg-[#F2FBF3]">
+            <p class="font-black text-main-dark text-lg mb-2">無料相談を受け付けています</p>
+            <p class="text-sm md:text-base mb-4">相談では、志望校までの距離と、最初の一か月の進め方をお伝えします。料金は、コースが決まった時点で書面でご提示します。相談したからといって、入塾を前提にはしません。お電話は平日10時〜20時にお願いします（授業中は出られないことがあります）。ご連絡は公式LINEまたはメール（meducatetennoji@gmail.com）でお願いします。</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white font-bold text-center px-6 py-3.5 rounded shadow hover:opacity-90 tracking-wider">公式LINEで無料相談</a>
+                <a href="mailto:meducatetennoji@gmail.com" class="bg-white border-2 border-main text-main-dark font-bold text-center px-6 py-3.5 rounded hover:bg-main-light transition tracking-wider">メールで問い合わせ</a>
+                <a href="/contact" class="bg-white border-2 border-gray-300 text-main-dark font-bold text-center px-6 py-3.5 rounded hover:bg-gray-50 transition tracking-wider">お問い合わせページへ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-[#22303E] text-gray-200">
+        <div class="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div>
+                <p class="text-[10px] font-bold tracking-[0.35em] text-gray-400 mb-1">MEDUCATE TENNOJI</p>
+                <p class="text-xl font-black text-white mb-3" style="font-family:'Noto Serif JP',serif;letter-spacing:0.06em;">MEDUCATE 天王寺校</p>
+                <p class="text-sm leading-relaxed">〒543-0054 大阪市天王寺区南河堀町9-43<br>ターミナル天王寺北口ビル201<br>JR天王寺駅 北口から徒歩5分<br>電話：<a href="tel:0667799507" class="underline">06-6779-9507</a><br>校舎長：内田憲一<br>運営：もものはな株式会社</p>
+                <p class="text-sm mt-4">中学受験・大学受験の桜灯（おうび）塾と同じビルです。</p>
+            </div>
+            <nav class="text-sm">
+                <p class="font-black text-white mb-3">サイトマップ</p>
+                <ul class="space-y-2">
+                    <li><a href="/" class="hover:underline">トップ</a></li>
+                    <li><a href="/course" class="hover:underline">コース・指導の形</a></li>
+                    <li><a href="/teachers" class="hover:underline">校舎長・講師</a></li>
+                    <li><a href="/universities" class="hover:underline">大学別情報</a></li>
+                    <li><a href="/articles" class="hover:underline">記事</a></li>
+                    <li><a href="/results" class="hover:underline">実績</a></li>
+                    <li><a href="/books" class="hover:underline">参考書・動画</a></li>
+                    <li><a href="/contact" class="hover:underline">アクセス・お問い合わせ</a></li>
+                    <li><a href="https://ameblo.jp/meducate-tennoji/" target="_blank" rel="noopener" class="hover:underline">ブログ</a></li>
+                </ul>
+            </nav>
+            <div class="text-sm">
+                <p class="font-black text-white mb-3">関連サイト</p>
+                <ul class="space-y-2">
+                    <li><a href="https://meducate.jp/" target="_blank" rel="noopener" class="hover:underline">MEDUCATE 本部サイト</a></li>
+                    <li><a href="https://oubijuku-omu.com/" target="_blank" rel="noopener" class="hover:underline">大阪公立大学専門 桜灯塾（大学受験）</a></li>
+                    <li><a href="https://oubijuku.com/" target="_blank" rel="noopener" class="hover:underline">中学受験専門 桜灯塾（天王寺）</a></li>
+                    <li><a href="https://ringo.oubijuku.com/" target="_blank" rel="noopener" class="hover:underline">りんご塾 天王寺校</a></li>
+                </ul>
+                <div class="flex flex-col gap-3 mt-6">
+                    <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white text-center font-bold py-3 rounded">公式LINE</a>
+                    <a href="tel:0667799507" class="bg-main text-white text-center font-bold py-3 rounded">電話 06-6779-9507</a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-600 py-4 text-center text-xs text-gray-400">© MEDUCATE 天王寺校</div>
+    </footer>
+
+    <!-- モバイル固定CTA -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 grid grid-cols-2 lg:hidden shadow-[0_-4px_12px_rgba(0,0,0,0.12)]">
+        <a href="tel:0667799507" class="bg-main text-white text-center font-bold py-3 text-sm">電話する<br><span class="text-xs">06-6779-9507</span></a>
+        <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white text-center font-bold py-3 text-sm">LINEで相談<br><span class="text-xs">公式LINE</span></a>
+    </div>
+    <div class="h-14 lg:hidden"></div>
+
+    <script>
+        // モバイルメニュー
+        var nav = document.getElementById('mobile-nav');
+        document.getElementById('menu-btn').addEventListener('click', function(){ nav.classList.add('open'); });
+        document.getElementById('menu-close').addEventListener('click', function(){ nav.classList.remove('open'); });
+    </script>
+
+    <script>
+    // === CORE: 距離メーターの計算ロジック ===
+    var UNIS = {
+        ompu: {
+            name: '大阪医科薬科大学', total: 400, min: 287, minLabel: '正規合格者最低点',
+            firstOnly: false, extra: 0, page: '/universities/ompu',
+            summary: '大阪医科薬科大学｜2026年度 一般選抜・前期の正規合格者最低点は287点／400点です。',
+            subjects: [
+                { key: 'eng', label: '英語', max: 100, color: '#E8862E' },
+                { key: 'math', label: '数学', max: 100, color: '#2A9D8F' },
+                { key: 'sci', label: '理科（2科目合計）', max: 200, color: '#1D5FA8' }
+            ]
+        },
+        kmu: {
+            name: '関西医科大学', total: 500, min: 296, minLabel: '正規合格者最低点',
+            firstOnly: false, extra: 0, page: '/universities/kmu',
+            summary: '関西医科大学｜2026年度 一般選抜・前期の正規合格者最低点は296点／500点です。',
+            subjects: [
+                { key: 'eng', label: '英語', max: 150, color: '#E8862E' },
+                { key: 'math', label: '数学', max: 150, color: '#2A9D8F' },
+                { key: 'sci', label: '理科（2科目合計）', max: 200, color: '#1D5FA8' }
+            ]
+        },
+        kindai: {
+            name: '近畿大学', total: 400, min: 248, minLabel: '1次合格最低点',
+            firstOnly: true, extra: 0, page: '/universities/kindai',
+            summary: '近畿大学｜2026年度 一般入試・前期A日程の1次合格最低点は248点／400点です。このメーターでは「1次合格までの距離」を表示します。',
+            subjects: [
+                { key: 'eng', label: '英語', max: 100, color: '#E8862E' },
+                { key: 'math', label: '数学', max: 100, color: '#2A9D8F' },
+                { key: 'sci', label: '理科（2科目合計）', max: 200, color: '#1D5FA8' }
+            ]
+        },
+        hyo: {
+            name: '兵庫医科大学', total: 630, min: 417.5, minLabel: '正規合格者最低点',
+            firstOnly: false, extra: 130, page: '/universities/hyo-med',
+            summary: '兵庫医科大学｜2026年度 一般選抜Aの正規合格者最低点は417.5点／630点です。学科（500点）のほかに、小論文50点と面接・調査書等80点が入ります。',
+            subjects: [
+                { key: 'eng', label: '英語', max: 150, color: '#E8862E' },
+                { key: 'math', label: '数学', max: 150, color: '#2A9D8F' },
+                { key: 'sci', label: '理科（2科目合計）', max: 200, color: '#1D5FA8' }
+            ]
+        }
+    };
+    function fmt(n) {
+        var r = Math.round(n * 10) / 10;
+        return (Math.abs(r - Math.round(r)) < 0.0001) ? String(Math.round(r)) : r.toFixed(1);
+    }
+    function subjectScore(max, rate) { return max * rate / 100; }
+    // 不足分を「満点までの伸びしろ」に比例して配分し、目標点の例を返す
+    function allocateTargets(cur, max, targetTotal) {
+        var t = cur.slice();
+        var sum = cur.reduce(function(a, b) { return a + b; }, 0);
+        var need = targetTotal - sum;
+        if (need <= 0) return t;
+        for (var iter = 0; iter < 20 && need > 0.0001; iter++) {
+            var heads = [], H = 0;
+            for (var i = 0; i < cur.length; i++) { heads[i] = Math.max(0, max[i] - t[i]); H += heads[i]; }
+            if (H <= 0) break;
+            var used = 0;
+            for (var j = 0; j < cur.length; j++) {
+                var add = Math.min(heads[j], need * heads[j] / H);
+                t[j] += add; used += add;
+            }
+            need -= used;
+            if (used <= 0) break;
+        }
+        return t;
+    }
+    // === END CORE ===
+
+    (function() {
+        var current = 'ompu';
+        var keys = ['eng', 'math', 'sci'];
+        function el(id) { return document.getElementById(id); }
+        function uni() { return UNIS[current]; }
+
+        function setUniversity(key) {
+            if (!UNIS[key]) key = 'ompu';
+            current = key;
+            var u = uni();
+            var btns = document.querySelectorAll('.uni-btn');
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].classList.toggle('active', btns[i].getAttribute('data-u') === key);
+            }
+            el('uni-summary').textContent = u.summary;
+            for (var j = 0; j < 3; j++) {
+                el('max-' + keys[j]).textContent = '／' + u.subjects[j].max + '点満点';
+            }
+            el('hyo-extra').style.display = (key === 'hyo') ? '' : 'none';
+            el('res-title').textContent = u.name + '｜' + u.minLabel + ' ' + fmt(u.min) + '点／' + u.total + '点（2026年度）';
+            el('res-min-label').textContent = u.firstOnly ? '1次合格最低点（2026年度）' : '合格最低点（2026年度）';
+            el('res-gap-label').textContent = u.firstOnly ? '1次最低点までの不足' : '最低点までの不足';
+            el('exit-uni').setAttribute('href', u.page);
+            el('exit-uni-label').textContent = u.name + 'のページを見る';
+            update();
+        }
+
+        function readRate(key) {
+            var v = el('rate-' + key).value;
+            if (v === '' || v === null) return null;
+            var n = parseFloat(v);
+            if (isNaN(n)) return null;
+            if (n < 0) n = 0;
+            if (n > 100) n = 100;
+            return n;
+        }
+
+        function update() {
+            var u = uni();
+            var rates = [], scores = [], valid = true;
+            for (var i = 0; i < 3; i++) {
+                rates[i] = readRate(keys[i]);
+                if (rates[i] === null) { valid = false; scores[i] = null; }
+                else { scores[i] = subjectScore(u.subjects[i].max, rates[i]); }
+                el('score-' + keys[i]).textContent = (scores[i] === null) ? '―' : fmt(scores[i]) + '点';
+            }
+            if (!valid) {
+                el('res-empty').style.display = '';
+                el('res-body').style.display = 'none';
+                return;
+            }
+            el('res-empty').style.display = 'none';
+            el('res-body').style.display = '';
+
+            var nowTotal = scores[0] + scores[1] + scores[2];
+            var assumedExtra = 0;
+            var targetTotal = u.min;
+            if (current === 'hyo') {
+                assumedExtra = parseFloat(el('hyo-extra-select').value) || 0;
+                targetTotal = u.min - assumedExtra;
+                el('hyo-need-line').textContent = '小論文・面接等で' + fmt(assumedExtra) + '点取る想定では、学科の必要点は' + fmt(targetTotal) + '点（500点満点）になります。これは計算の例で、学科の目標を一つに断定するものではありません。';
+            }
+            var gap = targetTotal - nowTotal;
+
+            el('res-now').textContent = fmt(nowTotal);
+            el('res-now-unit').textContent = (current === 'hyo') ? '点（学科のみ）' : '点';
+            el('res-min').textContent = (current === 'hyo') ? fmt(targetTotal) : fmt(u.min);
+            el('res-min-label').textContent = (current === 'hyo') ? '学科の必要点（想定をおいた計算）' : (u.firstOnly ? '1次合格最低点（2026年度）' : '合格最低点（2026年度）');
+            if (gap > 0) {
+                el('res-gap').textContent = fmt(gap);
+                el('res-gap').parentElement.style.color = '#C0392B';
+                el('res-gap-label').textContent = u.firstOnly ? '1次最低点までの不足' : '最低点までの不足';
+            } else {
+                el('res-gap').textContent = fmt(-gap);
+                el('res-gap').parentElement.style.color = '#1D7A3A';
+                el('res-gap-label').textContent = '最低点を上回る分（入力した得点率での換算）';
+            }
+
+            // バー（目盛りは大学の満点。兵庫は630点満点で、グレーが小論文・面接等の想定分）
+            var bar = el('res-bar');
+            var html = '';
+            for (var b = 0; b < 3; b++) {
+                html += '<div style="background:' + u.subjects[b].color + ';width:' + (scores[b] / u.total * 100) + '%;height:26px;"></div>';
+            }
+            if (current === 'hyo' && assumedExtra > 0) {
+                html += '<div style="background:#5F7183;width:' + (assumedExtra / u.total * 100) + '%;height:26px;"></div>';
+            }
+            bar.innerHTML = html;
+            var markerPos = u.min / u.total * 100;
+            el('res-marker').style.left = markerPos + '%';
+            el('res-marker-label').textContent = '最低点 ' + fmt(u.min);
+            el('res-bar-note').textContent = (current === 'hyo')
+                ? '左から英語・数学・理科の換算点と、小論文・面接等の想定分（グレー）。赤い線が合格最低点417.5点の位置です。'
+                : '左から英語・数学・理科の換算点。赤い線が' + (u.firstOnly ? '1次合格最低点' : '合格最低点') + 'の位置です。';
+
+            // 目標点の例
+            var maxArr = u.subjects.map(function(s) { return s.max; });
+            var targets = allocateTargets(scores, maxArr, targetTotal);
+            var rows = '';
+            for (var t = 0; t < 3; t++) {
+                var s = u.subjects[t];
+                rows += '<tr><th class="text-left">' + s.label + '</th><td>' + s.max + '点</td><td>' + fmt(scores[t]) + '点（' + fmt(rates[t]) + '％）</td><td>' + fmt(targets[t]) + '点（' + fmt(targets[t] / s.max * 100) + '％）</td></tr>';
+            }
+            el('res-table').innerHTML = rows;
+        }
+
+        var btns = document.querySelectorAll('.uni-btn');
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener('click', function() { setUniversity(this.getAttribute('data-u')); });
+        }
+        for (var j = 0; j < 3; j++) {
+            (function(key) {
+                var num = el('rate-' + key), slider = el('slider-' + key);
+                num.addEventListener('input', function() {
+                    var n = parseFloat(num.value);
+                    slider.value = isNaN(n) ? 0 : Math.max(0, Math.min(100, n));
+                    update();
+                });
+                slider.addEventListener('input', function() {
+                    num.value = slider.value;
+                    update();
+                });
+            })(keys[j]);
+        }
+        el('hyo-extra-select').addEventListener('change', update);
+
+        // 大学別ページからのパラメータ（?u=ompu など）で初期選択
+        var q = null;
+        try { q = new URLSearchParams(window.location.search).get('u'); } catch (e) { q = null; }
+        var map = { ompu: 'ompu', kmu: 'kmu', kindai: 'kindai', hyo: 'hyo', 'hyo-med': 'hyo' };
+        setUniversity(map[q] || 'ompu');
+    })();
+    </script>
+
+    <!-- GA4 イベントトラッキング -->
+    <script>
+      (function() {
+        if (typeof gtag !== 'function') return;
+        document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
+          el.addEventListener('click', function() {
+            gtag('event', 'phone_call_click', { event_category: 'engagement', event_label: el.getAttribute('href').replace('tel:', ''), page_path: window.location.pathname });
+          });
+        });
+        /* メールリンクのクリックを email_click として計測する */
+        document.querySelectorAll('a[href^="mailto:"]').forEach(function(el) {
+          el.addEventListener('click', function() {
+            gtag('event', 'email_click', { event_category: 'engagement', event_label: 'MEDUCATE_MAIL', page_path: window.location.pathname });
+          });
+        });
+        /* 天王寺校の公式LINE（開設後にリンクを差し替え）のクリックを line_click として計測する */
+        document.querySelectorAll('a[href*="line.me"]').forEach(function(el) {
+          el.addEventListener('click', function() {
+            gtag('event', 'line_click', { event_category: 'engagement', event_label: 'TENNOJI_LINE', page_path: window.location.pathname });
+          });
+        });
+      })();
+    </script>
+</body>
+</html>
