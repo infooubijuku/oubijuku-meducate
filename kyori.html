@@ -248,9 +248,24 @@
                     <tr><th class="text-left">科目</th><th class="text-left">満点</th><th class="text-left">今の換算点（得点率）</th><th class="text-left">目標点の例（得点率）</th></tr>
                 </thead><tbody id="res-table"></tbody></table></div>
                 <p class="text-sm text-gray-600">この結果は、2026年度の合格最低点をもとにした目安です。合格最低点は年度により変わります。また、模試や過去問の得点率は、問題の難易度によって本番の得点率とそのまま一致するとは限りません。数字の出どころは、下の「情報元（一次情報）」をご覧ください。</p>
+                <div id="next-steps" class="border-t border-soft mt-8 pt-6">
+                    <p class="font-black text-main-dark text-lg mb-2" id="ns-heading"></p>
+                    <p class="text-sm md:text-base mb-5" id="ns-pace"></p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6" id="ns-cards"></div>
+                    <div class="rounded-lg p-5 md:p-6" style="background:#F2FBF3;border:2px solid #06C755;">
+                        <p class="font-black text-main-dark mb-2" id="ns-cta-heading"></p>
+                        <p class="text-sm md:text-base mb-4" id="ns-cta-text"></p>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <button type="button" id="ns-copy" class="bg-white border-2 border-main text-main-dark font-bold text-center px-6 py-3.5 rounded hover:bg-main-light transition tracking-wider">結果をコピーする</button>
+                            <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white font-bold text-center px-6 py-3.5 rounded shadow hover:opacity-90 tracking-wider">公式LINEで相談する</a>
+                            <a href="mailto:meducatetennoji@gmail.com" class="bg-white border-2 border-gray-300 text-main-dark font-bold text-center px-6 py-3.5 rounded hover:bg-gray-50 transition tracking-wider">メールで相談する</a>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-3" id="ns-copy-done" style="display:none;">コピーしました。LINEやメールの相談文に、そのまま貼って送ってください。</p>
+                    </div>
+                </div>
             </div>
             <div class="border-t border-soft mt-8 pt-6">
-                <p class="font-black text-main-dark mb-3">結果を持って、次へ進む</p>
+                <p class="font-black text-main-dark mb-3">あわせて読みたい（大学別情報と教科書）</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <a href="/universities/ompu" id="exit-uni" class="card p-5 block hover:shadow-md transition">
                         <p class="text-xs font-bold text-main mb-1">大学別情報</p>
@@ -263,11 +278,7 @@
                         <p class="text-sm">この大学と、どの大学を組み合わせて受けるか。日程と傾向の2つの軸で設計します。</p>
                     </a>
                 </div>
-                <p class="text-sm mb-4">配点と日程の読み方は<a href="/articles/josho" class="underline text-main-dark">序章「私立医学部入試は『配点と日程』から読む」</a>にまとめています。自分の数字で計画を立てたいときは、無料相談で一緒に計算します。</p>
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white font-bold text-center px-6 py-3.5 rounded shadow hover:opacity-90 tracking-wider">公式LINEで無料相談</a>
-                    <a href="/contact" class="bg-white border-2 border-gray-300 text-main-dark font-bold text-center px-6 py-3.5 rounded hover:bg-gray-50 transition tracking-wider">お問い合わせページへ</a>
-                </div>
+                
             </div>
         </div>
     </section>
@@ -365,7 +376,7 @@
     var UNIS = {
         ompu: {
             name: '大阪医科薬科大学', total: 400, min: 287, minLabel: '正規合格者最低点',
-            firstOnly: false, extra: 0, page: '/universities/ompu',
+            firstOnly: false, extra: 0, page: '/universities/ompu', exam: '2027-02-10', examLabel: '2027年2月10日',
             summary: '大阪医科薬科大学｜2026年度 一般選抜・前期の正規合格者最低点は287点／400点です。',
             subjects: [
                 { key: 'eng', label: '英語', max: 100, color: '#E8862E' },
@@ -375,7 +386,7 @@
         },
         kmu: {
             name: '関西医科大学', total: 500, min: 296, minLabel: '正規合格者最低点',
-            firstOnly: false, extra: 0, page: '/universities/kmu',
+            firstOnly: false, extra: 0, page: '/universities/kmu', exam: '2027-02-02', examLabel: '2027年2月2日',
             summary: '関西医科大学｜2026年度 一般選抜・前期の正規合格者最低点は296点／500点です。',
             subjects: [
                 { key: 'eng', label: '英語', max: 150, color: '#E8862E' },
@@ -385,7 +396,7 @@
         },
         kindai: {
             name: '近畿大学', total: 400, min: 248, minLabel: '1次合格最低点',
-            firstOnly: true, extra: 0, page: '/universities/kindai',
+            firstOnly: true, extra: 0, page: '/universities/kindai', exam: '2027-01-31', examLabel: '2027年1月31日',
             summary: '近畿大学｜2026年度 一般入試・前期A日程の1次合格最低点は248点／400点です。このメーターでは「1次合格までの距離」を表示します。',
             subjects: [
                 { key: 'eng', label: '英語', max: 100, color: '#E8862E' },
@@ -395,7 +406,7 @@
         },
         hyo: {
             name: '兵庫医科大学', total: 630, min: 417.5, minLabel: '正規合格者最低点',
-            firstOnly: false, extra: 130, page: '/universities/hyo-med',
+            firstOnly: false, extra: 130, page: '/universities/hyo-med', exam: '2027-02-04', examLabel: '2027年2月4日',
             summary: '兵庫医科大学｜2026年度 一般選抜Aの正規合格者最低点は417.5点／630点です。学科（500点）のほかに、小論文50点と面接・調査書等80点が入ります。',
             subjects: [
                 { key: 'eng', label: '英語', max: 150, color: '#E8862E' },
@@ -535,6 +546,83 @@
                 rows += '<tr><th class="text-left">' + s.label + '</th><td>' + s.max + '点</td><td>' + fmt(scores[t]) + '点（' + fmt(rates[t]) + '％）</td><td>' + fmt(targets[t]) + '点（' + fmt(targets[t] / s.max * 100) + '％）</td></tr>';
             }
             el('res-table').innerHTML = rows;
+            renderNext(scores, targets, rates, gap, targetTotal, nowTotal, assumedExtra);
+        }
+
+        var SUBJ_NEXT = {
+            eng: { href: '/articles/eigo', title: '英語｜4校で形式がここまで違う', desc: '自由英作文の有無、長文の量と速さ。形式の違いが、そのまま点差になります。' },
+            math: { href: '/articles/sugaku', title: '数学｜近畿だけ別競技、3校は記述で点差がつく', desc: '数IIIのない近畿と、記述で差がつく3校。落とす場所と、立て直し方を見ます。' },
+            sci: { href: '/articles/jikan', title: '配点の割合で、週の勉強時間を組み替える', desc: '理科は4校とも200点で、いちばん重い科目です。配点の割合から、週の時間を組み替えます。' }
+        };
+        var lastCopyText = '';
+
+        function renderNext(scores, targets, rates, gap, targetTotal, nowTotal, assumedExtra) {
+            var u = uni();
+            var i;
+            // 1次試験までの残り日数
+            var today = new Date(); today.setHours(0, 0, 0, 0);
+            var exam = new Date(u.exam + 'T00:00:00');
+            var days = Math.round((exam - today) / 86400000);
+            if (gap > 0) {
+                el('ns-heading').textContent = 'あと' + fmt(gap) + '点を取りに行く';
+                if (days > 0) {
+                    var pace = gap / (days / 7);
+                    el('ns-pace').innerHTML = '1次試験（' + u.examLabel + '）まで、あと' + days + '日。不足' + fmt(gap) + '点を週に直すと、約' + fmt(pace) + '点ペースです。週の時間の組み方は<a href="/articles/jikan" class="underline text-main-dark">「配点の割合で、週の勉強時間を組み替える」</a>にまとめています。';
+                } else {
+                    el('ns-pace').textContent = '';
+                }
+            } else {
+                el('ns-heading').textContent = '最低点は超えています。次は、上積みと崩れない形です';
+                el('ns-pace').innerHTML = 'この水準を本番で再現するための進め方は、<a href="/articles/soron4" class="underline text-main-dark">総論「続ける仕組みと完成度」</a>にまとめています。';
+            }
+            // 科目カード：不足時は目標までの差が大きい順、超過時は得点率が低い順
+            var order = [0, 1, 2];
+            if (gap > 0) { order.sort(function(a, b) { return (targets[b] - scores[b]) - (targets[a] - scores[a]); }); }
+            else { order.sort(function(a, b) { return rates[a] - rates[b]; }); }
+            var cards = '';
+            for (i = 0; i < 3; i++) {
+                var idx = order[i], s = u.subjects[idx], meta = SUBJ_NEXT[s.key];
+                var head = (gap > 0)
+                    ? s.label + '｜あと' + fmt(Math.max(0, targets[idx] - scores[idx])) + '点'
+                    : s.label + '｜今' + fmt(rates[idx]) + '％';
+                cards += '<a href="' + meta.href + '" class="card p-5 block hover:shadow-md transition">'
+                    + '<p class="font-black text-main-dark mb-1"><span class="inline-block w-3.5 h-3.5 rounded-sm mr-1 align-middle" style="background:' + s.color + '"></span>' + head + '</p>'
+                    + '<p class="font-bold text-sm mb-1">' + meta.title + '</p>'
+                    + '<p class="text-sm text-gray-600">' + meta.desc + '</p></a>';
+            }
+            el('ns-cards').innerHTML = cards;
+            // 相談CTA（結果連動）
+            if (gap > 0) {
+                el('ns-cta-heading').textContent = 'この結果をもとに、あと' + fmt(gap) + '点の取り方を設計する';
+                el('ns-cta-text').textContent = '無料相談では、この結果をもとに、どの科目のどこで' + fmt(gap) + '点を取るか、最初の一か月の進め方まで一緒に設計します。下の「結果をコピーする」で結果を控えて、LINEやメールでそのまま送ってください。';
+            } else {
+                el('ns-cta-heading').textContent = 'この結果をもとに、上積みの設計をする';
+                el('ns-cta-text').textContent = '無料相談では、この結果をもとに、最低点からどれだけ余裕を作るか、残りの期間の進め方を一緒に設計します。下の「結果をコピーする」で結果を控えて、LINEやメールでそのまま送ってください。';
+            }
+            el('ns-copy-done').style.display = 'none';
+            // コピー用テキスト
+            var lines = [];
+            lines.push('【距離メーターの結果｜MEDUCATE天王寺校】');
+            lines.push('志望校：' + u.name);
+            if (current === 'hyo') {
+                lines.push('今の推定得点（学科のみ）：' + fmt(nowTotal) + '点／500点');
+                lines.push('合格最低点（2026年度）：' + fmt(u.min) + '点／630点');
+                lines.push('小論文・面接等の想定：' + fmt(assumedExtra) + '点 → 学科の必要点：' + fmt(targetTotal) + '点');
+            } else if (u.firstOnly) {
+                lines.push('今の推定得点：' + fmt(nowTotal) + '点／' + u.total + '点');
+                lines.push('1次合格最低点（2026年度）：' + fmt(u.min) + '点');
+            } else {
+                lines.push('今の推定得点：' + fmt(nowTotal) + '点／' + u.total + '点');
+                lines.push('合格最低点（2026年度）：' + fmt(u.min) + '点');
+            }
+            lines.push(gap > 0 ? ('最低点までの不足：' + fmt(gap) + '点') : ('最低点を上回る分：' + fmt(-gap) + '点'));
+            for (i = 0; i < 3; i++) {
+                var s2 = u.subjects[i];
+                lines.push('・' + s2.label + '：' + fmt(scores[i]) + '点（' + fmt(rates[i]) + '％）→ 目標の例 ' + fmt(targets[i]) + '点（' + fmt(targets[i] / s2.max * 100) + '％）');
+            }
+            if (days > 0) lines.push('1次試験（' + u.examLabel + '）まで：あと' + days + '日');
+            lines.push('https://meducate.oubijuku.com/kyori?u=' + current);
+            lastCopyText = lines.join('\n');
         }
 
         var btns = document.querySelectorAll('.uni-btn');
@@ -556,6 +644,21 @@
             })(keys[j]);
         }
         el('hyo-extra-select').addEventListener('change', update);
+        el('ns-copy').addEventListener('click', function() {
+            function done() { el('ns-copy-done').style.display = ''; }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(lastCopyText).then(done, function() { fallbackCopy(); done(); });
+            } else { fallbackCopy(); done(); }
+            function fallbackCopy() {
+                var ta = document.createElement('textarea');
+                ta.value = lastCopyText;
+                ta.style.position = 'fixed'; ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                try { document.execCommand('copy'); } catch (e) {}
+                document.body.removeChild(ta);
+            }
+        });
 
         // 大学別ページからのパラメータ（?u=ompu など）で初期選択
         var q = null;
