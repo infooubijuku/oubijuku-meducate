@@ -2,11 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://meducate.oubijuku.com/</loc></url>
   <url><loc>https://meducate.oubijuku.com/course</loc></url>
+  <url><loc>https://meducate.oubijuku.com/teachers</loc></url>
   <url><loc>https://meducate.oubijuku.com/universities</loc></url>
   <url><loc>https://meducate.oubijuku.com/universities/ompu</loc></url>
   <url><loc>https://meducate.oubijuku.com/universities/kmu</loc></url>
   <url><loc>https://meducate.oubijuku.com/universities/kindai</loc></url>
   <url><loc>https://meducate.oubijuku.com/universities/hyo-med</loc></url>
+  <url><loc>https://meducate.oubijuku.com/articles</loc></url>
+  <url><loc>https://meducate.oubijuku.com/articles/kumiawase</loc></url>
+  <url><loc>https://meducate.oubijuku.com/articles/shutsugan</loc></url>
+  <url><loc>https://meducate.oubijuku.com/articles/gakuhi</loc></url>
   <url><loc>https://meducate.oubijuku.com/results</loc></url>
   <url><loc>https://meducate.oubijuku.com/contact</loc></url>
 </urlset>
