@@ -245,6 +245,7 @@
             lines.push('※昨年度（2026年度）の合格最低点をもとにした目安です。今年の合格ラインを約束するものではありません。');
             shareText = lines.join('\n');
             el('ns-share-line').href = 'https://line.me/R/share?text=' + encodeURIComponent(shareText);
+            el('ns-share-x').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(lines.slice(0, 3).join('\n')) + '&url=' + encodeURIComponent('https://meducate.oubijuku.com/kyori?u=' + current);
         }
 
         function renderNext(scores, targets, rates, gap, targetTotal, nowTotal, assumedExtra) {
