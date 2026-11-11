@@ -244,7 +244,8 @@
             lines.push('https://meducate.oubijuku.com/kyori?u=' + current + '&via=share');
             lines.push('※昨年度（2026年度）の合格最低点をもとにした目安です。今年の合格ラインを約束するものではありません。');
             shareText = lines.join('\n');
-            el('ns-share-line').href = 'https://line.me/R/share?text=' + encodeURIComponent(shareText);
+            var lineText = lines.filter(function(l){ return l.indexOf('https://meducate.oubijuku.com/kyori') !== 0; }).join('\n');
+            el('ns-share-line').href = 'https://social-plugins.line.me/lineit/share?url=' + encodeURIComponent('https://meducate.oubijuku.com/kyori?u=' + current + '&via=share') + '&text=' + encodeURIComponent(lineText);
             el('ns-share-x').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(u.name + 'の「合格までの距離」を計算しました。今の得点率から、合格最低点まであと何点か分かります。') + '&url=' + encodeURIComponent('https://meducate.oubijuku.com/kyori?u=' + current + '&via=share');
         }
 
