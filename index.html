@@ -155,7 +155,7 @@
         <div class="lg:col-span-7">
             <p class="inline-block text-[11px] md:text-sm font-bold bg-white border border-main text-main-dark px-3 py-1.5 rounded-full shadow-sm mb-5">関西の私立医学部受験専門｜天王寺</p>
             <h1 class="text-3xl md:text-5xl font-black leading-snug mb-5 text-main-dark">関西私立医大4校専門</h1>
-            <p class="text-[15px] md:text-lg leading-relaxed max-w-2xl">MEDUCATE天王寺校は、大阪医科薬科大学・関西医科大学・近畿大学・兵庫医科大学の4校を専門に指導する、関西の私立医学部受験専門塾です。MEDUCATEの本部プロ講師＋校舎長＋現役医学部生講師28名が、計画から実践、そして合格の瞬間までマネジメントします。</p>
+            <p class="text-[15px] md:text-lg leading-relaxed max-w-2xl">MEDUCATE天王寺校は、大阪医科薬科大学・関西医科大学・近畿大学・兵庫医科大学の4校を専門に指導する、関西の私立医学部受験専門塾です。</p>
             <div class="flex flex-wrap gap-1.5 mt-6 mb-6">
                 <span class="text-xs font-bold bg-white border border-soft text-main-dark px-2.5 py-1 rounded-full shadow-sm">現役医学部生講師 28名</span>
                 <span class="text-xs font-bold bg-white border border-soft text-main-dark px-2.5 py-1 rounded-full shadow-sm">自習室 365日 8:00〜23:00</span>
@@ -167,6 +167,24 @@
                 <a href="/universities" class="bg-white border-2 border-main text-main-dark font-bold text-center px-8 py-4 rounded hover:bg-main-light transition tracking-wider">大学別の入試情報を見る</a>
             </div>
             <p class="mt-4 text-sm text-gray-600">大学を選んで、今の得点率を入れるだけ。登録は不要です。</p>
+            <div class="mt-5 max-w-md">
+                <div class="bg-white border border-soft rounded-lg px-4 py-3.5 shadow-sm">
+                    <div class="flex flex-wrap items-baseline justify-between gap-x-3">
+                        <span class="text-sm font-black text-main-dark">大阪医科薬科大学</span>
+                        <span class="text-xs text-gray-500">推定 <span id="mv-cur">220</span>点／400点</span>
+                    </div>
+                    <p class="text-[11px] text-gray-500 mt-0.5">英語60%・数学50%・理科55%の入力例</p>
+                    <div class="relative mt-3 mb-1.5">
+                        <div class="h-3.5 rounded-full bg-gray-100 overflow-hidden"><div id="mv-bar" class="h-full rounded-full" style="width:55%;background:linear-gradient(90deg,#9CC3EA,#5B93D6,#1D5FA8);"></div></div>
+                        <div class="absolute -top-1 -bottom-1 w-0.5 bg-red-500" style="left:71.75%"></div>
+                    </div>
+                    <div class="flex items-end justify-between gap-x-3">
+                        <p class="text-[11px] font-bold text-red-600">合格最低点 287点</p>
+                        <p class="text-main-dark font-bold">あと <span id="mv-gap" class="text-4xl font-black text-main leading-none">67</span> 点</p>
+                    </div>
+                </div>
+                <p class="text-[11px] text-gray-500 mt-1.5">※2026年度の合格最低点で計算した入力例です</p>
+            </div>
             <img src="/img/classroom.jpg" alt="MEDUCATE天王寺校の教室（桜灯塾と同フロア）で自習する生徒たち" class="w-full rounded-lg shadow mt-8 object-cover" style="max-height:340px;">
         </div>
         <aside class="lg:col-span-5">
@@ -449,6 +467,44 @@
           });
         });
       })();
+    </script>
+    <script>
+    (function () {
+        var bar = document.getElementById('mv-bar');
+        var gap = document.getElementById('mv-gap');
+        var cur = document.getElementById('mv-cur');
+        if (!bar || !gap) return;
+        var MIN = 287, TOTAL_CUR = 220, GAP_END = 67, FILL = 55;
+        function showFinal() {
+            bar.style.width = FILL + '%';
+            gap.textContent = GAP_END;
+            if (cur) cur.textContent = TOTAL_CUR;
+        }
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { showFinal(); return; }
+        var started = false;
+        function run() {
+            if (started) return; started = true;
+            bar.style.width = '0%'; gap.textContent = MIN; if (cur) cur.textContent = '0';
+            var t0 = null, dur = 1400;
+            function step(ts) {
+                if (!t0) t0 = ts;
+                var p = Math.min((ts - t0) / dur, 1);
+                var e = 1 - Math.pow(1 - p, 3);
+                var now = TOTAL_CUR * e;
+                bar.style.width = (FILL * e) + '%';
+                if (cur) cur.textContent = Math.round(now);
+                gap.textContent = Math.round(MIN - now);
+                if (p < 1) requestAnimationFrame(step); else showFinal();
+            }
+            requestAnimationFrame(step);
+        }
+        if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function (entries) {
+                if (entries[0].isIntersecting) { run(); io.disconnect(); }
+            }, { threshold: 0.4 });
+            io.observe(bar);
+        } else { run(); }
+    })();
     </script>
 </body>
 </html>
