@@ -205,6 +205,7 @@
             // 記録は自動では残さない（「この結果を記録する」ボタンが押されたときだけ保存する）
             lastRates = rates.slice();
             renderNext(scores, targets, rates, gap, targetTotal, nowTotal, assumedExtra);
+            updateShare(u, rates, gap, assumedExtra);
         }
 
         var SUBJ_NEXT = {
@@ -225,6 +226,26 @@
             return new Date((parseInt(parts[0], 10) + gradeOffset) + '-' + parts[1] + '-' + parts[2] + 'T00:00:00');
         }
         var lastCopyText = '';
+        var shareText = '';
+
+        function updateShare(u, rates, gap, assumedExtra) {
+            var lines = [];
+            lines.push(u.name + 'の「合格までの距離」を計算しました。');
+            lines.push('今の得点率は、英語' + fmt(rates[0]) + '%・数学' + fmt(rates[1]) + '%・理科' + fmt(rates[2]) + '%です。');
+            if (current === 'hyo') {
+                if (gap > 0) { lines.push('小論文・面接等で' + fmt(assumedExtra) + '点取る想定では、学科の必要点まであと約' + fmt(gap) + '点です（合格最低点は' + fmt(u.min) + '点）。'); }
+                else { lines.push('小論文・面接等で' + fmt(assumedExtra) + '点取る想定では、学科の必要点を約' + fmt(-gap) + '点上回る計算です（合格最低点は' + fmt(u.min) + '点）。'); }
+            } else if (gap > 0) {
+                lines.push((u.firstOnly ? '1次合格最低点' : '合格最低点') + '（2026年度・' + fmt(u.min) + '点）まで、あと約' + fmt(gap) + '点です。');
+            } else {
+                lines.push((u.firstOnly ? '1次合格最低点' : '合格最低点') + '（2026年度・' + fmt(u.min) + '点）を、約' + fmt(-gap) + '点上回る計算です。');
+            }
+            lines.push('▼ 関西私立医学部4校の距離メーター（無料・登録不要）');
+            lines.push('https://meducate.oubijuku.com/kyori?u=' + current);
+            lines.push('※昨年度（2026年度）の合格最低点をもとにした目安です。今年の合格ラインを約束するものではありません。');
+            shareText = lines.join('\n');
+            el('ns-share-line').href = 'https://line.me/R/share?text=' + encodeURIComponent(shareText);
+        }
 
         function renderNext(scores, targets, rates, gap, targetTotal, nowTotal, assumedExtra) {
             var u = uni();
@@ -418,6 +439,22 @@
             function fallbackCopy() {
                 var ta = document.createElement('textarea');
                 ta.value = lastCopyText;
+                ta.style.position = 'fixed'; ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                try { document.execCommand('copy'); } catch (e) {}
+                document.body.removeChild(ta);
+            }
+        });
+
+        el('ns-share-copy').addEventListener('click', function() {
+            function done() { el('ns-share-done').style.display = ''; }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(shareText).then(done, function() { fallbackShareCopy(); done(); });
+            } else { fallbackShareCopy(); done(); }
+            function fallbackShareCopy() {
+                var ta = document.createElement('textarea');
+                ta.value = shareText;
                 ta.style.position = 'fixed'; ta.style.opacity = '0';
                 document.body.appendChild(ta);
                 ta.select();

@@ -293,6 +293,15 @@
                         <p class="text-xs text-gray-600 mt-3" id="ns-save-done" style="display:none;"></p>
                     </div>
                 </div>
+            <div class="card p-5 md:p-6 mt-6">
+                <p class="font-black text-main-dark mb-2">結果を保護者に送る</p>
+                <p class="text-sm md:text-base mb-4">計算した結果は、この端末の中にだけあります。保護者の方にも見てもらえるよう、結果の文章をLINEで送るか、コピーして渡せます。</p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a id="ns-share-line" href="#" target="_blank" rel="noopener" class="bg-line text-white font-bold text-center px-6 py-3.5 rounded shadow hover:opacity-90 tracking-wider">LINEで送る</a>
+                    <button type="button" id="ns-share-copy" class="bg-white border-2 border-main text-main-dark font-bold text-center px-6 py-3.5 rounded hover:bg-main-light transition tracking-wider">文章をコピーする</button>
+                </div>
+                <p class="text-xs text-gray-600 mt-3" id="ns-share-done" style="display:none;">コピーしました。LINEやメールに、そのまま貼って送ってください。</p>
+            </div>
             <p class="text-sm text-gray-600">この結果は、2026年度の合格最低点をもとにした目安です。合格最低点は年度により変わります。また、模試や過去問の得点率は、問題の難易度によって本番の得点率とそのまま一致するとは限りません。数字の出どころは、下の「情報元（一次情報）」をご覧ください。</p>
             </div>
             <div class="border-t border-soft mt-8 pt-6">
@@ -402,7 +411,7 @@
         document.getElementById('menu-close').addEventListener('click', function(){ nav.classList.remove('open'); });
     </script>
 
-    <script src="/kyori-meter.js?v=20261111-7"></script>
+    <script src="/kyori-meter.js?v=20261111-8"></script>
 
     <!-- GA4 イベントトラッキング -->
     <script>
