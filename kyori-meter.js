@@ -241,11 +241,11 @@
                 lines.push((u.firstOnly ? '1次合格最低点' : '合格最低点') + '（2026年度・' + fmt(u.min) + '点）を、約' + fmt(-gap) + '点上回る計算です。');
             }
             lines.push('▼ 関西私立医学部4校の距離メーター（無料・登録不要）');
-            lines.push('https://meducate.oubijuku.com/kyori?u=' + current);
+            lines.push('https://meducate.oubijuku.com/kyori?u=' + current + '&via=share');
             lines.push('※昨年度（2026年度）の合格最低点をもとにした目安です。今年の合格ラインを約束するものではありません。');
             shareText = lines.join('\n');
             el('ns-share-line').href = 'https://line.me/R/share?text=' + encodeURIComponent(shareText);
-            el('ns-share-x').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(lines.slice(0, 3).join('\n')) + '&url=' + encodeURIComponent('https://meducate.oubijuku.com/kyori?u=' + current);
+            el('ns-share-x').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(u.name + 'の「合格までの距離」を計算しました。今の得点率から、合格最低点まであと何点か分かります。') + '&url=' + encodeURIComponent('https://meducate.oubijuku.com/kyori?u=' + current + '&via=share');
         }
 
         function renderNext(scores, targets, rates, gap, targetTotal, nowTotal, assumedExtra) {
@@ -373,7 +373,7 @@
                 lines.push('・' + s2.label + '：' + fmt(scores[i]) + '点（' + fmt(rates[i]) + '％）→ 目標の例 ' + fmt(targets[i]) + '点（' + fmt(targets[i] / s2.max * 100) + '％）');
             }
             if (days > 0) lines.push('1次試験（' + examLabelShifted(u) + '）まで：あと' + days + '日' + (gradeOffset > 0 ? '（日程は2027年度と同じ時期で計算）' : ''));
-            lines.push('https://meducate.oubijuku.com/kyori?u=' + current);
+            lines.push('https://meducate.oubijuku.com/kyori?u=' + current + '&via=share');
             lastCopyText = lines.join('\n');
         }
 
