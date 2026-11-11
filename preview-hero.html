@@ -172,7 +172,7 @@
                 <div class="bg-white border border-soft rounded-lg px-4 py-3.5 shadow-sm">
                     <div class="flex flex-wrap items-baseline justify-between gap-x-3">
                         <span class="text-sm font-black text-main-dark">大阪医科薬科大学</span>
-                        <span class="text-xs text-gray-500">推定 220点／400点</span>
+                        <span class="text-xs text-gray-500">推定 <span id="mv-cur">220</span>点／400点</span>
                     </div>
                     <p class="text-[11px] text-gray-500 mt-0.5">英語60%・数学50%・理科55%の入力例</p>
                     <div class="relative mt-3 mb-1.5">
@@ -474,33 +474,38 @@
     (function () {
         var bar = document.getElementById('mv-bar');
         var gap = document.getElementById('mv-gap');
+        var cur = document.getElementById('mv-cur');
         if (!bar || !gap) return;
-        var TARGET = 67, FILL = 55;
-        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            bar.style.width = FILL + '%'; gap.textContent = TARGET; return;
+        var MIN = 287, TOTAL_CUR = 220, GAP_END = 67, FILL = 55;
+        function showFinal() {
+            bar.style.width = FILL + '%';
+            gap.textContent = GAP_END;
+            if (cur) cur.textContent = TOTAL_CUR;
         }
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { showFinal(); return; }
         var started = false;
-        function cycle() {
-            bar.style.transition = 'none'; bar.style.width = '0%'; gap.textContent = '0';
-            requestAnimationFrame(function () { requestAnimationFrame(function () {
-                bar.style.transition = 'width 1.1s ease'; bar.style.width = FILL + '%';
-                var t0 = null;
-                function step(ts) {
-                    if (!t0) t0 = ts;
-                    var p = Math.min((ts - t0) / 1100, 1);
-                    gap.textContent = Math.round(TARGET * (1 - Math.pow(1 - p, 3)));
-                    if (p < 1) requestAnimationFrame(step);
-                }
-                requestAnimationFrame(step);
-            }); });
-            setTimeout(cycle, 6500);
+        function run() {
+            if (started) return; started = true;
+            bar.style.width = '0%'; gap.textContent = MIN; if (cur) cur.textContent = '0';
+            var t0 = null, dur = 1400;
+            function step(ts) {
+                if (!t0) t0 = ts;
+                var p = Math.min((ts - t0) / dur, 1);
+                var e = 1 - Math.pow(1 - p, 3);
+                var now = TOTAL_CUR * e;
+                bar.style.width = (FILL * e) + '%';
+                if (cur) cur.textContent = Math.round(now);
+                gap.textContent = Math.round(MIN - now);
+                if (p < 1) requestAnimationFrame(step); else showFinal();
+            }
+            requestAnimationFrame(step);
         }
         if ('IntersectionObserver' in window) {
             var io = new IntersectionObserver(function (entries) {
-                if (entries[0].isIntersecting && !started) { started = true; cycle(); io.disconnect(); }
+                if (entries[0].isIntersecting) { run(); io.disconnect(); }
             }, { threshold: 0.4 });
             io.observe(bar);
-        } else { cycle(); }
+        } else { run(); }
     })();
     </script>
 </body>
