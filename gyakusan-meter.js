@@ -94,6 +94,12 @@ if (seg.policy === 'cap') { return '1日 ' + fmtD(seg.dailyLow) + '時間〜（1
 return '1日あたりは表示しません（12時間を超える計算のため）';
 }
 
+function shareDailyText(seg) {
+if (seg.policy === 'normal' || seg.policy === 'warn') { return '1日 ' + fmtD(seg.dailyLow) + '〜' + fmtD(seg.dailyHigh) + '時間';}
+if (seg.policy === 'cap') { return '1日 ' + fmtD(seg.dailyLow) + '時間〜（12時間を超える分は表示していません）';}
+return '1日あたりの量は、12時間を超える計算になるため表示していません';
+}
+
 function update() {
 var u = UNIS[current];
 var startVal = parseFloat(el('dev-num').value);
@@ -112,6 +118,11 @@ el('gauge-start-label').textContent = '今 ' + fmtDev(startVal);
 el('gauge-goal-label').textContent = 'ゴール ' + fmtDev(u.goal);
 el('gauge-start-label').style.left = pos(startVal) + '%';
 el('gauge-goal-label').style.left = pos(u.goal) + '%';
+// 今とゴールが近い（差5ポイント以内）ときは、文字が重ならないようゴールを下段にずらす
+var stagger = Math.abs(pos(startVal) - pos(u.goal)) < 15;
+el('gauge-start-label').style.top = '1.6rem';
+el('gauge-goal-label').style.top = stagger ? '2.95rem' : '1.6rem';
+el('gauge-box').style.marginBottom = stagger ? '4.8rem' : '2.5rem';
 if (r.gap <= 0) {
 el('gs-main').style.display = 'none';
 el('gs-done').style.display = '';
@@ -138,7 +149,9 @@ html += '<div class="card p-5" style="' + style + '">'
 + '<p class="font-black text-main-dark mb-1">' + s.label + ' ' + badge + '</p>'
 + '<p class="text-xs text-gray-500 mb-2">' + dateLabel(s.from) + '〜' + dateLabel(new Date(s.to.getTime() - DAY_MS)) + '｜' + s.days + '日（勉強できる日 約' + s.study + '日）</p>'
 + '<p class="text-sm">配分 <span class="font-bold">' + fmtH(s.allocLow) + '〜' + fmtH(s.allocHigh) + '時間</span></p>'
-+ '<p class="font-black text-main-dark">' + dailyText(s) + '</p></div>';
++ '<p class="font-black text-main-dark">' + dailyText(s) + '</p>'
++ (s.policy === 'warn' ? '<p class="text-xs font-bold mt-1" style="color:#8A6D1A;">学校のある日には収まりにくい量です</p>' : '')
++ '</div>';
 }
 el('gs-segments').innerHTML = html;
 var adv = el('gs-advice');
@@ -178,8 +191,13 @@ lines.push('前提：週' + rest + '日休む・行事や体調不良などの�
 slines.push('ギャップ' + fmtDev(r.gap) + 'を埋める時間の目安は、' + fmtH(r.totalLow) + '〜' + fmtH(r.totalHigh) + '時間です。');
 for (var i = 0; i < r.segments.length; i++) {
 var s = r.segments[i];
-lines.push('・' + s.label + '：配分 ' + fmtH(s.allocLow) + '〜' + fmtH(s.allocHigh) + '時間、' + dailyText(s));
-slines.push(s.label + 'は ' + dailyText(s) + '。');
+if (s.policy === 'over') {
+lines.push('・' + s.label + '：配分 ' + fmtH(s.allocLow) + '〜' + fmtH(s.allocHigh) + '時間。' + shareDailyText(s));
+slines.push(s.label + 'の' + shareDailyText(s) + '。');
+} else {
+lines.push('・' + s.label + '：配分 ' + fmtH(s.allocLow) + '〜' + fmtH(s.allocHigh) + '時間、' + shareDailyText(s));
+slines.push(s.label + 'は ' + shareDailyText(s) + '。');
+}
 }
 }
 lines.push('▼ 偏差値から見る逆算メーター（無料・登録不要）');

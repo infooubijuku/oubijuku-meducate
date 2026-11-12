@@ -215,7 +215,7 @@
         <h2 class="section-title font-black text-main-dark mb-6">4．結果を見る</h2>
         <div class="card p-6 md:p-8">
             <p class="font-black text-main-dark text-lg mb-4" id="res-title">兵庫医科大学｜ゴール偏差値 62.5まで</p>
-            <div class="relative mt-8 mb-10 mx-2">
+            <div class="relative mt-8 mb-10 mx-2" id="gauge-box">
                 <div class="w-full rounded-full" style="background:#EAF2FB;height:14px;"></div>
                 <div id="gauge-start" class="absolute -top-1.5 w-6 h-6 rounded-full border-2 border-white shadow" style="background:#E8862E;transform:translateX(-50%);left:43%;"></div>
                 <div id="gauge-goal" class="absolute -top-1.5 w-6 h-6 rounded-full border-2 border-white shadow" style="background:#C0392B;transform:translateX(-50%);left:79%;"></div>
@@ -287,7 +287,7 @@
         <p class="text-sm md:text-base mb-4">ゴール偏差値は河合塾の公表値（2027年度入試向け）、1次試験の日程は各大学の公式な入試概要で照合したものです。勉強時間の換算は、医学部専門予備校などが公表している経験則をもとにしています。経験則であり、合格者の実績統計ではありません。</p>
         <ul class="text-sm space-y-2">
             <li>勉強時間の経験則：<a href="https://www.kyotoijuku.com/column/increase-your-score-by-10/" target="_blank" rel="noopener" class="underline text-main-dark">京都医塾「偏差値を10上げるには？」</a>（偏差値1を上げるのに1科目30〜50時間と言われる、とする経験則）／<a href="https://www.takeda.tv/tokiwadai/blog/post-242646/" target="_blank" rel="noopener" class="underline text-main-dark">武田塾ときわ台校のブログ</a>（偏差値5アップに約1,000時間と言われている、とする紹介）</li>
-            <li>ゴール偏差値：<a href="https://search.keinet.ne.jp/2534/general/border_rate" target="_blank" rel="noopener" class="underline text-main-dark">河合塾 Kei-Net 関西医科大学（ボーダー偏差値67.5）</a>／<a href="https://www.minkou.jp/university/school/deviation/20606/" target="_blank" rel="noopener" class="underline text-main-dark">みんなの大学情報 兵庫医科大学（河合塾提供・62.5）</a></li>
+            <li>ゴール偏差値（いずれも河合塾 Kei-Net・2027年度入試）：<a href="https://search.keinet.ne.jp/2516/general/border_rate" target="_blank" rel="noopener" class="underline text-main-dark">大阪医科薬科大学（ボーダー偏差値67.5）</a>／<a href="https://search.keinet.ne.jp/2534/general/border_rate" target="_blank" rel="noopener" class="underline text-main-dark">関西医科大学（ボーダー偏差値67.5）</a>／<a href="https://search.keinet.ne.jp/2536/general/border_rate" target="_blank" rel="noopener" class="underline text-main-dark">近畿大学（ボーダー偏差値65.0）</a>／<a href="https://search.keinet.ne.jp/2574/general/border_rate" target="_blank" rel="noopener" class="underline text-main-dark">兵庫医科大学（ボーダー偏差値62.5）</a></li>
             <li>大阪医科薬科大学：<a href="https://www.ompu.ac.jp/admission/undergraduate/qt931k000000801q-att/afif3u000000fsvj.pdf" target="_blank" rel="noopener" class="underline text-main-dark">2027年度入試概要（PDF）</a>／<a href="https://www.ompu.ac.jp/admission/undergraduate/medical.html" target="_blank" rel="noopener" class="underline text-main-dark">入試情報</a></li>
             <li>関西医科大学：<a href="https://www.kmu.ac.jp/juk/fom/exam/m3v58f0000001eg8-att/2027kmu-nyushigaiyo.pdf" target="_blank" rel="noopener" class="underline text-main-dark">2027年度入試概要（PDF）</a>／<a href="https://www.kmu.ac.jp/juk/fom/exam/nyushigaiyou.html" target="_blank" rel="noopener" class="underline text-main-dark">入試概要</a></li>
             <li>近畿大学：<a href="https://kindai.jp/exam/capacity/" target="_blank" rel="noopener" class="underline text-main-dark">入学定員</a>・<a href="https://kindai.jp/exam/system/general1_a/subject/" target="_blank" rel="noopener" class="underline text-main-dark">試験科目（一般入試・前期A日程）</a></li>
@@ -372,7 +372,7 @@
         document.getElementById('menu-close').addEventListener('click', function(){ nav.classList.remove('open'); });
     </script>
 
-    <script src="/gyakusan-meter.js?v=20261112-1"></script>
+    <script src="/gyakusan-meter.js?v=20261112-2"></script>
 
     <!-- GA4 イベントトラッキング -->
     <script>
