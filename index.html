@@ -69,7 +69,7 @@
         a.bg-main { box-shadow: 0 8px 20px -8px rgba(29,95,168,0.6); }
         #mobile-nav { transition: transform 0.35s ease; transform: translateX(100%); }
         #mobile-nav.open { transform: translateX(0); }
-        .paper-band { background: var(--main-light); background-image: radial-gradient(rgba(20,73,127,0.055) 1px, transparent 1px); background-size: 14px 14px; }
+        .paper-band { background: var(--main-light); background-image: radial-gradient(1100px 550px at 88% -10%, rgba(29,95,168,0.10), rgba(29,95,168,0) 60%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E"), radial-gradient(rgba(20,73,127,0.09) 1.2px, transparent 1.2px); background-size: auto, 160px 160px, 14px 14px; }
     </style>
 
     <script type="application/ld+json">
@@ -153,12 +153,13 @@
     <!-- ヒーロー -->
     <section class="paper-band border-b border-soft">
         <div class="max-w-6xl mx-auto px-4 pt-[2px] pb-5 md:pt-3 md:pb-12">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        <div class="lg:col-span-7">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-8 gap-y-0 lg:gap-y-5 items-start">
+        <div class="lg:col-span-7 lg:row-start-1">
             <h1 class="text-3xl md:text-5xl font-black leading-snug mb-[2px] md:mb-2 text-main-dark">関西私立医大4校専門</h1>
             <p class="text-xs md:text-sm text-gray-600 tracking-wider">大阪医科薬科／関西医科／近畿／兵庫医科</p>
             <p class="text-[15px] md:text-lg leading-relaxed max-w-2xl mt-1.5">校舎長・プロ講師・現役医学部生講師陣のマネジメントチームが、<br class="hidden md:block">あなた専用の計画立案から日々の学習実行まで伴走する個別指導</p>
-            <a href="/kyori" class="block max-w-md mt-5 md:mt-6 bg-white border-2 border-main rounded-lg px-4 py-3 shadow-sm">
+        </div>
+        <a href="/kyori" class="block mt-5 lg:mt-0 lg:col-span-5 lg:col-start-8 lg:row-start-1 bg-white border-2 border-main rounded-lg px-4 py-3 shadow-sm">
                 <p class="text-[11px] font-bold text-main tracking-wider mb-1">入力例｜こんな結果が出ます</p>
                 <div class="flex flex-wrap items-baseline justify-between gap-x-3">
                     <span class="text-sm font-black text-main-dark">大阪医科薬科大学</span>
@@ -175,36 +176,30 @@
                 <div class="flex items-end justify-end gap-x-3">
                     <p class="text-main-dark font-bold">あと <span id="mv-gap" class="text-4xl font-black text-main leading-none">67</span> 点</p>
                 </div>
-                <div class="flex items-end justify-between gap-x-3 mt-2">
-                    <p class="text-[11px] text-gray-500">※2026年度の合格最低点で計算した入力例です</p>
-                    <p class="text-xs font-bold text-main whitespace-nowrap">自分の点数で試す ›</p>
-                </div>
+                <p class="text-[11px] text-gray-500 mt-2">※2026年度の合格最低点で計算した入力例です</p>
+                    <span class="block bg-main text-white text-sm font-bold text-center px-4 py-2.5 rounded shadow mt-2.5">自分の点数で試す ›</span>
             </a>
-            <div class="flex flex-col sm:flex-row gap-[22px] md:gap-9 mt-2 md:mt-3">
-                <div class="flex-1">
-                    <a href="/kyori" class="block bg-white border-2 border-main text-main-dark font-bold text-center px-8 py-4 rounded hover:bg-main-light transition tracking-wider">合格最低点まで、あと何点？<span class="block text-right text-xs font-bold mt-1 text-main">自分の点数で試す ›</span></a>
-                </div>
-                <div class="flex-1">
-                    <a href="/gyakusan" class="block bg-main text-white font-bold text-center px-5 py-4 rounded shadow-lg hover:opacity-90 tracking-wider">あなたは1日何時間必要？<span class="block mt-1.5 text-[10px] font-normal text-white/85 tracking-normal whitespace-nowrap">例：高2・偏差値50・兵庫医科で1日3.0〜5.0／高3で4.6〜7.6時間</span></a>
-                </div>
+        <div class="lg:col-span-7 lg:row-start-2 mt-2 lg:-mt-8">
+            <div class="max-w-md">
+                <a href="/gyakusan" class="block h-full bg-white border-2 border-main text-main-dark font-bold text-center px-5 py-4 rounded hover:bg-main-light transition"><span class="whitespace-nowrap">あなたは1日何時間必要？</span><span class="block mt-1.5 text-[10px] font-normal text-gray-500 tracking-normal whitespace-nowrap">例：高2・偏差値50・兵庫医科で1日3.0〜5.0／高3で4.6〜7.6時間</span></a>
             </div>
             <p class="mt-[24px] md:mt-12 text-sm text-gray-600">どちらも登録は不要です。</p>
             <p class="mt-[13px] md:mt-4 text-sm"><a href="/universities" class="underline text-main-dark font-bold">保護者の方へ：4校の日程・学費・併願を見る</a></p>
-            <div class="flex flex-wrap gap-1.5 mt-4 md:mt-5">
-                <span class="text-xs font-bold bg-white border border-soft text-main-dark px-2.5 py-1 rounded-full shadow-sm">現役医学部生講師 28名</span>
-                <span class="text-xs font-bold bg-white border border-soft text-main-dark px-2.5 py-1 rounded-full shadow-sm">自習室 365日 8:00〜23:00</span>
-                <span class="text-xs font-bold bg-white border border-soft text-main-dark px-2.5 py-1 rounded-full shadow-sm">毎朝のZoom朝勉強会 6:30〜7:00</span>
-                <span class="text-xs font-bold bg-white border border-soft text-main-dark px-2.5 py-1 rounded-full shadow-sm">JR天王寺駅 北口 徒歩5分</span>
+            <div class="grid grid-cols-2 gap-1.5 mt-4 md:mt-5 max-w-md">
+                <span class="text-[11px] md:text-xs font-bold bg-white border border-soft text-main-dark px-2 py-1 rounded-full shadow-sm text-center whitespace-nowrap">現役医学部生講師 28名</span>
+                <span class="text-[11px] md:text-xs font-bold bg-white border border-soft text-main-dark px-2 py-1 rounded-full shadow-sm text-center whitespace-nowrap">自習室 365日 8:00〜23:00</span>
+                <span class="text-[11px] md:text-xs font-bold bg-white border border-soft text-main-dark px-2 py-1 rounded-full shadow-sm text-center whitespace-nowrap">毎朝のZoom朝勉強会 6:30〜7:00</span>
+                <span class="text-[11px] md:text-xs font-bold bg-white border border-soft text-main-dark px-2 py-1 rounded-full shadow-sm text-center whitespace-nowrap">JR天王寺駅 北口 徒歩5分</span>
             </div>
-            <img src="/img/classroom.jpg" alt="MEDUCATE天王寺校の教室（桜灯塾と同フロア）で自習する生徒たち" class="w-full rounded-lg shadow mt-[34px] md:mt-12 object-cover" style="max-height:340px;">
         </div>
-        <aside class="lg:col-span-5">
-            <figure class="card overflow-hidden max-w-md mx-auto lg:max-w-none w-full">
+        <aside class="lg:col-span-5 lg:col-start-8 lg:row-start-2 mt-8 lg:mt-0">
+            <figure class="card overflow-hidden w-full lg:max-w-[78%] lg:mx-auto">
                 <a href="/img/results-2025.jpg" target="_blank" rel="noopener"><img src="/img/results-2025.jpg" alt="MEDUCATE 2025年度合格実績：医学部医学科101名合格（国公立16名・私立85名）。大阪医科薬科大学2名・近畿大学5名を含む" class="w-full block"></a>
                 <figcaption class="text-xs text-gray-600 p-4">MEDUCATEの2025年度合格実績（本部公表・全国の校舎の累計）。天王寺校の実績とは、出典を分けて掲載します。直近6年の推移は<a href="https://meducate.jp/pass-record/" target="_blank" rel="noopener" class="underline text-main-dark">本部の合格実績ページ</a>にあります。</figcaption>
             </figure>
         </aside>
         </div>
+        <img src="/img/classroom.jpg" alt="MEDUCATE天王寺校の教室（桜灯塾と同フロア）で自習する生徒たち" class="w-full rounded-lg shadow mt-8 md:mt-10 object-cover" style="max-height:320px;">
         </div>
     </section>
 
@@ -258,7 +253,7 @@
     <!-- 天王寺校の指導 -->
     <section class="max-w-6xl mx-auto px-4 py-12 md:py-16">
         <h2 class="section-title font-black text-main-dark mb-6">勉強を「教える」だけではなく、合格までマネジメントする</h2>
-        <p class="max-w-3xl mb-8">医学部入試は科目が多く、必要な学力も高い水準です。一人で計画を立て、管理し、実践し続けるのは大変です。天王寺校では、校舎長が計画の設計を担い、大阪公立大学の医学部生講師陣が日々の進み具合を一緒に管理します。</p>
+        <p class="max-w-3xl mb-8">医学部入試は科目が多く、必要な学力も高い水準です。一人で計画を立て、管理し、実践し続けるのは大変です。天王寺校では、校舎長が計画の設計と管理を担い、大阪公立大学の医学部生講師陣が日々の指導にあたります。</p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
             <div class="card p-6">
                 <p class="font-black text-main text-lg mb-2">1．計画</p>
@@ -344,7 +339,7 @@
         <div class="flex flex-col md:flex-row gap-6 items-start">
             <img src="/img/director.jpg" alt="MEDUCATE天王寺校 校舎長 内田憲一" class="w-40 h-40 object-cover rounded-lg shadow">
             <div>
-                <p class="max-w-3xl mb-4">指導は、MEDUCATE本部のプロ講師（進捗管理のサポート）＋校舎長（計画の設計と管理）＋医学部生講師28名（日々の指導）の3層で支えます。講師は全員、教室で顔を合わせて教える形です。校舎長の考え方と講師陣の構成は、紹介ページにまとめました。</p>
+                <p class="max-w-3xl mb-4">指導は、MEDUCATE本部のプロ講師（天王寺校のチームに加わって指導する）＋校舎長（計画の設計と管理）＋医学部生講師28名（日々の指導）の3層で支えます。講師は全員、教室で顔を合わせて教える形です。校舎長の考え方と講師陣の構成は、紹介ページにまとめました。</p>
                 <a href="/teachers" class="inline-block bg-white border-2 border-main text-main-dark font-bold text-center px-6 py-3 rounded hover:bg-main-light transition tracking-wider">塾長・校舎長、講師陣の紹介を見る</a>
             </div>
         </div>
@@ -419,7 +414,7 @@
     </section>
 
     <!-- フッター -->
-    <footer class="bg-[#22303E] text-gray-200">
+    <footer class="bg-[#22303E] text-gray-200 pb-[72px] lg:pb-0">
         <div class="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
             <div>
                 <p class="text-[10px] font-bold tracking-[0.35em] text-gray-400 mb-1">MEDUCATE TENNOJI</p>
