@@ -185,7 +185,14 @@
             <button type="button" class="grade-btn uni-btn active" data-g="1">高2</button>
             <button type="button" class="grade-btn uni-btn" data-g="2">高1</button>
         </div>
-        <p class="text-sm text-gray-600 mb-8" id="grade-note">高2：2028年度入試が対象です。日程はまだ公表されていないため、2027年度と同じ時期として計算します。</p>
+        <p class="text-sm text-gray-600 mb-6" id="grade-note">高2：2028年度入試が対象です。日程はまだ公表されていないため、2027年度と同じ時期として計算します。</p>
+
+        <p class="font-bold mb-3">計画の長さ</p>
+        <div class="grid grid-cols-2 gap-3 mb-3 max-w-2xl">
+            <button type="button" class="plan-btn uni-btn" data-p="geneki">現役まで</button>
+            <button type="button" class="plan-btn uni-btn active" data-p="ronin">浪人まで含む（3年計画）</button>
+        </div>
+        <p class="text-sm text-gray-600 mb-8">医学部は、浪人まで含めて計画するのが普通です。現役までの期間で数字が組み立てられないときも、期間の取り方を変えると、現実的な量に収まることがあります。</p>
 
         <h2 class="section-title font-black text-main-dark mb-6">2．今の偏差値を入れる</h2>
         <div class="card p-5 md:p-6 mb-8 max-w-2xl">
@@ -244,7 +251,7 @@
                     </div>
                 </div>
                 <p class="font-black text-main-dark mb-2">学年ごとの進み方</p>
-                <p class="text-sm text-gray-600 mb-4">必要な総時間を、高1＝20・高2＝35・高3＝45の重みで、学年が上がるほど1日量が増えるように配分しています。今の学年の分は残り期間の割合で調整し、終わった学年の分は残りの学年へ回します。</p>
+                <p class="text-sm text-gray-600 mb-4">必要な総時間を、高1＝20・高2＝35・高3＝45の重みで、学年が上がるほど1日量が増えるように配分しています。浪人まで含む計画では、浪人の年を55の重みで配ります。今の学年の分は残り期間の割合で調整し、終わった学年の分は残りの学年へ回します。</p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6" id="gs-segments"></div>
                 <div id="gs-advice" class="rounded-lg p-5 mb-6" style="display:none;">
                     <p class="font-black mb-2" id="gs-advice-title"></p>
@@ -279,7 +286,7 @@
         <h2 class="section-title font-black text-main-dark mb-6">使い方と、数字の読み方</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
             <div class="card p-6"><p class="font-black text-main text-lg mb-2">時間はスタート地点で決まる</p><p class="text-sm">同じ大学を目指しても、今の偏差値が違えば必要な時間は変わります。「医学部には何千時間」という数字は、どこから始めるかを含んでいません。このメーターは、今の偏差値とゴールの差から計算します。</p></div>
-            <div class="card p-6"><p class="font-black text-main text-lg mb-2">出てくる時間は「下限の目安」</p><p class="text-sm">計算は、偏差値1ポイントを上げるのに150〜250時間という目安を使っています。さらに、偏差値が上に行くほど1ポイントは重くなるため、差は帯ごとに重みを変えて計算しています（50までは等倍、50〜55は1.2倍、55〜60は1.5倍、60〜62.5は1.8倍、62.5〜65は2.1倍、65〜67.5は2.5倍、67.5以上は3倍）。</p></div>
+            <div class="card p-6"><p class="font-black text-main text-lg mb-2">出てくる時間は「下限の目安」</p><p class="text-sm">計算は、偏差値1ポイントを上げるのに150〜250時間という目安を使っています。さらに、偏差値が上に行くほど1ポイントは重くなるため、差は帯ごとに重みを変えて計算しています（50までは等倍、50〜55は1.2倍、55〜60は1.5倍、60〜62.5は1.8倍、62.5〜65は2.1倍、65〜67.5は2.5倍、67.5以上は3倍。この重みは当塾の目安です）。</p></div>
             <div class="card p-6"><p class="font-black text-main text-lg mb-2">点数があれば、距離メーターへ</p><p class="text-sm">模試や過去問の点数が出ている人は、得点率から合格最低点までの不足を測る<a href="/kyori" class="underline text-main-dark">距離メーター</a>の方が実態に近くなります。偏差値は「時間」、点数は「距離」と、段階で使い分けてください。</p></div>
         </div>
         <div class="card p-6 mt-5">
@@ -293,7 +300,22 @@
                 <tr><td style="padding:6px 8px;">高3</td><td style="text-align:right;padding:6px 8px;">45</td><td style="text-align:right;padding:6px 8px;">約1,350時間</td><td style="text-align:right;padding:6px 8px;">約5.7時間</td></tr>
             </table>
             </div>
-            <p class="text-sm text-gray-600 mt-3">1日あたりは、週1日休み・行事や体調不良などの予備5%で計算した目安です。学年の途中から始める場合は、残りの期間に応じて最初の学年の重みを調整します。</p>
+            <p class="text-sm text-gray-600 mt-3">1日あたりは、週1日休み・行事や体調不良などの予備5%で計算した目安です。学年の途中から始める場合は、残りの期間に応じて最初の学年の重みを調整します。浪人まで含めた計画では、浪人の年を重み55で配ります。</p>
+        </div>
+        <div class="card p-6 mt-5">
+            <p class="font-black text-main text-lg mb-2">幅の読み方（下限と上限は、何で決まるか）</p>
+            <p class="text-sm mb-4">結果に幅があるのは、同じ1ポイントを上げるにも、かかる時間が人によって違うからです。幅の下限は「計画が立っていて、わからないところをその場で解決できる」場合、上限は「一人で手探り」の場合の目安です。</p>
+            <div style="overflow-x:auto;">
+            <table class="text-sm" style="width:100%;border-collapse:collapse;">
+                <tr style="border-bottom:2px solid #14497F;"><th style="text-align:left;padding:6px 8px;"></th><th style="text-align:left;padding:6px 8px;">下限で済む側</th><th style="text-align:left;padding:6px 8px;">上限までかかる側</th></tr>
+                <tr style="border-bottom:1px solid #ddd;"><td style="padding:6px 8px;font-weight:bold;">計画</td><td style="padding:6px 8px;">今やることが決まっている</td><td style="padding:6px 8px;">何をやるか、その都度迷う</td></tr>
+                <tr style="border-bottom:1px solid #ddd;"><td style="padding:6px 8px;font-weight:bold;">わからないところ</td><td style="padding:6px 8px;">その場で解決して、すぐに先へ進める</td><td style="padding:6px 8px;">止まったまま、時間が過ぎる</td></tr>
+                <tr style="border-bottom:1px solid #ddd;"><td style="padding:6px 8px;font-weight:bold;">進み具合の管理</td><td style="padding:6px 8px;">遅れにすぐ気づいて、立て直せる</td><td style="padding:6px 8px;">遅れに気づくのが模試のたびになる</td></tr>
+                <tr style="border-bottom:1px solid #ddd;"><td style="padding:6px 8px;font-weight:bold;">穴の種類</td><td style="padding:6px 8px;">演習不足やミスで落としている</td><td style="padding:6px 8px;">基礎から抜けていて、積み直しが要る</td></tr>
+                <tr><td style="padding:6px 8px;font-weight:bold;">要領</td><td style="padding:6px 8px;">飲み込みが速く、応用が利く</td><td style="padding:6px 8px;">定着に繰り返しが要る</td></tr>
+            </table>
+            </div>
+            <p class="text-sm text-gray-600 mt-3">このうち、変えられるのは計画・解決・管理の3つです。ここを整えるのが塾の仕事で、幅の差は、そのまま「管理があるかないかで変わる時間」です。最初から自分の位置を決めつける必要はありません。最初の1か月で「何時間やって、模試の偏差値がどれだけ動いたか」を実測すると、幅のどこにいるかが見えてきます。</p>
         </div>
     </section>
 

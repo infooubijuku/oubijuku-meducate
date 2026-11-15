@@ -5,26 +5,29 @@ kmu: { name: '関西医科大学', goal: 67.5, exam: '2027-02-02', examLabel: '2
 kindai: { name: '近畿大学', goal: 65.0, exam: '2027-01-31', examLabel: '2027年1月31日', page: '/universities/kindai'},
 hyo: { name: '兵庫医科大学', goal: 62.5, exam: '2027-02-04', examLabel: '2027年2月4日', page: '/universities/hyo-med'}
 };
-var BASE_W = { 1: 20, 2: 35, 3: 45};
+var BASE_W = { 1: 20, 2: 35, 3: 45, 4: 55};
 var DAY_MS = 86400000;
 function dOf(y, m, d) { return new Date(y, m - 1, d);}
 function parseDate(s) { var p = s.split('-'); return dOf(parseInt(p[0], 10), parseInt(p[1], 10), parseInt(p[2], 10));}
 function addYears(date, n) { return dOf(date.getFullYear() + n, date.getMonth() + 1, date.getDate());}
 function daysBetween(a, b) { return Math.round((b - a) / DAY_MS);}
 // 学年区間を作る。gradeOffset: 0=高3・既卒 / 1=高2 / 2=高1。区切りは4月1日、最後は試験日。
-function buildSegments(today, examDate, gradeOffset) {
+// ronin=true のときは、浪人（grade 4・重み55）の区間を1年足し、試験日も1年後になる。
+function buildSegments(today, examDate, gradeOffset, ronin) {
 var segs = [];
 var curGrade = 3 - gradeOffset;
 if (gradeOffset === 0) {
 segs.push({ grade: 3, label: '受験までの期間', from: today, to: examDate, days: daysBetween(today, examDate)});
 return segs;
 }
-var startYear = examDate.getFullYear() - gradeOffset - 1; // 現在の学年が始まった年の4月1日
+var lastGrade = ronin ? 4 : 3;
+var startYear = examDate.getFullYear() - (ronin ? 1 : 0) - gradeOffset - 1; // 現在の学年が始まった年の4月1日
 var from = today;
-for (var i = 0; i <= gradeOffset; i++) {
+for (var i = 0; i <= lastGrade - curGrade; i++) {
 var g = curGrade + i;
-var to = (i === gradeOffset)? examDate: dOf(startYear + 1 + i, 4, 1);
-segs.push({ grade: g, label: (i === 0)? ('高' + g + 'の残り'): ('高' + g), from: from, to: to, days: daysBetween(from, to)});
+var to = (g === lastGrade)? examDate: dOf(startYear + 1 + i, 4, 1);
+var label = (g === 4)? '浪人': ((i === 0)? ('高' + g + 'の残り'): ('高' + g));
+segs.push({ grade: g, label: label, from: from, to: to, days: daysBetween(from, to)});
 from = to;
 }
 return segs;
@@ -53,15 +56,15 @@ if (hi > lo) { eff += (hi - lo) * GAP_BANDS[i][1]; lo = hi; }
 }
 return eff;
 }
-// opts: {uni, gradeOffset, start, rest, reserve, today}
+// opts: {uni, gradeOffset, start, rest, reserve, today, ronin}
 function compute(opts) {
 var u = UNIS[opts.uni];
-var examDate = addYears(parseDate(u.exam), opts.gradeOffset);
+var examDate = addYears(parseDate(u.exam), opts.gradeOffset + (opts.ronin ? 1 : 0));
 var gap = Math.max(0, u.goal - opts.start);
 var effGap = weightedGap(opts.start, u.goal);
 var totalLow = effGap * 150, totalHigh = effGap * 250;
-var segs = buildSegments(opts.today, examDate, opts.gradeOffset);
-var startYear = examDate.getFullYear() - opts.gradeOffset - 1;
+var segs = buildSegments(opts.today, examDate, opts.gradeOffset, opts.ronin);
+var startYear = examDate.getFullYear() - (opts.ronin ? 1 : 0) - opts.gradeOffset - 1;
 var fullYear = daysBetween(dOf(startYear, 4, 1), dOf(startYear + 1, 4, 1));
 var effSum = 0;
 for (var i = 0; i < segs.length; i++) {
@@ -83,13 +86,14 @@ segs[j].policy = policyOf(segs[j].dailyLow, segs[j].dailyHigh);
 totalDays += segs[j].days;
 totalStudy += segs[j].study;
 }
-return { uni: u, examDate: examDate, gap: gap, totalLow: totalLow, totalHigh: totalHigh, segments: segs, totalDays: totalDays, totalStudy: totalStudy};
+return { uni: u, examDate: examDate, gap: gap, totalLow: totalLow, totalHigh: totalHigh, segments: segs, totalDays: totalDays, totalStudy: totalStudy, ronin: !!opts.ronin};
 }
 // === END CORE ===
 
 (function() {
 var current = 'hyo';
 var gradeOffset = 1;
+var planRonin = true;
 var rest = 1;
 var reserve = 5;
 function el(id) { return document.getElementById(id);}
@@ -120,7 +124,8 @@ if (isNaN(startVal)) { startVal = 50;}
 if (startVal < 35) startVal = 35;
 if (startVal > 70) startVal = 70;
 var today = new Date(); today.setHours(0, 0, 0, 0);
-var r = compute({ uni: current, gradeOffset: gradeOffset, start: startVal, rest: rest, reserve: reserve, today: today});
+var r = compute({ uni: current, gradeOffset: gradeOffset, start: startVal, rest: rest, reserve: reserve, today: today, ronin: planRonin});
+el('grade-note').textContent = GRADE_NOTES[gradeOffset] + (planRonin ? ' 浪人まで含めた3年計画で計算しています（試験は' + dateLabel(r.examDate) + '）。' : '');
 el('uni-summary').textContent = u.name + '｜ゴールは河合塾ボーダー偏差値 ' + fmtDev(u.goal) + '。1次試験は' + dateLabel(r.examDate) + 'です。';
 el('res-title').textContent = u.name + '｜ゴール偏差値 ' + fmtDev(u.goal) + 'まで';
 // ゲージ（35〜70の物差し）
@@ -173,7 +178,7 @@ adv.style.display = '';
 adv.style.background = '#FDF0EC'; adv.style.border = '1px solid #E5B4A8';
 el('gs-advice-title').textContent = 'この計画は、組み立て直しが必要な量です';
 el('gs-advice-title').style.color = '#A93226';
-el('gs-advice-text').textContent = '1日12時間を超える区間があります。今の志望校と開始時期のままでは、続けるのが難しい量です。選択肢は、併願の組み替えで届く組み合わせに見直すことと、期間の取り方そのものを設計し直すことです。どちらも早いほど選択肢が残ります。組み立て直すのが塾の仕事です。無料相談で、この結果をもとに一緒に設計します。';
+el('gs-advice-text').textContent = '1日12時間を超える区間があります。今の志望校と開始時期のままでは、続けるのが難しい量です。選択肢は、併願の組み替えで届く組み合わせに見直すことと、期間の取り方そのものを設計し直すことです。' + (planRonin ? '' : '「計画の長さ」を「浪人まで含む」に切り替えると、3年計画では現実的な量に収まる場合があります。') + 'どちらも早いほど選択肢が残ります。組み立て直すのが塾の仕事です。無料相談で、この結果をもとに一緒に設計します。';
 } else if (anyWarn) {
 adv.style.display = '';
 adv.style.background = '#FFF7E0'; adv.style.border = '1px solid #E8CE8A';
@@ -192,6 +197,7 @@ var lines = [], slines = [];
 lines.push('');
 lines.push('志望校：' + u.name + '（ゴール偏差値 ' + fmtDev(u.goal) + '）');
 lines.push('学年：' + GRADE_NAMES[gradeOffset] + '／今の偏差値：' + fmtDev(startVal) + '（河合塾・全統模試）');
+lines.push('計画の長さ：' + (r.ronin ? '浪人まで含む（3年計画）' : '現役まで'));
 slines.push(u.name + '（ゴール偏差値' + fmtDev(u.goal) + '）までの「合格までの時間」を計算しました。');
 slines.push('今の偏差値は' + fmtDev(startVal) + 'です。');
 if (done) {
@@ -234,7 +240,9 @@ var GRADE_NOTES = [
 '高1：2029年度入試が対象です。日程はまだ公表されていないため、2027年度と同じ時期として計算します。'
 ];
 var gbtns = document.querySelectorAll('.grade-btn');
-for (var gi = 0; gi < gbtns.length; gi++) { gbtns[gi].addEventListener('click', function() { gradeOffset = parseInt(this.getAttribute('data-g'), 10) || 0; setGroup('.grade-btn', 'data-g', gradeOffset); el('grade-note').textContent = GRADE_NOTES[gradeOffset]; update();});}
+for (var gi = 0; gi < gbtns.length; gi++) { gbtns[gi].addEventListener('click', function() { gradeOffset = parseInt(this.getAttribute('data-g'), 10) || 0; setGroup('.grade-btn', 'data-g', gradeOffset); update();});}
+var pbtns = document.querySelectorAll('.plan-btn');
+for (var pi = 0; pi < pbtns.length; pi++) { pbtns[pi].addEventListener('click', function() { planRonin = this.getAttribute('data-p') === 'ronin'; setGroup('.plan-btn', 'data-p', planRonin ? 'ronin' : 'geneki'); update();});}
 var rbtns = document.querySelectorAll('.rest-btn');
 for (var ri = 0; ri < rbtns.length; ri++) { rbtns[ri].addEventListener('click', function() { rest = parseInt(this.getAttribute('data-rest'), 10) || 0; setGroup('.rest-btn', 'data-rest', rest); update();});}
 var sbtns = document.querySelectorAll('.res-btn');
@@ -256,6 +264,7 @@ if (q && UNIS[q]) { current = q; }
 if (qg !== null && ['0', '1', '2'].indexOf(qg) >= 0) { gradeOffset = parseInt(qg, 10); el('grade-note').textContent = GRADE_NOTES[gradeOffset]; }
 setGroup('.uni-btn[data-u]', 'data-u', current);
 setGroup('.grade-btn', 'data-g', gradeOffset);
+setGroup('.plan-btn', 'data-p', planRonin ? 'ronin' : 'geneki');
 setGroup('.rest-btn', 'data-rest', rest);
 setGroup('.res-btn', 'data-res', reserve);
 update();
