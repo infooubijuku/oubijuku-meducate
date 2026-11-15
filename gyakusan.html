@@ -279,8 +279,21 @@
         <h2 class="section-title font-black text-main-dark mb-6">使い方と、数字の読み方</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
             <div class="card p-6"><p class="font-black text-main text-lg mb-2">時間はスタート地点で決まる</p><p class="text-sm">同じ大学を目指しても、今の偏差値が違えば必要な時間は変わります。「医学部には何千時間」という数字は、どこから始めるかを含んでいません。このメーターは、今の偏差値とゴールの差から計算します。</p></div>
-            <div class="card p-6"><p class="font-black text-main text-lg mb-2">出てくる時間は「下限の目安」</p><p class="text-sm">計算は、偏差値1を上げるのに1科目30〜50時間という経験則を4科目に広げたものです。直線で換算しているため、実際は60台に入ってからの1点の方が重く、必要な時間はこれより多くなります。</p></div>
+            <div class="card p-6"><p class="font-black text-main text-lg mb-2">出てくる時間は「下限の目安」</p><p class="text-sm">計算は、偏差値1ポイントを上げるのに150〜250時間という目安を使っています。さらに、偏差値が上に行くほど1ポイントは重くなるため、差は帯ごとに重みを変えて計算しています（50までは等倍、50〜55は1.2倍、55〜60は1.5倍、60〜62.5は1.8倍、62.5〜65は2.1倍、65〜67.5は2.5倍、67.5以上は3倍）。</p></div>
             <div class="card p-6"><p class="font-black text-main text-lg mb-2">点数があれば、距離メーターへ</p><p class="text-sm">模試や過去問の点数が出ている人は、得点率から合格最低点までの不足を測る<a href="/kyori" class="underline text-main-dark">距離メーター</a>の方が実態に近くなります。偏差値は「時間」、点数は「距離」と、段階で使い分けてください。</p></div>
+        </div>
+        <div class="card p-6 mt-5">
+            <p class="font-black text-main text-lg mb-2">傾斜のかけ方（学年への配分）</p>
+            <p class="text-sm mb-4">必要な総時間は、残りの日数で均等には割りません。高1=20・高2=35・高3=45の重みで学年に配ります。高1は土台づくりの時期なので軽く、試験が近づくほど重くなる形です。早く始める意味は、高1から多くやることではなく、高3の分を「組み立てられる量」に収めることです。</p>
+            <div style="overflow-x:auto;">
+            <table class="text-sm" style="width:100%;border-collapse:collapse;">
+                <tr style="border-bottom:2px solid #14497F;"><th style="text-align:left;padding:6px 8px;">学年</th><th style="text-align:right;padding:6px 8px;">配分の重み</th><th style="text-align:right;padding:6px 8px;">総時間3,000時間のとき</th><th style="text-align:right;padding:6px 8px;">1日あたりの目安</th></tr>
+                <tr style="border-bottom:1px solid #ddd;"><td style="padding:6px 8px;">高1</td><td style="text-align:right;padding:6px 8px;">20</td><td style="text-align:right;padding:6px 8px;">約600時間</td><td style="text-align:right;padding:6px 8px;">約2.0時間</td></tr>
+                <tr style="border-bottom:1px solid #ddd;"><td style="padding:6px 8px;">高2</td><td style="text-align:right;padding:6px 8px;">35</td><td style="text-align:right;padding:6px 8px;">約1,050時間</td><td style="text-align:right;padding:6px 8px;">約3.5時間</td></tr>
+                <tr><td style="padding:6px 8px;">高3</td><td style="text-align:right;padding:6px 8px;">45</td><td style="text-align:right;padding:6px 8px;">約1,350時間</td><td style="text-align:right;padding:6px 8px;">約5.7時間</td></tr>
+            </table>
+            </div>
+            <p class="text-sm text-gray-600 mt-3">1日あたりは、週1日休み・行事や体調不良などの予備5%で計算した目安です。学年の途中から始める場合は、残りの期間に応じて最初の学年の重みを調整します。</p>
         </div>
     </section>
 

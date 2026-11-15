@@ -41,12 +41,25 @@ if (low > 12) return 'over';
 if (high > 12) return 'cap';
 return 'warn';
 }
+// 偏差値の帯ごとに1ポイントの重みを変える（上位ほど1ポイントが重い）。
+// [その帯の上限, 重み]：50まで等倍、50〜55は1.2倍、55〜60は1.5倍、
+// 60〜62.5は1.8倍、62.5〜65は2.1倍、65〜67.5は2.5倍、67.5以上は3倍。
+var GAP_BANDS = [ [50, 1.0], [55, 1.2], [60, 1.5], [62.5, 1.8], [65, 2.1], [67.5, 2.5], [Infinity, 3.0] ];
+function weightedGap(dev, border) {
+var eff = 0, lo = dev;
+for (var i = 0; i < GAP_BANDS.length && lo < border; i++) {
+var hi = Math.min(border, GAP_BANDS[i][0]);
+if (hi > lo) { eff += (hi - lo) * GAP_BANDS[i][1]; lo = hi; }
+}
+return eff;
+}
 // opts: {uni, gradeOffset, start, rest, reserve, today}
 function compute(opts) {
 var u = UNIS[opts.uni];
 var examDate = addYears(parseDate(u.exam), opts.gradeOffset);
 var gap = Math.max(0, u.goal - opts.start);
-var totalLow = gap * 120, totalHigh = gap * 200;
+var effGap = weightedGap(opts.start, u.goal);
+var totalLow = effGap * 150, totalHigh = effGap * 250;
 var segs = buildSegments(opts.today, examDate, opts.gradeOffset);
 var startYear = examDate.getFullYear() - opts.gradeOffset - 1;
 var fullYear = daysBetween(dOf(startYear, 4, 1), dOf(startYear + 1, 4, 1));
