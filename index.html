@@ -55,6 +55,7 @@
         .border-soft { border-color: var(--soft); }
         .section-title { position: relative; padding-left: 1rem; }
         .section-title::before { content: ''; position: absolute; left: 0; top: 0.25em; bottom: 0.25em; width: 4px; background: var(--main); }
+        .section-title.on-dark::before { background: #BFD9F2; }
         h2.section-title { font-size: 1.4375rem; }
         @media (min-width: 768px) { h2.section-title { font-size: 1.75rem; } }
         .card { background: #fff; border: 1px solid var(--soft); border-radius: 0.5rem; box-shadow: 0 1px 2px rgba(10,40,80,0.04), 0 14px 30px -18px rgba(20,73,127,0.25); }
@@ -97,7 +98,7 @@
 
     <!-- ヘッダー -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-soft">
-        <div class="max-w-[1080px] mx-auto px-4 flex items-center justify-between h-16">
+        <div class="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
             <a href="/" class="flex items-center gap-2">
                 <img src="/img/logo-medicate.jpg" alt="MEDUCATE" class="w-10 h-10 rounded-full object-cover">
                 <span class="leading-tight">
@@ -229,7 +230,7 @@
     <section class="max-w-[1080px] mx-auto px-4 pb-9 md:pb-12">
         <div class="rounded-2xl p-6 md:p-8" style="background:linear-gradient(120deg,#14497F,#1D5FA8);">
             <p class="text-xs font-bold tracking-widest mb-3" style="color:#BFD9F2;">無料ツール｜登録不要</p>
-            <h2 class="section-title font-black text-white leading-snug mb-4">今の偏差値から、合格まで何時間？</h2>
+            <h2 class="section-title on-dark font-black text-white leading-snug mb-4">今の偏差値から、合格まで何時間？</h2>
             <p class="text-base md:text-lg mb-6" style="color:#DCE9F6;">志望校・学年・今の偏差値（河合塾・全統模試）を入れるだけで、合格までの勉強時間と学年ごとの1日あたりが出ます。例：高2・偏差値50で兵庫医科大学なら1,500〜2,500時間で、高2の残りは1日3.0〜5.0時間、高3は4.6〜7.6時間（週1日休み・予備5％で計算）。「何千時間必要か」は、スタート地点で変わります。</p>
             <div class="flex flex-wrap gap-3 mb-8">
                 <a href="/gyakusan?g=2" class="bg-white/10 border border-white text-white font-bold px-5 py-3 rounded-full hover:bg-white/20 transition">高1で測る</a>
@@ -443,7 +444,7 @@
 
     <!-- フッター -->
     <footer class="bg-[#22303E] text-gray-200 pb-[72px] lg:pb-0">
-        <div class="max-w-[1080px] mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div class="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
             <div>
                 <p class="text-[10px] font-bold tracking-[0.35em] text-gray-400 mb-1">MEDUCATE TENNOJI</p>
                 <p class="text-xl font-black text-white mb-3" style="font-family:'Noto Serif JP',serif;letter-spacing:0.06em;">MEDUCATE 天王寺校</p>
