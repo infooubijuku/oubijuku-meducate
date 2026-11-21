@@ -232,13 +232,29 @@
             var lines = [];
             lines.push(u.name + 'の「合格までの距離」を計算しました。');
             lines.push('今の得点率は、英語' + fmt(rates[0]) + '%・数学' + fmt(rates[1]) + '%・理科' + fmt(rates[2]) + '%です。');
-            if (current === 'hyo') {
-                if (gap > 0) { lines.push('小論文・面接等で' + fmt(assumedExtra) + '点取る想定では、学科の必要点まであと約' + fmt(gap) + '点です（合格最低点は' + fmt(u.min) + '点）。'); }
-                else { lines.push('小論文・面接等で' + fmt(assumedExtra) + '点取る想定では、学科の必要点を約' + fmt(-gap) + '点上回る計算です（合格最低点は' + fmt(u.min) + '点）。'); }
-            } else if (gap > 0) {
-                lines.push((u.firstOnly ? '1次合格最低点' : '合格最低点') + '（2026年度・' + fmt(u.min) + '点）まで、あと約' + fmt(gap) + '点です。');
+            var todaySh = new Date(); todaySh.setHours(0, 0, 0, 0);
+            var daysSh = Math.round((examDateShifted(u) - todaySh) / 86400000);
+            if (daysSh < 0) {
+                if (current === 'hyo') {
+                    lines.push(gap > 0
+                        ? '小論文・面接等で' + fmt(assumedExtra) + '点取る想定では、学科の必要点まであと約' + fmt(gap) + '点の計算でした（合格最低点は' + fmt(u.min) + '点）。'
+                        : '小論文・面接等で' + fmt(assumedExtra) + '点取る想定では、学科の必要点を約' + fmt(-gap) + '点上回る計算でした（合格最低点は' + fmt(u.min) + '点）。');
+                } else if (gap > 0) {
+                    lines.push((u.firstOnly ? '1次合格最低点' : '合格最低点') + '（2026年度・' + fmt(u.min) + '点）と比べると、あと約' + fmt(gap) + '点の計算でした。');
+                } else {
+                    lines.push((u.firstOnly ? '1次合格最低点' : '合格最低点') + '（2026年度・' + fmt(u.min) + '点）と比べると、約' + fmt(-gap) + '点上回る計算でした。');
+                }
+                lines.push((2027 + gradeOffset) + '年度の1次試験は終了しました。次年度の試験情報が公開され次第、データを更新します。');
             } else {
-                lines.push((u.firstOnly ? '1次合格最低点' : '合格最低点') + '（2026年度・' + fmt(u.min) + '点）を、約' + fmt(-gap) + '点上回る計算です。');
+                if (current === 'hyo') {
+                    if (gap > 0) { lines.push('小論文・面接等で' + fmt(assumedExtra) + '点取る想定では、学科の必要点まであと約' + fmt(gap) + '点です（合格最低点は' + fmt(u.min) + '点）。'); }
+                    else { lines.push('小論文・面接等で' + fmt(assumedExtra) + '点取る想定では、学科の必要点を約' + fmt(-gap) + '点上回る計算です（合格最低点は' + fmt(u.min) + '点）。'); }
+                } else if (gap > 0) {
+                    lines.push((u.firstOnly ? '1次合格最低点' : '合格最低点') + '（2026年度・' + fmt(u.min) + '点）まで、あと約' + fmt(gap) + '点です。');
+                } else {
+                    lines.push((u.firstOnly ? '1次合格最低点' : '合格最低点') + '（2026年度・' + fmt(u.min) + '点）を、約' + fmt(-gap) + '点上回る計算です。');
+                }
+                if (daysSh === 0) { lines.push('1次試験（' + examLabelShifted(u) + '）は本日です。'); }
             }
             lines.push('▼ 関西私立医学部4校の距離メーター（無料・登録不要）');
             lines.push('https://meducate.oubijuku.com/kyori?u=' + current + '&via=share');
@@ -261,20 +277,26 @@
             var pace = (gap > 0 && days > 0) ? gap / (days / 7) : 0;
             var far = (gap > 0 && days > 0 && pace > 8);
             if (gap > 0) {
-                el('ns-heading').textContent = 'あと' + fmt(gap) + '点を取りに行く';
                 if (ended) {
-                    el('ns-pace').textContent = endedText;
+                    el('ns-heading').textContent = (2027 + gradeOffset) + '年度の1次試験は終了しました';
+                    el('ns-pace').textContent = '次年度の試験情報が公開され次第、データを更新します。';
                 } else if (days === 0) {
-                    el('ns-pace').textContent = '1次試験（' + examLabelShifted(u) + '）は本日です。';
-                } else if (days > 0) {
+                    el('ns-heading').textContent = '1次試験（' + examLabelShifted(u) + '）は本日です';
+                    el('ns-pace').textContent = '';
+                } else {
+                    el('ns-heading').textContent = 'あと' + fmt(gap) + '点を取りに行く';
                     var note = (gradeOffset > 0) ? '（' + (2027 + gradeOffset) + '年度の日程はまだ公表されていないため、2027年度と同じ時期で計算しています）' : '';
                     el('ns-pace').innerHTML = '1次試験（' + examLabelShifted(u) + '）まで、あと' + days + '日。不足' + fmt(gap) + '点は、1週間に約' + fmt(pace) + '点ずつ伸ばす計算です。週の時間の組み方は<a href="/articles/jikan" class="underline text-main-dark">「配点の割合で、週の勉強時間を組み替える」</a>にまとめています。' + note;
                 }
             } else {
-                el('ns-heading').textContent = '最低点は超えています。次は、上積みと崩れない形です';
                 if (ended) {
-                    el('ns-pace').textContent = endedText;
+                    el('ns-heading').textContent = (2027 + gradeOffset) + '年度の1次試験は終了しました';
+                    el('ns-pace').textContent = '次年度の試験情報が公開され次第、データを更新します。';
+                } else if (days === 0) {
+                    el('ns-heading').textContent = '1次試験（' + examLabelShifted(u) + '）は本日です';
+                    el('ns-pace').textContent = '';
                 } else {
+                    el('ns-heading').textContent = '最低点は超えています。次は、上積みと崩れない形です';
                     el('ns-pace').innerHTML = 'この水準を本番で再現するための進め方は、<a href="/articles/soron4" class="underline text-main-dark">総論「続ける仕組みと完成度」</a>にまとめています。';
                 }
             }
@@ -343,7 +365,7 @@
                     + '<p class="font-black text-main-dark mb-1"><span class="inline-block w-3.5 h-3.5 rounded-sm mr-1 align-middle" style="background:' + s.color + '"></span>' + head + '</p>'
                     + '<p class="font-bold text-sm mb-1">' + meta.title + '</p>'
                     + '<p class="text-sm text-gray-600">' + meta.desc + '</p>'
-                    + '<p class="text-sm mt-2"><span class="font-bold text-main-dark">今週の1手：</span>' + meta.act + '</p></a>';
+                    + ((days > 0) ? '<p class="text-sm mt-2"><span class="font-bold text-main-dark">今週の1手：</span>' + meta.act + '</p>' : '') + '</a>';
             }
             el('ns-cards').innerHTML = cards;
             // 相談CTA（結果連動）
@@ -356,6 +378,10 @@
             } else {
                 el('ns-cta-heading').textContent = 'この結果をもとに、上積みの設計をする';
                 el('ns-cta-text').textContent = '無料相談では、この結果をもとに、最低点からどれだけ余裕を作るか、残りの期間の進め方を一緒に設計します。下の「結果をコピーする」で結果を控えて、LINEやメールでそのまま送ってください。';
+            }
+            if (days <= 0) {
+                el('ns-cta-heading').textContent = '次年度の受験について相談する';
+                el('ns-cta-text').textContent = '無料相談では、この結果をもとに、次年度に向けて何から始めるかを一緒に決めます。下の「結果をコピーする」で結果を控えて、LINEやメールでそのまま送ってください。';
             }
             el('ns-copy-done').style.display = 'none';
             el('ns-save-done').style.display = 'none';
@@ -376,10 +402,16 @@
                 lines.push('合格最低点（2026年度）：' + fmt(u.min) + '点');
             }
             lines.push(gap > 0 ? ('最低点までの不足：' + fmt(gap) + '点') : ('最低点を上回る分：' + fmt(-gap) + '点'));
-            lines.push('余裕を持った目標（最低点+5%）：' + fmt(targetTotal * 1.05) + '点');
+            if (days < 0) { lines.push(endedText); }
+            if (days === 0) { lines.push('1次試験（' + examLabelShifted(u) + '）は本日です。'); }
+            if (days > 0) { lines.push('余裕を持った目標（最低点+5%）：' + fmt(targetTotal * 1.05) + '点'); }
             for (i = 0; i < 3; i++) {
                 var s2 = u.subjects[i];
-                lines.push('・' + s2.label + '：' + fmt(scores[i]) + '点（' + fmt(rates[i]) + '％）→ 目標の例 ' + fmt(targets[i]) + '点（' + fmt(targets[i] / s2.max * 100) + '％）');
+                if (days > 0) {
+                    lines.push('・' + s2.label + '：' + fmt(scores[i]) + '点（' + fmt(rates[i]) + '％）→ 目標の例 ' + fmt(targets[i]) + '点（' + fmt(targets[i] / s2.max * 100) + '％）');
+                } else {
+                    lines.push('・' + s2.label + '：' + fmt(scores[i]) + '点（' + fmt(rates[i]) + '％）');
+                }
             }
             if (days > 0) lines.push('1次試験（' + examLabelShifted(u) + '）まで：あと' + days + '日' + (gradeOffset > 0 ? '（日程は2027年度と同じ時期で計算）' : ''));
             lines.push('https://meducate.oubijuku.com/kyori?u=' + current + '&via=share');
