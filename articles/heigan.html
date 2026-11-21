@@ -336,8 +336,8 @@
 
     <!-- モバイル固定CTA -->
     <div class="fixed bottom-0 left-0 right-0 z-50 grid grid-cols-2 lg:hidden shadow-[0_-4px_12px_rgba(0,0,0,0.12)]">
-        <a href="tel:0667799507" class="bg-main text-white text-center font-bold py-3 text-sm">電話する<br><span class="text-xs">06-6779-9507</span></a>
-        <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white text-center font-bold py-3 text-sm">LINEで相談<br><span class="text-xs">公式LINE</span></a>
+        <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white text-center font-bold py-3 text-sm">LINEで無料相談<br><span class="text-xs">公式LINE</span></a>
+        <a href="/contact" id="sticky-contact-btn" class="bg-white text-main-dark text-center font-bold py-3 text-sm border-l border-gray-200">お問い合わせ<br><span class="text-xs font-normal">相談・質問はこちら</span></a>
     </div>
     <div class="h-14 lg:hidden"></div>
 
@@ -367,6 +367,12 @@
         document.querySelectorAll('a[href*="line.me"]').forEach(function(el) {
           el.addEventListener('click', function() {
             gtag('event', 'line_click', { event_category: 'engagement', event_label: 'TENNOJI_LINE', page_path: window.location.pathname });
+          });
+        });
+        /* 固定バーのお問い合わせボタンのクリックを sticky_contact_click として計測する */
+        document.querySelectorAll('#sticky-contact-btn').forEach(function(el) {
+          el.addEventListener('click', function() {
+            gtag('event', 'sticky_contact_click', { event_category: 'engagement', event_label: 'STICKY_CONTACT', page_path: window.location.pathname });
           });
         });
       })();
