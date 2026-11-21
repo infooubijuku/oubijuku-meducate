@@ -152,14 +152,20 @@
 
     <!-- ヒーロー -->
     <section class="paper-band border-b border-soft">
-        <div class="max-w-6xl mx-auto px-4 pt-[2px] pb-5 md:pt-3 md:pb-12">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-8 gap-y-0 lg:gap-y-5 items-start">
+        <div class="max-w-6xl mx-auto px-4 pt-4 pb-5 md:pt-8 md:pb-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-8 gap-y-4 lg:gap-y-5 items-start">
         <div class="lg:col-span-7 lg:row-start-1">
             <h1 class="text-3xl md:text-5xl font-black leading-snug mb-[2px] md:mb-2 text-main-dark">関西私立医大4校専門</h1>
             <p class="text-xs md:text-sm text-gray-600 tracking-wider">大阪医科薬科／関西医科／近畿／兵庫医科</p>
             <p class="text-[15px] md:text-lg leading-relaxed max-w-2xl mt-1.5">校舎長・プロ講師・現役医学部生講師陣のマネジメントチームが、<br class="hidden md:block">あなた専用の計画立案から日々の学習実行まで伴走する個別指導</p>
+            <div class="grid grid-cols-2 gap-1.5 mt-5 max-w-md">
+                <span class="text-[11px] md:text-xs font-bold bg-white border border-soft text-main-dark px-2 py-1 rounded-full shadow-sm text-center leading-snug py-1.5">現役医学部生講師 28名</span>
+                <span class="text-[11px] md:text-xs font-bold bg-white border border-soft text-main-dark px-2 py-1 rounded-full shadow-sm text-center leading-snug py-1.5">自習室 365日 <span class="whitespace-nowrap">8:00〜23:00</span></span>
+                <span class="text-[11px] md:text-xs font-bold bg-white border border-soft text-main-dark px-2 py-1 rounded-full shadow-sm text-center leading-snug py-1.5">毎朝のZoom朝勉強会 <span class="whitespace-nowrap">6:30〜7:00</span></span>
+                <span class="text-[11px] md:text-xs font-bold bg-white border border-soft text-main-dark px-2 py-1 rounded-full shadow-sm text-center leading-snug py-1.5">JR天王寺駅 北口 徒歩5分</span>
+            </div>
         </div>
-        <a href="/kyori" class="block mt-5 lg:mt-0 lg:col-span-5 lg:col-start-8 lg:row-start-1 bg-white border-2 border-main rounded-lg px-4 py-3 shadow-sm">
+        <a href="/kyori" class="block lg:col-span-5 lg:col-start-8 lg:row-start-1 bg-white border-2 border-main rounded-lg px-4 py-3 shadow-sm">
                 <p class="text-[11px] font-bold text-main tracking-wider mb-1">入力例｜こんな結果が出ます</p>
                 <div class="flex flex-wrap items-baseline justify-between gap-x-3">
                     <span class="text-sm font-black text-main-dark">大阪医科薬科大学</span>
@@ -179,27 +185,25 @@
                 <p class="text-[11px] text-gray-500 mt-2">※2026年度の合格最低点で計算した入力例です</p>
                     <span class="block bg-main text-white text-sm font-bold text-center px-4 py-2.5 rounded shadow mt-2.5">自分の点数で試す ›</span>
             </a>
-        <div class="lg:col-span-7 lg:row-start-2 mt-2 lg:-mt-8">
+        
+        <div class="lg:col-span-5 lg:col-start-8 lg:row-start-2 hidden lg:block">
+            <div class="bg-white border border-soft rounded-lg p-6 shadow-sm">
+                <p class="text-[11px] font-bold tracking-[0.18em] text-main mb-2">合格実績｜本部公表</p>
+                <p class="text-main-dark leading-none"><span class="font-black text-[44px]" style="font-family:'Noto Serif JP',serif;">101</span> <span class="font-bold text-lg">名合格</span> <span class="text-sm text-gray-500">2025年度</span></p>
+                <p class="text-xs text-gray-600 leading-[1.7] mt-3">MEDUCATE全国の校舎の合計です（すべて医学部医学科、重複合格を含みます）。天王寺校だけの実績ではありません。年度別の内訳と出典は合格実績ページに掲載しています。</p>
+                <p class="mt-3"><a href="/results" class="text-sm font-bold text-main">合格実績を見る ›</a></p>
+            </div>
+        </div>
+        <div class="lg:col-span-7 lg:row-start-2">
             <div class="max-w-md">
-                <a href="/gyakusan" class="block h-full bg-white border-2 border-main text-main-dark font-bold text-center px-5 py-4 rounded hover:bg-main-light transition"><span class="whitespace-nowrap">あなたは1日何時間必要？</span><span class="block mt-1.5 text-[10px] font-normal text-gray-500 tracking-normal whitespace-nowrap">例：高2・偏差値50・兵庫医科で1日3.0〜5.0／高3で4.6〜7.6時間</span></a>
+                <a href="/gyakusan" class="block h-full bg-white border-2 border-main text-main-dark font-bold text-center px-5 py-4 rounded hover:bg-main-light transition"><span class="whitespace-nowrap">あなたは1日何時間必要？</span><span class="block mt-1.5 text-[10px] font-normal text-gray-500 tracking-normal">例：高2・偏差値50・兵庫医科で1日3.0〜5.0／高3で4.6〜7.6時間</span></a>
             </div>
-            <p class="mt-[24px] md:mt-12 text-sm text-gray-600">どちらも登録は不要です。</p>
+            <p class="mt-5 md:mt-6 text-sm text-gray-600">どちらも登録は不要です。</p>
             <p class="mt-[13px] md:mt-4 text-sm"><a href="/universities" class="underline text-main-dark font-bold">保護者の方へ：4校の日程・学費・併願を見る</a></p>
-            <div class="grid grid-cols-2 gap-1.5 mt-4 md:mt-5 max-w-md">
-                <span class="text-[11px] md:text-xs font-bold bg-white border border-soft text-main-dark px-2 py-1 rounded-full shadow-sm text-center whitespace-nowrap">現役医学部生講師 28名</span>
-                <span class="text-[11px] md:text-xs font-bold bg-white border border-soft text-main-dark px-2 py-1 rounded-full shadow-sm text-center whitespace-nowrap">自習室 365日 8:00〜23:00</span>
-                <span class="text-[11px] md:text-xs font-bold bg-white border border-soft text-main-dark px-2 py-1 rounded-full shadow-sm text-center whitespace-nowrap">毎朝のZoom朝勉強会 6:30〜7:00</span>
-                <span class="text-[11px] md:text-xs font-bold bg-white border border-soft text-main-dark px-2 py-1 rounded-full shadow-sm text-center whitespace-nowrap">JR天王寺駅 北口 徒歩5分</span>
-            </div>
         </div>
-        <aside class="lg:col-span-5 lg:col-start-8 lg:row-start-2 mt-8 lg:mt-0">
-            <figure class="card overflow-hidden w-full lg:max-w-[78%] lg:mx-auto">
-                <a href="/img/results-2025.jpg" target="_blank" rel="noopener"><img src="/img/results-2025.jpg" alt="MEDUCATE 2025年度合格実績：医学部医学科101名合格（国公立16名・私立85名）。大阪医科薬科大学2名・近畿大学5名を含む" class="w-full block"></a>
-                <figcaption class="text-xs text-gray-600 p-4">MEDUCATEの2025年度合格実績（本部公表・全国の校舎の累計）。天王寺校の実績とは、出典を分けて掲載します。直近6年の推移は<a href="https://meducate.jp/pass-record/" target="_blank" rel="noopener" class="underline text-main-dark">本部の合格実績ページ</a>にあります。</figcaption>
-            </figure>
-        </aside>
+        
         </div>
-        <img src="/img/classroom.jpg" alt="MEDUCATE天王寺校の教室（桜灯塾と同フロア）で自習する生徒たち" class="w-full rounded-lg shadow mt-8 md:mt-10 object-cover" style="max-height:320px;">
+        <img src="/img/classroom.jpg" alt="MEDUCATE天王寺校の教室（桜灯塾と同フロア）で自習する生徒たち" class="w-full h-[150px] md:h-auto rounded-lg shadow mt-5 md:mt-10 object-cover" style="max-height:320px;">
         </div>
     </section>
 
@@ -364,13 +368,37 @@
 
     <!-- 実績 -->
     <section class="max-w-6xl mx-auto px-4 py-12 md:py-16">
-        <h2 class="section-title font-black text-main-dark mb-6">天王寺校の実績</h2>
-        <div class="card p-6 md:p-8">
+        <h2 class="section-title font-black text-main-dark mb-6">合格実績</h2>
+        <h3 class="font-black text-main-dark text-lg mb-3">天王寺校の実績</h3>
+            <div class="card p-6 md:p-8">
             <p class="font-black text-main-dark text-lg mb-3">中学受験で通い、医学部受験で戻ってきて、今は講師です</p>
             <p class="text-sm md:text-base max-w-3xl">小学生のころに中学受験で通っていた卒業生が、医学部を目指してもう一度天王寺に戻ってきました。2025年に京都府立医科大学に合格し、今は天王寺校の講師として後輩を教えています。</p>
             <p class="mt-4"><a href="/results" class="underline text-main-dark font-bold">実績のページへ</a></p>
         </div>
         <p class="mt-4 text-sm text-gray-600">MEDUCATEの合格実績は、<a href="/results" class="underline text-main-dark">実績のページ</a>で出典つきで紹介しています。天王寺校の実績とは分けて掲載します。</p>
+    
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 items-start">
+            <div class="card p-6">
+                <h3 class="font-black text-main-dark text-lg mb-3">MEDUCATE全体の合格実績（本部公表）</h3>
+                <p class="text-sm mb-4">MEDUCATEは全国に校舎を持つ医学部受験塾です。本部が公表している合格実績は、次のとおりです（すべて医学部医学科、重複合格を含みます）。</p>
+                <table class="w-full text-sm">
+                    <tr class="border-b border-soft"><th class="text-left py-1.5 font-bold text-main-dark">年度</th><th class="text-right py-1.5 font-bold text-main-dark">国公立・私立医学部 合格者数</th></tr>
+                    <tr class="border-b border-soft"><td class="py-1.5">2025年</td><td class="text-right py-1.5 font-black text-main-dark">101名</td></tr>
+                    <tr class="border-b border-soft"><td class="py-1.5">2024年</td><td class="text-right py-1.5">91名</td></tr>
+                    <tr class="border-b border-soft"><td class="py-1.5">2023年</td><td class="text-right py-1.5">99名</td></tr>
+                    <tr class="border-b border-soft"><td class="py-1.5">2022年</td><td class="text-right py-1.5">91名</td></tr>
+                    <tr class="border-b border-soft"><td class="py-1.5">2021年</td><td class="text-right py-1.5">78名</td></tr>
+                    <tr><td class="py-1.5">2020年</td><td class="text-right py-1.5">71名</td></tr>
+                </table>
+                <p class="text-xs text-gray-600 leading-[1.7] mt-4">出典：MEDUCATE本部サイト「合格実績」（直近6年）。これは全国の校舎の合計であり、天王寺校だけの実績ではありません。関西の私立では、大阪医科薬科大学・関西医科大学・近畿大学などが合格実績校に含まれています。</p>
+            </div>
+            <div>
+            <figure class="card overflow-hidden w-full max-w-[420px] mx-auto">
+                <a href="/img/results-2025.jpg" target="_blank" rel="noopener"><img src="/img/results-2025.jpg" alt="MEDUCATE 2025年度合格実績：医学部医学科101名合格（国公立16名・私立85名）。大阪医科薬科大学2名・近畿大学5名を含む" class="w-full block"></a>
+                <figcaption class="text-xs text-gray-600 p-4">MEDUCATEの2025年度合格実績（本部公表・全国の校舎の合計）。天王寺校の実績とは、出典を分けて掲載します。直近6年の推移は<a href="https://meducate.jp/pass-record/" target="_blank" rel="noopener" class="underline text-main-dark">本部の合格実績ページ</a>にあります。</figcaption>
+            </figure>
+        </div>
+        </div>
     </section>
 
     <!-- 相談の流れとCTA -->
