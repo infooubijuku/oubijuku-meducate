@@ -379,9 +379,12 @@
                 el('ns-cta-heading').textContent = 'この結果をもとに、上積みの設計をする';
                 el('ns-cta-text').textContent = '無料相談では、この結果をもとに、最低点からどれだけ余裕を作るか、残りの期間の進め方を一緒に設計します。下の「結果をコピーする」で結果を控えて、LINEやメールでそのまま送ってください。';
             }
-            if (days <= 0) {
+            if (days < 0) {
                 el('ns-cta-heading').textContent = '次年度の受験について相談する';
                 el('ns-cta-text').textContent = '無料相談では、この結果をもとに、次年度に向けて何から始めるかを一緒に決めます。下の「結果をコピーする」で結果を控えて、LINEやメールでそのまま送ってください。';
+            } else if (days === 0) {
+                el('ns-cta-heading').textContent = 'この結果について相談する';
+                el('ns-cta-text').textContent = '無料相談では、この結果についてのご質問や、今後の受験に関するご相談をお受けします。';
             }
             el('ns-copy-done').style.display = 'none';
             el('ns-save-done').style.display = 'none';
