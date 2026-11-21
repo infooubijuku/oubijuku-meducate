@@ -256,19 +256,27 @@
             var today = new Date(); today.setHours(0, 0, 0, 0);
             var exam = examDateShifted(u);
             var days = Math.round((exam - today) / 86400000);
+            var ended = days < 0;
+            var endedText = (2027 + gradeOffset) + '年度の1次試験は終了しました。次年度の試験情報が公開され次第、データを更新します。';
             var pace = (gap > 0 && days > 0) ? gap / (days / 7) : 0;
             var far = (gap > 0 && days > 0 && pace > 8);
             if (gap > 0) {
                 el('ns-heading').textContent = 'あと' + fmt(gap) + '点を取りに行く';
-                if (days > 0) {
+                if (ended) {
+                    el('ns-pace').textContent = endedText;
+                } else if (days === 0) {
+                    el('ns-pace').textContent = '1次試験（' + examLabelShifted(u) + '）は本日です。';
+                } else if (days > 0) {
                     var note = (gradeOffset > 0) ? '（' + (2027 + gradeOffset) + '年度の日程はまだ公表されていないため、2027年度と同じ時期で計算しています）' : '';
                     el('ns-pace').innerHTML = '1次試験（' + examLabelShifted(u) + '）まで、あと' + days + '日。不足' + fmt(gap) + '点は、1週間に約' + fmt(pace) + '点ずつ伸ばす計算です。週の時間の組み方は<a href="/articles/jikan" class="underline text-main-dark">「配点の割合で、週の勉強時間を組み替える」</a>にまとめています。' + note;
-                } else {
-                    el('ns-pace').textContent = '';
                 }
             } else {
                 el('ns-heading').textContent = '最低点は超えています。次は、上積みと崩れない形です';
-                el('ns-pace').innerHTML = 'この水準を本番で再現するための進め方は、<a href="/articles/soron4" class="underline text-main-dark">総論「続ける仕組みと完成度」</a>にまとめています。';
+                if (ended) {
+                    el('ns-pace').textContent = endedText;
+                } else {
+                    el('ns-pace').innerHTML = 'この水準を本番で再現するための進め方は、<a href="/articles/soron4" class="underline text-main-dark">総論「続ける仕組みと完成度」</a>にまとめています。';
+                }
             }
             // 前回との比較（この端末に残した記録）
             var prevEl = el('ns-prev');

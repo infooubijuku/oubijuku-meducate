@@ -126,7 +126,7 @@ if (startVal > 70) startVal = 70;
 var today = new Date(); today.setHours(0, 0, 0, 0);
 var r = compute({ uni: current, gradeOffset: gradeOffset, start: startVal, rest: rest, reserve: reserve, today: today, ronin: planRonin});
 el('grade-note').textContent = GRADE_NOTES[gradeOffset] + (planRonin ? ' 浪人まで含めた3年計画で計算しています（試験は' + dateLabel(r.examDate) + '）。' : '');
-el('uni-summary').textContent = u.name + '｜ゴールは河合塾ボーダー偏差値 ' + fmtDev(u.goal) + '。1次試験は' + dateLabel(r.examDate) + 'です。';
+el('uni-summary').textContent = u.name + '｜ゴールは河合塾ボーダー偏差値 ' + fmtDev(u.goal) + '。' + (r.totalDays < 0 ? ('1次試験（' + dateLabel(r.examDate) + '）は終了しました。') : ('1次試験は' + dateLabel(r.examDate) + 'です。'));
 el('res-title').textContent = u.name + '｜ゴール偏差値 ' + fmtDev(u.goal) + 'まで';
 // ゲージ（35〜70の物差し）
 var pos = function(v) { return Math.max(0, Math.min(100, (v - 35) / 35 * 100));};
@@ -141,6 +141,17 @@ var stagger = Math.abs(pos(startVal) - pos(u.goal)) < 15;
 el('gauge-start-label').style.top = '1.6rem';
 el('gauge-goal-label').style.top = stagger ? '2.95rem' : '1.6rem';
 el('gauge-box').style.marginBottom = stagger ? '4.8rem' : '2.5rem';
+if (r.totalDays <= 0) {
+el('gs-main').style.display = 'none';
+el('gs-done').style.display = '';
+el('gs-done-text').textContent = (r.totalDays < 0)
+? (r.examDate.getFullYear() + '年度の1次試験は終了しました。次年度の試験情報が公開され次第、データを更新します。')
+: ('1次試験（' + dateLabel(r.examDate) + '）は本日です。');
+el('gs-segments').innerHTML = '';
+el('gs-advice').style.display = 'none';
+buildTexts(r, startVal, false, true);
+return;
+}
 if (r.gap <= 0) {
 el('gs-main').style.display = 'none';
 el('gs-done').style.display = '';
@@ -191,16 +202,22 @@ adv.style.display = 'none';
 buildTexts(r, startVal, false);
 }
 
-function buildTexts(r, startVal, done) {
+function buildTexts(r, startVal, done, ended) {
 var u = UNIS[current];
 var lines = [], slines = [];
 lines.push('');
 lines.push('志望校：' + u.name + '（ゴール偏差値 ' + fmtDev(u.goal) + '）');
 lines.push('学年：' + GRADE_NAMES[gradeOffset] + '／今の偏差値：' + fmtDev(startVal) + '（河合塾・全統模試）');
-lines.push('計画の長さ：' + (r.ronin ? '浪人まで含む（3年計画）' : '現役まで'));
+if (!ended) { lines.push('計画の長さ：' + (r.ronin ? '浪人まで含む（3年計画）' : '現役まで')); }
 slines.push(u.name + '（ゴール偏差値' + fmtDev(u.goal) + '）までの「合格までの時間」を計算しました。');
 slines.push('今の偏差値は' + fmtDev(startVal) + 'です。');
-if (done) {
+if (ended) {
+var endedMsg = (r.totalDays < 0)
+? (r.examDate.getFullYear() + '年度の1次試験は終了しました。次年度の試験情報が公開され次第、データを更新します。')
+: ('1次試験（' + dateLabel(r.examDate) + '）は本日です。');
+lines.push(endedMsg);
+slines.push(endedMsg);
+} else if (done) {
 lines.push('偏差値の上では、合格可能性50％ライン以上です。');
 slines.push('偏差値の上では、合格可能性50％ライン以上です。次は点数で距離を測ります。');
 } else {
