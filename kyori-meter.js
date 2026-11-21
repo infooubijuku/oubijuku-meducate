@@ -418,6 +418,7 @@
             }
             if (days > 0) lines.push('1次試験（' + examLabelShifted(u) + '）まで：あと' + days + '日' + (gradeOffset > 0 ? '（日程は2027年度と同じ時期で計算）' : ''));
             lines.push('https://meducate.oubijuku.com/kyori?u=' + current + '&via=share');
+            lines.push('※昨年度（2026年度）の合格最低点をもとにした目安です。今年の合格ラインを約束するものではありません。');
             lastCopyText = lines.join('\n');
         }
 
