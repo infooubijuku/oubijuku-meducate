@@ -56,6 +56,7 @@
         .section-title { position: relative; padding-left: 1rem; }
         .section-title::before { content: ''; position: absolute; left: 0; top: 0.25em; bottom: 0.25em; width: 4px; background: var(--main); }
         .section-title.on-dark::before { background: #BFD9F2; }
+        p.lh-body { line-height: 1.8; }
         h2.section-title { font-size: 1.4375rem; }
         @media (min-width: 768px) { h2.section-title { font-size: 1.75rem; } }
         .card { background: #fff; border: 1px solid var(--soft); border-radius: 0.5rem; box-shadow: 0 1px 2px rgba(10,40,80,0.04), 0 14px 30px -18px rgba(20,73,127,0.25); }
@@ -330,21 +331,21 @@
     </section>
 
     <!-- 距離メーター -->
-    <section class="max-w-[1080px] mx-auto px-4 pb-12 md:pb-16">
+    <section class="max-w-[1080px] mx-auto px-4 pb-9 md:pb-12">
         <a href="/kyori" class="card p-6 md:p-8 block hover:shadow-md transition">
             <p class="text-xs font-bold text-main mb-2">無料ツール</p>
             <p class="font-black text-main-dark text-lg md:text-xl mb-2">合格最低点までの距離メーター</p>
-            <p class="text-sm">大学を選んで、英語・数学・理科の今の得点率を入れるだけ。2026年度の合格最低点まで、あと何点足りないかと、科目ごとの目標点の例が分かります。数字は各大学の公式公表をもとにしています。</p>
+            <p class="text-sm lh-body">大学を選んで、英語・数学・理科の今の得点率を入れるだけ。2026年度の合格最低点まで、あと何点足りないかと、科目ごとの目標点の例が分かります。数字は各大学の公式公表をもとにしています。</p>
         </a>
     </section>
 
     <!-- 塾長・校舎長、講師陣の紹介 -->
-    <section class="max-w-[1080px] mx-auto px-4 py-12 md:py-16">
+    <section class="max-w-[1080px] mx-auto px-4 py-12 md:py-[72px]">
         <h2 class="section-title font-black text-main-dark mb-6">塾長・校舎長、講師陣の紹介</h2>
         <div class="flex flex-col md:flex-row gap-6 items-start">
             <img src="/img/director.jpg" alt="MEDUCATE天王寺校 校舎長 内田憲一" class="w-40 h-40 object-cover rounded-lg shadow">
             <div>
-                <p class="max-w-3xl mb-4">指導は、MEDUCATE本部のプロ講師（天王寺校のチームに加わって指導する）＋校舎長（大きな方針の決定）＋医学部生講師28名（日々の指導）の3層で支えます。講師は全員、教室で顔を合わせて教える形です。校舎長の考え方と講師陣の構成は、紹介ページにまとめました。</p>
+                <p class="max-w-3xl mb-4 lh-body">指導は、MEDUCATE本部のプロ講師（天王寺校のチームに加わって指導する）＋校舎長（大きな方針の決定）＋医学部生講師28名（日々の指導）の3層で支えます。講師は全員、教室で顔を合わせて教える形です。校舎長の考え方と講師陣の構成は、紹介ページにまとめました。</p>
                 <a href="/teachers" class="inline-block bg-white border-2 border-main text-main-dark font-bold text-center px-6 py-3 rounded hover:bg-main-light transition tracking-wider">塾長・校舎長、講師陣の紹介を見る</a>
             </div>
         </div>
@@ -352,28 +353,28 @@
 
     <!-- 環境 -->
     <section class="bg-main-light border-y border-soft">
-        <div class="max-w-[1080px] mx-auto px-4 py-12 md:py-16">
+        <div class="max-w-[1080px] mx-auto px-4 py-12 md:py-[72px]">
             <h2 class="section-title font-black text-main-dark mb-6">勉強のリズムを支える環境</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div class="card p-6">
                     <p class="font-black text-main-dark text-lg mb-2">自習室は365日、8時〜23時</p>
-                    <p class="text-sm">教室の自習室は、年間を通して毎日使えます。授業のない日も、同じ場所で勉強を続けられます。</p>
+                    <p class="text-sm lh-body">教室の自習室は、年間を通して毎日使えます。授業のない日も、同じ場所で勉強を続けられます。</p>
                 </div>
                 <div class="card p-6">
                     <p class="font-black text-main-dark text-lg mb-2">毎朝のZoom朝勉強会（6時30分〜7時）</p>
-                    <p class="text-sm">日曜・祝日を除く毎朝、オンラインで集まって勉強を始めます。朝の30分が、1日のリズムを作ります。</p>
+                    <p class="text-sm lh-body">日曜・祝日を除く毎朝、オンラインで集まって勉強を始めます。朝の30分が、1日のリズムを作ります。</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 実績 -->
-    <section class="max-w-[1080px] mx-auto px-4 py-12 md:py-16">
+    <section class="max-w-[1080px] mx-auto px-4 pt-16 pb-12 md:pb-16">
         <h2 class="section-title font-black text-main-dark mb-6">合格実績</h2>
         <h3 class="font-black text-main-dark text-lg mb-3">天王寺校の実績</h3>
             <div class="card p-6 md:p-8">
             <p class="font-black text-main-dark text-lg mb-3">中学受験で通い、医学部受験で戻ってきて、今は講師です</p>
-            <p class="text-sm md:text-base max-w-3xl">小学生のころに中学受験で通っていた卒業生が、医学部を目指してもう一度天王寺に戻ってきました。2025年に京都府立医科大学に合格し、今は天王寺校の講師として後輩を教えています。</p>
+            <p class="text-sm md:text-base max-w-3xl lh-body">小学生のころに中学受験で通っていた卒業生が、医学部を目指してもう一度天王寺に戻ってきました。2025年に京都府立医科大学に合格し、今は天王寺校の講師として後輩を教えています。</p>
             <p class="mt-4"><a href="/results" class="underline text-main-dark font-bold">実績のページへ</a></p>
         </div>
         <p class="mt-4 text-sm text-gray-600">MEDUCATEの合格実績は、<a href="/results" class="underline text-main-dark">実績のページ</a>で出典つきで紹介しています。天王寺校の実績とは分けて掲載します。</p>
@@ -381,7 +382,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 items-start">
             <div class="card p-6">
                 <h3 class="font-black text-main-dark text-lg mb-3">MEDUCATE全体の合格実績（本部公表）</h3>
-                <p class="text-sm mb-4">MEDUCATEは全国に校舎を持つ医学部受験塾です。本部が公表している合格実績は、次のとおりです（すべて医学部医学科、重複合格を含みます）。</p>
+                <p class="text-sm mb-4 lh-body">MEDUCATEは全国に校舎を持つ医学部受験塾です。本部が公表している合格実績は、次のとおりです（すべて医学部医学科、重複合格を含みます）。</p>
                 <table class="w-full text-sm">
                     <tr class="border-b border-soft"><th class="text-left py-1.5 font-bold text-main-dark">年度</th><th class="text-right py-1.5 font-bold text-main-dark">国公立・私立医学部 合格者数</th></tr>
                     <tr class="border-b border-soft"><td class="py-1.5">2025年</td><td class="text-right py-1.5 font-black text-main-dark">101名</td></tr>
@@ -403,10 +404,10 @@
     </section>
 
     <!-- 相談の流れとCTA -->
-    <section class="max-w-[1080px] mx-auto px-4 pb-14 md:pb-20">
+    <section class="max-w-[1080px] mx-auto px-4 pt-0 pb-10 md:pt-0 md:pb-14">
         <div class="card p-6 md:p-10 text-center">
-            <h2 class="font-black text-main-dark text-2xl mb-4" style="font-family:'Noto Serif JP',serif;">まずは無料相談から</h2>
-            <p class="text-sm md:text-base max-w-2xl mx-auto mb-3">流れは「お問い合わせ → ご面談（問題点の整理と目標の確認）→ チーム編成 → 授業の開始」です。ご連絡は、公式LINEまたはメールでお願いします（お電話は平日10時〜20時にお願いします。授業中は出られないことがあります）。</p>
+            <h2 class="section-title inline-block font-black text-main-dark mb-4" style="font-family:'Noto Serif JP',serif;">まずは無料相談から</h2>
+            <p class="text-sm md:text-base max-w-2xl mx-auto mb-3 lh-body">流れは「お問い合わせ → ご面談（問題点の整理と目標の確認）→ チーム編成 → 授業の開始」です。ご連絡は、公式LINEまたはメールでお願いします（お電話は平日10時〜20時にお願いします。授業中は出られないことがあります）。</p>
             <p class="text-sm text-gray-600 max-w-2xl mx-auto mb-6">料金は、このサイトには掲載していません。コースが決まった時点で、無料相談の際に書面でご提示します。</p>
             <div class="flex flex-col sm:flex-row gap-3 justify-center">
                 <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white font-bold text-center px-8 py-4 rounded shadow-lg hover:opacity-90 tracking-wider">公式LINEで無料相談</a>
@@ -419,21 +420,21 @@
 
 
     <!-- 距離メーターへの案内（全ページ共通） -->
-    <section class="px-4 py-8" style="background:linear-gradient(120deg,#14497F,#1D5FA8);">
+    <section class="px-4 py-9 md:py-12 bg-main-light border-y border-soft">
         <div class="max-w-[1080px] mx-auto flex flex-col md:flex-row md:items-center gap-5">
             <div class="flex-1">
-                <p class="text-xs font-bold tracking-widest mb-2" style="color:#BFD9F2;">無料ツール｜登録不要</p>
-                <p class="text-white font-black text-2xl md:text-3xl leading-snug mb-2">合格最低点まで、あと何点？</p>
-                <p class="text-sm md:text-base" style="color:#DCE9F6;">関西私立医学部4校対応。英語・数学・理科の今の得点率を入れるだけで、合格最低点までの不足点と、科目ごとの目標点の目安が出ます。</p>
+                <p class="text-xs font-bold tracking-widest mb-2 text-main">無料ツール｜登録不要</p>
+                <p class="text-main-dark font-black text-2xl md:text-3xl leading-snug mb-2">合格最低点まで、あと何点？</p>
+                <p class="text-sm md:text-base lh-body">関西私立医学部4校対応。英語・数学・理科の今の得点率を入れるだけで、合格最低点までの不足点と、科目ごとの目標点の目安が出ます。</p>
             </div>
-            <div class="shrink-0"><a href="/kyori" class="inline-block bg-white font-black px-8 py-4 rounded shadow-lg hover:opacity-90 tracking-wider" style="color:#14497F;">距離メーターで測る</a></div>
+            <div class="shrink-0"><a href="/kyori" class="inline-block bg-main text-white font-black px-8 py-4 rounded shadow-lg hover:opacity-90 tracking-wider">距離メーターで測る</a></div>
         </div>
     </section>
     <!-- 相談の入口（全ページ共通） -->
-    <section class="max-w-[1080px] mx-auto px-4 pb-4">
+    <section class="max-w-[1080px] mx-auto px-4 pt-4 md:pt-6 pb-4 md:pb-6">
         <div class="border-2 border-line rounded-lg p-5 md:p-6 bg-[#F2FBF3]">
             <p class="font-black text-main-dark text-lg mb-2">無料相談を受け付けています</p>
-            <p class="text-sm md:text-base mb-4">相談では、志望校までの距離と、最初の一か月の進め方をお伝えします。料金は、コースが決まった時点で書面でご提示します。相談したからといって、入塾を前提にはしません。お電話は平日10時〜20時にお願いします（授業中は出られないことがあります）。ご連絡は公式LINEまたはメール（meducatetennoji@gmail.com）でお願いします。</p>
+            <p class="text-sm md:text-base mb-4 lh-body">相談では、志望校までの距離と、最初の一か月の進め方をお伝えします。料金は、コースが決まった時点で書面でご提示します。相談したからといって、入塾を前提にはしません。お電話は平日10時〜20時にお願いします（授業中は出られないことがあります）。ご連絡は公式LINEまたはメール（meducatetennoji@gmail.com）でお願いします。</p>
             <div class="flex flex-col sm:flex-row gap-3">
                 <a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white font-bold text-center px-6 py-3.5 rounded shadow hover:opacity-90 tracking-wider">公式LINEで無料相談</a>
                 <a href="mailto:meducatetennoji@gmail.com" class="bg-white border-2 border-main text-main-dark font-bold text-center px-6 py-3.5 rounded hover:bg-main-light transition tracking-wider">メールで問い合わせ</a>
