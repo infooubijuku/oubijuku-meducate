@@ -125,7 +125,7 @@ if (startVal < 35) startVal = 35;
 if (startVal > 70) startVal = 70;
 var today = new Date(); today.setHours(0, 0, 0, 0);
 var r = compute({ uni: current, gradeOffset: gradeOffset, start: startVal, rest: rest, reserve: reserve, today: today, ronin: planRonin});
-el('grade-note').textContent = GRADE_NOTES[gradeOffset] + (planRonin ? ' 浪人まで含めた3年計画で計算しています（試験は' + dateLabel(r.examDate) + '）。' : '');
+el('grade-note').textContent = GRADE_NOTES[gradeOffset] + (planRonin ? ' 浪人まで含めて計算しています（試験は' + dateLabel(r.examDate) + '）。' : '');
 el('uni-summary').textContent = u.name + '｜ゴールは河合塾ボーダー偏差値 ' + fmtDev(u.goal) + '。' + (r.totalDays < 0 ? ('1次試験（' + dateLabel(r.examDate) + '）は終了しました。') : ('1次試験は' + dateLabel(r.examDate) + 'です。'));
 el('res-title').textContent = u.name + '｜ゴール偏差値 ' + fmtDev(u.goal) + 'まで';
 // ゲージ（35〜70の物差し）
@@ -189,7 +189,7 @@ adv.style.display = '';
 adv.style.background = '#FDF0EC'; adv.style.border = '1px solid #E5B4A8';
 el('gs-advice-title').textContent = 'この計画は、組み立て直しが必要な量です';
 el('gs-advice-title').style.color = '#A93226';
-el('gs-advice-text').textContent = '1日12時間を超える区間があります。今の志望校と開始時期のままでは、続けるのが難しい量です。選択肢は、併願の組み替えで届く組み合わせに見直すことと、期間の取り方そのものを設計し直すことです。' + (planRonin ? '' : '「計画の長さ」を「浪人まで含む」に切り替えると、3年計画では現実的な量に収まる場合があります。') + 'どちらも早いほど選択肢が残ります。組み立て直すのが塾の仕事です。無料相談で、この結果をもとに一緒に設計します。';
+el('gs-advice-text').textContent = '1日12時間を超える区間があります。今の志望校と開始時期のままでは、続けるのが難しい量です。選択肢は、併願の組み替えで届く組み合わせに見直すことと、期間の取り方そのものを設計し直すことです。' + (planRonin ? '' : '「計画の長さ」を「浪人まで含む」に切り替えると、現実的な量に収まる場合があります。') + 'どちらも早いほど選択肢が残ります。組み立て直すのが塾の仕事です。無料相談で、この結果をもとに一緒に設計します。';
 } else if (anyWarn) {
 adv.style.display = '';
 adv.style.background = '#FFF7E0'; adv.style.border = '1px solid #E8CE8A';
@@ -208,7 +208,7 @@ var lines = [], slines = [];
 lines.push('');
 lines.push('志望校：' + u.name + '（ゴール偏差値 ' + fmtDev(u.goal) + '）');
 lines.push('学年：' + GRADE_NAMES[gradeOffset] + '／今の偏差値：' + fmtDev(startVal) + '（河合塾・全統模試）');
-if (!ended) { lines.push('計画の長さ：' + (r.ronin ? '浪人まで含む（3年計画）' : '現役まで')); }
+if (!ended) { lines.push('計画の長さ：' + (r.ronin ? '浪人まで含む' : '現役まで')); }
 slines.push(u.name + '（ゴール偏差値' + fmtDev(u.goal) + '）までの「合格までの時間」を計算しました。');
 slines.push('今の偏差値は' + fmtDev(startVal) + 'です。');
 if (ended) {
@@ -241,6 +241,7 @@ lines.push('https://meducate.oubijuku.com/gyakusan?u=' + current + '&via=share')
 lines.push('※予備校の経験則をもとにした目安です。合格を約束するものではありません。');
 lastText = lines.join('\n');
 slines.push('▼ 偏差値から見る逆算メーター（無料・登録不要）');
+slines.push('※予備校の経験則をもとにした目安です。合格を約束するものではありません。');
 shareText = slines.join('\n');
 el('gs-share-line').href = 'https://social-plugins.line.me/lineit/share?url=' + encodeURIComponent('https://meducate.oubijuku.com/gyakusan?u=' + current + '&via=share') + '&text=' + encodeURIComponent(shareText);
 }
