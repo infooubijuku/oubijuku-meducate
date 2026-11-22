@@ -154,7 +154,7 @@
     <section class="paper-band border-b border-soft">
         <div class="max-w-6xl mx-auto px-4 py-10 md:py-14">
             <h1 class="text-2xl md:text-4xl font-black leading-snug text-main-dark mb-3">アクセス・お問い合わせ</h1>
-            <p class="text-sm md:text-base max-w-3xl">教室はJR天王寺駅北口から徒歩5分です。無料相談のお申し込みは、公式LINEとメールで受け付けています。</p>
+            <p class="text-sm md:text-base max-w-3xl">教室はJR天王寺駅北口から徒歩5分です。無料相談のお申し込みは、公式LINE・メール・フォームで受け付けています。</p>
         </div>
     </section>
     <section class="max-w-6xl mx-auto px-4 py-12">
@@ -185,9 +185,8 @@
         <div class="card p-6 md:p-10 text-center">
             <h2 class="font-black text-main-dark text-2xl mb-4" style="font-family:'Noto Serif JP',serif;">お問い合わせ</h2>
             <!-- 公式LINEは @968yocfj（2026-11-10開設） -->
-            <!-- TODO: Googleフォーム作成後、埋め込みまたはリンクをここに設置する -->
-            <p class="text-sm md:text-base max-w-2xl mx-auto mb-6">無料相談は、天王寺校の公式LINEから受け付けています。メール（meducatetennoji@gmail.com）でのお問い合わせも受け付けています。</p>
-            <div class="flex flex-col sm:flex-row gap-3 justify-center"><a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white font-bold text-center px-8 py-4 rounded shadow-lg hover:opacity-90 tracking-wider">公式LINEで無料相談</a><a href="mailto:meducatetennoji@gmail.com" class="bg-main text-white font-bold text-center px-8 py-4 rounded shadow-lg hover:opacity-90 tracking-wider">メールで問い合わせ</a></div>
+            <p class="text-sm md:text-base max-w-2xl mx-auto mb-6">無料相談のお申し込みは、公式LINE・メール・フォームで受け付けています。フォームは、距離メーター・逆算メーターの結果を引き継いで申し込むこともできます。</p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center"><a href="https://line.me/R/ti/p/@968yocfj" target="_blank" rel="noopener" class="bg-line text-white font-bold text-center px-8 py-4 rounded shadow-lg hover:opacity-90 tracking-wider">公式LINEで無料相談</a><a href="mailto:meducatetennoji@gmail.com" class="bg-main text-white font-bold text-center px-8 py-4 rounded shadow-lg hover:opacity-90 tracking-wider">メールで問い合わせ</a><a id="form-link-contact" href="https://docs.google.com/forms/d/e/1FAIpQLSeTRmBbTA3ltrlMYqGPUhP8GD1U9S0Z05FbtY51c6_OiB0Isw/viewform" target="_blank" rel="noopener" class="bg-white border-2 border-main text-main-dark font-bold text-center px-8 py-4 rounded shadow-lg hover:bg-main-light transition tracking-wider">フォームで申し込む</a></div>
             <p class="text-sm text-gray-600 mt-6 max-w-2xl mx-auto">料金は、このサイトには掲載していません。コースが決まった時点で、無料相談の際に書面でご提示します。</p>
         </div>
     </section>
@@ -300,6 +299,13 @@
             gtag('event', 'sticky_contact_click', { event_category: 'engagement', event_label: 'STICKY_CONTACT', page_path: window.location.pathname });
           });
         });
+        /* 無料相談フォームへの遷移を form_click として計測する */
+        var formLink = document.getElementById('form-link-contact');
+        if (formLink) {
+          formLink.addEventListener('click', function() {
+            gtag('event', 'form_click', { meter_type: 'contact', page_path: window.location.pathname });
+          });
+        }
       })();
     </script>
 </body>
