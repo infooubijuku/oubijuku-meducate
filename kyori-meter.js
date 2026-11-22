@@ -124,6 +124,11 @@
                 gtag('event', 'meter_result_view', { meter_type: 'kyori', university: u.name });
             }
         }
+        function resetFormCta() {
+            formUniName = '';
+            var ctas = document.querySelectorAll('.form-cta');
+            for (var ci = 0; ci < ctas.length; ci++) { ctas[ci].href = FORM_URL; }
+        }
 
         function update() {
             var u = uni();
@@ -137,6 +142,7 @@
             if (!valid) {
                 el('res-empty').style.display = '';
                 el('res-body').style.display = 'none';
+                resetFormCta();
                 return;
             }
             el('res-empty').style.display = 'none';
