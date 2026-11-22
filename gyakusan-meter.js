@@ -117,6 +117,19 @@ if (seg.policy === 'cap') { return '1日 ' + fmtD(seg.dailyLow) + '時間〜（1
 return '1日あたりの量は、12時間を超える計算になるため表示していません';
 }
 
+var FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeTRmBbTA3ltrlMYqGPUhP8GD1U9S0Z05FbtY51c6_OiB0Isw/viewform';
+var formViewFired = false;
+function updateFormCta(summary) {
+var uniName = UNIS[current].name;
+var href = FORM_URL + '?usp=pp_url&entry.977040217=' + encodeURIComponent('逆算メーター') + '&entry.987983962=' + encodeURIComponent(uniName) + '&entry.964060021=' + encodeURIComponent(summary);
+var ctas = document.querySelectorAll('.form-cta');
+for (var ci = 0; ci < ctas.length; ci++) { ctas[ci].href = href; }
+if (!formViewFired && typeof gtag === 'function') {
+formViewFired = true;
+gtag('event', 'meter_result_view', { meter_type: 'gyakusan', university: uniName });
+}
+}
+
 function update() {
 var u = UNIS[current];
 var startVal = parseFloat(el('dev-num').value);
@@ -150,6 +163,7 @@ el('gs-done-text').textContent = (r.totalDays < 0)
 el('gs-segments').innerHTML = '';
 el('gs-advice').style.display = 'none';
 buildTexts(r, startVal, false, true);
+updateFormCta('現在偏差値' + fmtDev(startVal) + '／ゴール偏差値' + fmtDev(u.goal) + '（' + u.name + '・今年度の1次試験は終了しました）');
 return;
 }
 if (r.gap <= 0) {
@@ -157,6 +171,7 @@ el('gs-main').style.display = 'none';
 el('gs-done').style.display = '';
 el('gs-done-text').textContent = '偏差値の上では、' + u.name + 'の合格可能性50％ライン（' + fmtDev(u.goal) + '）以上にいます。次は、点数の上で合格最低点まであと何点かを測る段階です。';
 buildTexts(r, startVal, true);
+updateFormCta('現在偏差値' + fmtDev(startVal) + '／ゴール偏差値' + fmtDev(u.goal) + '（' + u.name + '・偏差値の上ではゴール以上にいます）');
 return;
 }
 el('gs-done').style.display = 'none';
@@ -200,6 +215,7 @@ el('gs-advice-text').textContent = '1日8時間を超える区間があります
 adv.style.display = 'none';
 }
 buildTexts(r, startVal, false);
+updateFormCta('現在偏差値' + fmtDev(startVal) + '／ゴール偏差値' + fmtDev(u.goal) + '／必要な総時間の目安 ' + fmtH(r.totalLow) + '〜' + fmtH(r.totalHigh) + '時間（' + u.name + '）');
 }
 
 function buildTexts(r, startVal, done, ended) {
@@ -273,6 +289,12 @@ function done() { doneEl.style.display = '';}
 if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done, function() { fallback(); done();});}
 else { fallback(); done();}
 function fallback() { var ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy');} catch (e) {} document.body.removeChild(ta);}
+}
+var formCtas = document.querySelectorAll('.form-cta');
+for (var fi = 0; fi < formCtas.length; fi++) {
+formCtas[fi].addEventListener('click', function() {
+if (typeof gtag === 'function') { gtag('event', 'form_click', { meter_type: 'gyakusan', university: UNIS[current].name }); }
+});
 }
 el('gs-copy').addEventListener('click', function() { copyText(lastText, el('gs-copy-done'));});
 el('gs-share-copy').addEventListener('click', function() { copyText(lastText, el('gs-share-done'));});

@@ -105,6 +105,26 @@
             return n;
         }
 
+        var FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeTRmBbTA3ltrlMYqGPUhP8GD1U9S0Z05FbtY51c6_OiB0Isw/viewform';
+        var formUniName = '';
+        var formViewFired = false;
+        function updateFormCta(u, nowTotal, targetTotal, gap) {
+            formUniName = u.name;
+            var summary;
+            if (current === 'hyo') {
+                summary = '現在' + fmt(nowTotal) + '点（学科のみ）／学科の必要点' + fmt(targetTotal) + '点／' + (gap > 0 ? '不足' + fmt(gap) + '点' : '約' + fmt(-gap) + '点上回る計算') + '（兵庫医科大学・小論文・面接等の想定をおいた計算）';
+            } else {
+                summary = '現在' + fmt(nowTotal) + '点／' + (u.firstOnly ? '1次合格最低点' : '合格最低点') + fmt(u.min) + '点／' + (gap > 0 ? '不足' + fmt(gap) + '点' : '約' + fmt(-gap) + '点上回る計算') + '（' + u.name + '・2026年度の合格最低点をもとにした目安）';
+            }
+            var href = FORM_URL + '?usp=pp_url&entry.977040217=' + encodeURIComponent('距離メーター') + '&entry.987983962=' + encodeURIComponent(u.name) + '&entry.964060021=' + encodeURIComponent(summary);
+            var ctas = document.querySelectorAll('.form-cta');
+            for (var ci = 0; ci < ctas.length; ci++) { ctas[ci].href = href; }
+            if (!formViewFired && typeof gtag === 'function') {
+                formViewFired = true;
+                gtag('event', 'meter_result_view', { meter_type: 'kyori', university: u.name });
+            }
+        }
+
         function update() {
             var u = uni();
             var rates = [], scores = [], valid = true;
@@ -206,6 +226,7 @@
             lastRates = rates.slice();
             renderNext(scores, targets, rates, gap, targetTotal, nowTotal, assumedExtra);
             updateShare(u, rates, gap, assumedExtra);
+            updateFormCta(u, nowTotal, targetTotal, gap);
         }
 
         var SUBJ_NEXT = {
@@ -477,6 +498,12 @@
                 done.style.display = '';
             } catch (e) {}
         });
+        var formCtas = document.querySelectorAll('.form-cta');
+        for (var fi = 0; fi < formCtas.length; fi++) {
+            formCtas[fi].addEventListener('click', function() {
+                if (typeof gtag === 'function') { gtag('event', 'form_click', { meter_type: 'kyori', university: formUniName }); }
+            });
+        }
         el('ns-copy').addEventListener('click', function() {
             function done() { el('ns-copy-done').style.display = ''; }
             if (navigator.clipboard && navigator.clipboard.writeText) {
