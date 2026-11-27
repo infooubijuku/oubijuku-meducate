@@ -238,7 +238,7 @@ lines.push('偏差値の上では、合格可能性50％ライン以上です。
 slines.push('偏差値の上では、合格可能性50％ライン以上です。次は点数で距離を測ります。');
 } else {
 lines.push('偏差値のギャップ：' + fmtDev(r.gap));
-lines.push('必要な総時間の目安：' + fmtH(r.totalLow) + '〜' + fmtH(r.totalHigh) + '時間（経験則による下限の目安）');
+lines.push('必要な総時間の目安：' + fmtH(r.totalLow) + '〜' + fmtH(r.totalHigh) + '時間（学習計画を立てるための参考値）');
 lines.push('前提：週' + rest + '日休む・行事や体調不良などの予備' + reserve + '％／試験まで' + r.totalDays + '日・勉強できる日 約' + r.totalStudy + '日');
 slines.push('ギャップ' + fmtDev(r.gap) + 'を埋める時間の目安は、' + fmtH(r.totalLow) + '〜' + fmtH(r.totalHigh) + '時間です。');
 for (var i = 0; i < r.segments.length; i++) {
@@ -254,10 +254,10 @@ slines.push(s.label + 'は ' + shareDailyText(s) + '。');
 }
 lines.push('▼ 偏差値から見る逆算メーター（無料・登録不要）');
 lines.push('https://meducate.oubijuku.com/gyakusan?u=' + current + '&via=share');
-lines.push('※予備校の経験則をもとにした目安です。合格を約束するものではありません。');
+lines.push('※表示される学習時間は、学習計画を立てるための参考値です。合格に必要な学習時間を保証するものではありません。');
 lastText = lines.join('\n');
 slines.push('▼ 偏差値から見る逆算メーター（無料・登録不要）');
-slines.push('※予備校の経験則をもとにした目安です。合格を約束するものではありません。');
+slines.push('※表示される学習時間は、学習計画を立てるための参考値です。合格に必要な学習時間を保証するものではありません。');
 shareText = slines.join('\n');
 el('gs-share-line').href = 'https://social-plugins.line.me/lineit/share?url=' + encodeURIComponent('https://meducate.oubijuku.com/gyakusan?u=' + current + '&via=share') + '&text=' + encodeURIComponent(shareText);
 }
