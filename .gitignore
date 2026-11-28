@@ -1,0 +1,19 @@
+# 認証情報・秘密情報を Git で追跡しないための設定（SECURITY-AUDIT-01）
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+id_rsa
+id_rsa.*
+credentials.json
+credentials.*
+*secret*
+settings.local.json
+.mcp.json
+
+# ローカル作業ファイル
+.DS_Store
+Thumbs.db
+node_modules/
